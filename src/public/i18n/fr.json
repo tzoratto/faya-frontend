@@ -1,0 +1,12 @@
+{
+    "account": {
+        "loginLink": "Se connecter",
+        "logoutLink": "Se déconnecter",
+        "signupLink": "S'inscrire",
+        "signupButton": "S'inscrire",
+        "emailField": "Email :",
+        "passwordField": "Mot de passe :",
+        "loginButton": "Connexion"
+    },
+    "unknownError": "Une erreur inattendue est survenue"
+}

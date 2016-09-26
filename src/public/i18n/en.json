@@ -1,0 +1,12 @@
+{
+    "account": {
+        "loginLink": "Sign in",
+        "logoutLink": "Sign out",
+        "signupLink": "Sign up",
+        "signupButton": "Sign up",
+        "emailField": "Email :",
+        "passwordField": "Password :",
+        "loginButton": "Login"
+    },
+    "unknownError": "An unexpected error has occured"
+}

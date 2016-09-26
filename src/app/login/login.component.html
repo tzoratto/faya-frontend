@@ -1,0 +1,5 @@
+<div class="container">
+    <label>{{'account.emailField' | translate}}</label><input #email />
+    <label>{{'account.passwordField' | translate}}</label><input #password />
+    <button (click)="login(email.value, password.value)">{{'account.loginButton' | translate}}</button>
+</div>
