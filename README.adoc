@@ -1,0 +1,25 @@
+= Faya front-end
+
+Faya provides a simple way to create and manage tokens through its web interface or its API.
+
+NOTE: This repository only contains the front-end part of Faya.
+
+== Configuration
+
+.Environement variables
+[options="header"]
+|===
+|Name |Default |Description
+
+|API_URL
+|http://localhost:3000
+|Full URL of the Faya API
+
+|PORT
+|8080
+|Define the port on which to run Faya front-end server
+|===
+
+== References
+
+The webpack configuration is based on https://github.com/preboot/angular2-webpack[preboot/angular2-webpack]
