@@ -85,6 +85,7 @@ module.exports = function makeWebpackConfig() {
      * This handles most of the magic responsible for converting modules
      */
     config.module = {
+        preLoaders: [{test: /\.ts$/, loader: 'tslint'}],
         loaders: [
             // Support for .ts files.
             {
@@ -192,6 +193,15 @@ module.exports = function makeWebpackConfig() {
             browsers: ['last 2 version']
         })
     ];
+
+    /**
+     * Apply the tslint loader as pre/postLoader
+     * Reference: https://github.com/wbuchwalter/tslint-loader
+     */
+    config.tslint = {
+        emitErrors: false,
+        failOnHint: false
+    };
 
     /**
      * Dev server configuration

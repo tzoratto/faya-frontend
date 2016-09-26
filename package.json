@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --progress",
     "version": "replace '(sonar.projectVersion=).*'  '$1'$npm_package_version sonar-project.properties && git add sonar-project.properties",
-    "build": "rimraf dist && webpack --progress --profile --bail"
+    "build": "rimraf dist && webpack --progress --profile --bail",
+    "lint": "tslint -o tslint-report --force \"src/**/*.ts\""
   },
   "dependencies": {
     "@angular/common": "2.0.0",
@@ -37,6 +38,7 @@
     "angular2-template-loader": "^0.5.0",
     "autoprefixer": "^6.4.1",
     "awesome-typescript-loader": "^2.2.4",
+    "codelyzer": "^1.0.0-beta.0",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -49,6 +51,8 @@
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "ts-helpers": "^1.1.1",
+    "tslint": "^3.15.1",
+    "tslint-loader": "^2.1.5",
     "typescript": "^2.0.2",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"
