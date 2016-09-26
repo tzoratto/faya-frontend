@@ -1,0 +1,8 @@
+Jenkinsfile
+node_modules/
+.git/
+.gitignore
+.idea/
+sonar-project.properties
+README.adoc
+dist/

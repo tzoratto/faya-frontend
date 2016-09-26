@@ -6,7 +6,7 @@ NOTE: This repository only contains the front-end part of Faya.
 
 == Configuration
 
-.Environement variables
+.Environment variables
 [options="header"]
 |===
 |Name |Default |Description
@@ -18,7 +18,28 @@ NOTE: This repository only contains the front-end part of Faya.
 |PORT
 |8080
 |Define the port on which to run Faya front-end server
+
+|HTTPS_ENABLED
+|null
+|(in prod mode only) Set to true if Faya front-end is behind a reverse proxy providing HTTPS
 |===
+
+== Environments
+
+Run this command to start the application in dev mode :
+
+    npm start
+
+Run these commands to start the application in prod mode :
+
+    npm run build
+    node server.js
+
+== Docker
+
+The application can be started either in dev mode or production mode in a Docker container (default to prod env).
+
+To start the application in dev mode, run a container with the environment variable "PROD" set to false. Don't forget to mount src/ folder in the container if you want hot reloading.
 
 == References
 
