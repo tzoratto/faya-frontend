@@ -14,9 +14,9 @@ export class MessagesService {
     }
 
     public addAlert(msg: string,
-                    type: 'success' | 'info' | 'warning' | 'danger' = 'success',
-                    dismissible = true,
-                    dismissOnTimeout = 0): MessagesService {
+                    type: 'success'|'info'|'warning'|'danger' = 'success',
+                    dismissOnTimeout = 5000,
+                    dismissible = true): MessagesService {
         if (!this.messages.find(message => message.msg === msg)) {
             this.messages.push({
                 msg: msg,
