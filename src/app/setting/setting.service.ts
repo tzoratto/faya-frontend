@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import {handleErrorHttp} from '../utils/errors';
 
 @Injectable()
 export class SettingService {
@@ -19,12 +20,7 @@ export class SettingService {
             .then(response => {
                 this.subscriptionEnabled = this.responseService.getData(response).subscriptionEnabled;
             })
-            .catch(error => this.handleError(error));
-    }
-
-    private handleError(error: any): Promise<any> {
-        let message = this.responseService.getErrorMessage(error);
-        return Promise.reject(message || error);
+            .catch(error => handleErrorHttp(error, this.responseService));
     }
 
     getSubscriptionEnabled(): boolean {
