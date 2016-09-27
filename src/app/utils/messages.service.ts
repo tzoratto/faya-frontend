@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Router, NavigationStart} from '@angular/router';
+import {TranslateService} from 'ng2-translate';
 
 @Injectable()
 export class MessagesService {
     public messages: Array<any> = [];
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private translateService: TranslateService) {
         this.init();
     }
 
@@ -25,6 +26,14 @@ export class MessagesService {
                 dismissOnTimeout: dismissOnTimeout
             });
         }
+        return this;
+    }
+
+    public addAlertAndTranslate(msg: string,
+                    type: 'success'|'info'|'warning'|'danger' = 'success',
+                    dismissOnTimeout = 5000,
+                    dismissible = true): MessagesService {
+        this.addAlert(this.translateService.instant(msg), type, dismissOnTimeout, dismissible);
         return this;
     }
 

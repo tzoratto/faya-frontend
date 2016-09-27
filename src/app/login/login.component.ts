@@ -3,7 +3,6 @@ import {Component} from '@angular/core';
 import {AuthService} from '../utils/auth/auth.service';
 import {Router} from '@angular/router';
 import {MessagesService} from '../utils/messages.service';
-import {TranslateService} from 'ng2-translate';
 
 @Component({
     selector: 'my-login',
@@ -13,8 +12,7 @@ import {TranslateService} from 'ng2-translate';
 export class LoginComponent {
     constructor(private authService: AuthService,
                 private router: Router,
-                private messagesService: MessagesService,
-                private translateService: TranslateService) {
+                private messagesService: MessagesService) {
 
     }
 
@@ -22,7 +20,7 @@ export class LoginComponent {
         this.authService.login(email, password)
             .then(() => {
                 this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard']);
-                this.messagesService.clearAlert().addAlert(this.translateService.instant('account.loggedIn'));
+                this.messagesService.clearAlert().addAlertAndTranslate('account.loggedIn');
             })
             .catch(error => {});
     }

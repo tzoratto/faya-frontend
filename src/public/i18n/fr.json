@@ -7,7 +7,10 @@
         "emailField": "Email :",
         "passwordField": "Mot de passe :",
         "loginButton": "Connexion",
-        "loggedIn": "Vous êtes connecté"
+        "loggedIn": "Vous êtes connecté",
+        "loggedOut": "Vous êtes déconnecté",
+        "signedUp": "Vous êtes bien inscrit. Vous devez avoir reçu un mail pour valider votre compte",
+        "validated": "Votre compte est validé"
     },
     "unknownError": "Une erreur inattendue est survenue"
 }

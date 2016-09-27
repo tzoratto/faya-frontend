@@ -7,7 +7,10 @@
         "emailField": "Email :",
         "passwordField": "Password :",
         "loginButton": "Login",
-        "loggedIn": "You have successfully logged in"
+        "loggedIn": "You have successfully logged in",
+        "loggedOut": "You have successfully logged out",
+        "signedUp": "You have successfully signed up. You must have received a mail to validate your account",
+        "validated": "Your account is validated"
     },
     "unknownError": "An unexpected error has occured"
 }
