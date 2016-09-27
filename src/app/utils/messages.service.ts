@@ -16,7 +16,7 @@ export class MessagesService {
     public addAlert(msg: string,
                     type: 'success' | 'info' | 'warning' | 'danger' = 'success',
                     dismissible = true,
-                    dismissOnTimeout = 0): void {
+                    dismissOnTimeout = 0): MessagesService {
         if (!this.messages.find(message => message.msg === msg)) {
             this.messages.push({
                 msg: msg,
@@ -25,10 +25,12 @@ export class MessagesService {
                 dismissOnTimeout: dismissOnTimeout
             });
         }
+        return this;
     }
 
-    public clearAlert() {
+    public clearAlert(): MessagesService {
         this.messages = [];
+        return this;
     }
 
     private init() {
