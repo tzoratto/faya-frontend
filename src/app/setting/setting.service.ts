@@ -5,12 +5,15 @@ import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
+import {MessagesService} from '../utils/messages.service';
 
 @Injectable()
 export class SettingService {
     private subscriptionEnabled: boolean;
 
-    constructor(private http: Http, private responseService: ResponseService) {
+    constructor(private http: Http,
+                private responseService: ResponseService,
+                private messagesService: MessagesService) {
 
     }
 
@@ -20,7 +23,7 @@ export class SettingService {
             .then(response => {
                 this.subscriptionEnabled = this.responseService.getData(response).subscriptionEnabled;
             })
-            .catch(error => handleErrorHttp(error, this.responseService));
+            .catch(error => handleErrorHttp(error, this.responseService, this.messagesService));
     }
 
     getSubscriptionEnabled(): boolean {

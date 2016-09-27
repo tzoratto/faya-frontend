@@ -6,12 +6,15 @@ import {Headers, Http, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {tokenNotExpired} from 'angular2-jwt';
 import {handleErrorHttp} from '../utils/errors';
+import {MessagesService} from '../utils/messages.service';
 
 @Injectable()
 export class AuthService {
     redirectUrl: string;
 
-    constructor(private http: Http, private responseService: ResponseService) {
+    constructor(private http: Http,
+                private responseService: ResponseService,
+                private messagesService: MessagesService) {
 
     }
 
@@ -29,7 +32,7 @@ export class AuthService {
             .then(response => {
                 localStorage.setItem('token', this.responseService.getData(response));
             })
-            .catch(error => handleErrorHttp(error, this.responseService));
+            .catch(error => handleErrorHttp(error, this.responseService, this.messagesService));
     }
 
     isLoggedIn(): boolean {
@@ -44,7 +47,7 @@ export class AuthService {
         return this.http.post(BACKEND_ROUTES.auth.signup, body, options)
             .toPromise()
             .then(() => null)
-            .catch(error => handleErrorHttp(error, this.responseService));
+            .catch(error => handleErrorHttp(error, this.responseService, this.messagesService));
     }
 
     signupValidation(email: string, token: string): Promise<void> {
@@ -53,6 +56,6 @@ export class AuthService {
             .then((response) => {
                 localStorage.setItem('token', this.responseService.getData(response));
             })
-            .catch(error => handleErrorHttp(error, this.responseService));
+            .catch(error => handleErrorHttp(error, this.responseService, this.messagesService));
     }
 }

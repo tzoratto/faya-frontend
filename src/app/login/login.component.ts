@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 
 import {AuthService} from '../auth/auth.service';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MessagesService} from '../utils/messages.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'my-login',
@@ -11,9 +10,7 @@ import {MessagesService} from '../utils/messages.service';
 })
 export class LoginComponent {
     constructor(private authService: AuthService,
-                private router: Router,
-                private route: ActivatedRoute,
-                private messagesService: MessagesService) {
+                private router: Router) {
 
     }
 
@@ -22,8 +19,6 @@ export class LoginComponent {
             .then(() => {
                 this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard']);
             })
-            .catch(error => {
-                this.messagesService.addAlert(error, 'danger', true, 5000);
-            });
+            .catch(error => {});
     }
 }
