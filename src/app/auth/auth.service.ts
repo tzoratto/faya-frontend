@@ -1,4 +1,4 @@
-import {BACKEND_ROUTES} from '../backend-routes';
+import {BACKEND_ROUTES} from '../utils/backend-routes';
 import {ResponseService} from '../response/response.service';
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
