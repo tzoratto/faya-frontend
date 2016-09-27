@@ -4,25 +4,18 @@ import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import {tokenNotExpired} from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
-    private loggedIn: boolean;
     redirectUrl: string;
 
     constructor(private http: Http, private responseService: ResponseService) {
-        this.loggedIn = !!localStorage.getItem('user');
+
     }
 
-    logout(): Promise<void> {
-        return this.http.get(BACKEND_ROUTES.auth.logout)
-            .toPromise()
-            .then(response => {
-                this.loggedIn = false;
-                localStorage.removeItem('user');
-            })
-            .catch(error => this.handleError(error));
-
+    logout(): void {
+        localStorage.removeItem('token');
     }
 
     login(email: string, password: string): Promise<void> {
@@ -33,8 +26,7 @@ export class AuthService {
         return this.http.post(BACKEND_ROUTES.auth.login, body, options)
             .toPromise()
             .then(response => {
-                localStorage.setItem('user', this.responseService.getData(response));
-                this.loggedIn = true;
+                localStorage.setItem('token', this.responseService.getData(response));
             })
             .catch(error => this.handleError(error));
     }
@@ -45,7 +37,7 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        return this.loggedIn;
+        return tokenNotExpired('token');
     }
 
     signup(email: string, password: string): Promise<void> {
@@ -63,8 +55,7 @@ export class AuthService {
         return this.http.get(BACKEND_ROUTES.auth.signupValidation + '?email=' + email + '&token=' + token)
             .toPromise()
             .then((response) => {
-                localStorage.setItem('user', this.responseService.getData(response));
-                this.loggedIn = true;
+                localStorage.setItem('token', this.responseService.getData(response));
             })
             .catch(error => this.handleError(error));
     }

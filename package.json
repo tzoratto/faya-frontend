@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
     "@angular/upgrade": "2.0.0",
+    "angular2-jwt": "^0.1.23",
     "core-js": "^2.4.0",
     "express": "^4.14.0",
     "i18n": "^0.8.3",

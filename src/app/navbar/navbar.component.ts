@@ -19,13 +19,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     logout(): boolean {
-        this.authService.logout()
-            .then(() => {
-                this.router.navigate(['login']);
-            })
-            .catch(error => {
-                alert(error);
-            });
+        this.authService.logout();
+        this.router.navigate(['login']);
         return false;
     }
 

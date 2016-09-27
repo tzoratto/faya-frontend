@@ -15,6 +15,7 @@ import {routing} from './app.routing';
 import {SignupComponent} from './signup/signup.component';
 import {SettingService} from './setting/setting.service';
 import {SettingGuard} from './setting/setting-guard.service';
+import {provideAuth} from 'angular2-jwt';
 
 @NgModule({
     imports: [
@@ -41,7 +42,15 @@ import {SettingGuard} from './setting/setting-guard.service';
         AuthGuard,
         TranslateService,
         SettingService,
-        SettingGuard
+        SettingGuard,
+        provideAuth({
+            headerName: 'Authorization',
+            headerPrefix: 'JWT',
+            tokenName: 'token',
+            tokenGetter: (() => localStorage.getItem('token')),
+            globalHeaders: [{ 'Content-Type': 'application/json' }],
+            noJwtError: true
+        })
     ],
     bootstrap: [AppComponent]
 })
