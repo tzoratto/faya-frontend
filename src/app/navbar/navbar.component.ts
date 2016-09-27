@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router, NavigationStart} from '@angular/router';
 
-import {AuthService} from '../auth/auth.service';
+import {AuthService} from '../utils/auth/auth.service';
 import {SettingService} from '../setting/setting.service';
 import {Subscription} from 'rxjs';
 
