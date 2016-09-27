@@ -6,7 +6,8 @@
         "signupButton": "Sign up",
         "emailField": "Email :",
         "passwordField": "Password :",
-        "loginButton": "Login"
+        "loginButton": "Login",
+        "loggedIn": "You have successfully logged in"
     },
     "unknownError": "An unexpected error has occured"
 }

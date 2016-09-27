@@ -6,7 +6,8 @@
         "signupButton": "S'inscrire",
         "emailField": "Email :",
         "passwordField": "Mot de passe :",
-        "loginButton": "Connexion"
+        "loginButton": "Connexion",
+        "loggedIn": "Vous êtes connecté"
     },
     "unknownError": "Une erreur inattendue est survenue"
 }
