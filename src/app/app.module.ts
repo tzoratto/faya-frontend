@@ -2,6 +2,7 @@ import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule, Http} from '@angular/http';
 import {CollapseModule} from 'ng2-bootstrap';
+import {AlertComponent} from 'ng2-bootstrap';
 import {TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 
 import {AppComponent} from './app.component';
@@ -16,6 +17,7 @@ import {SignupComponent} from './signup/signup.component';
 import {SettingService} from './setting/setting.service';
 import {SettingGuard} from './setting/setting-guard.service';
 import {provideAuth} from 'angular2-jwt';
+import {MessagesService} from './utils/messages.service';
 
 @NgModule({
     imports: [
@@ -34,7 +36,8 @@ import {provideAuth} from 'angular2-jwt';
         LoginComponent,
         NavbarComponent,
         DashboardComponent,
-        SignupComponent
+        SignupComponent,
+        AlertComponent
     ],
     providers: [
         ResponseService,
@@ -50,7 +53,8 @@ import {provideAuth} from 'angular2-jwt';
             tokenGetter: (() => localStorage.getItem('token')),
             globalHeaders: [{ 'Content-Type': 'application/json' }],
             noJwtError: true
-        })
+        }),
+        MessagesService
     ],
     bootstrap: [AppComponent]
 })

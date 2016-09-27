@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 
 import {AuthService} from '../auth/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {MessagesService} from '../utils/messages.service';
 
 @Component({
     selector: 'my-login',
@@ -9,7 +10,10 @@ import {Router, ActivatedRoute} from '@angular/router';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+    constructor(private authService: AuthService,
+                private router: Router,
+                private route: ActivatedRoute,
+                private messagesService: MessagesService) {
 
     }
 
@@ -19,7 +23,7 @@ export class LoginComponent {
                 this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard']);
             })
             .catch(error => {
-                alert(error);
+                this.messagesService.addAlert(error, 'danger', true, 5000);
             });
     }
 }

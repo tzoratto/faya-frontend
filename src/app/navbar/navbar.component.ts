@@ -4,6 +4,7 @@ import {Router, NavigationStart} from '@angular/router';
 import {AuthService} from '../auth/auth.service';
 import {SettingService} from '../setting/setting.service';
 import {Subscription} from 'rxjs';
+import {MessagesService} from '../utils/messages.service';
 
 @Component({
     selector: 'my-navbar',
@@ -14,7 +15,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     isCollapsed: boolean = true;
     private routerSubscription: Subscription;
 
-    constructor(private authService: AuthService, private settingService: SettingService, private router: Router) {
+    constructor(private authService: AuthService,
+                private settingService: SettingService,
+                private router: Router,
+                private messagesService: MessagesService) {
 
     }
 
@@ -29,7 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
            if (event instanceof NavigationStart) {
                this.settingService.checkSubscriptionEnabled()
                    .catch(error => {
-                        alert(error);
+                        this.messagesService.addAlert(error, 'danger', true, 5000);
                    });
            }
         });

@@ -1,4 +1,11 @@
 <my-navbar></my-navbar>
+<alert *ngFor="let message of messagesService.messages;let i = index"
+       [type]="message.type"
+       [dismissible]="message.dismissible"
+       [dismissOnTimeout]="message.dismissOnTimeout"
+       (close)="messagesService.closeAlert(i)">
+    {{ message?.msg }}
+</alert>
 <div class="container">
     <router-outlet></router-outlet>
 </div>

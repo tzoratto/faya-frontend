@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {AuthService} from '../auth/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {MessagesService} from '../utils/messages.service';
 
 @Component({
     selector: 'my-signup',
@@ -9,7 +10,10 @@ import {Router, ActivatedRoute} from '@angular/router';
     styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-    constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+    constructor(private authService: AuthService,
+                private router: Router,
+                private route: ActivatedRoute,
+                private messagesService: MessagesService) {
 
     }
 
@@ -19,7 +23,7 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['login']);
             })
             .catch(error => {
-                alert(error);
+                this.messagesService.addAlert(error, 'danger', true, 5000);
             });
     }
 
@@ -31,7 +35,7 @@ export class SignupComponent implements OnInit {
                         this.router.navigate(['dashboard']);
                     })
                     .catch(error => {
-                        alert(error);
+                        this.messagesService.addAlert(error, 'danger', true, 5000);
                     });
             }
         });
