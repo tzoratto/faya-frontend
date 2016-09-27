@@ -7,7 +7,7 @@ import {TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoade
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
-import {ResponseService} from './response/response.service';
+import {ResponseService} from './utils/response.service';
 import {NavbarComponent} from './navbar/navbar.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthService} from './auth/auth.service';
