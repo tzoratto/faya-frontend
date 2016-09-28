@@ -16,7 +16,7 @@ export class NamespaceService {
     }
 
     getNamespaceCount(): Promise<number> {
-        return this.authHttp.get(BACKEND_ROUTES.api.namespaceCount)
+        return this.authHttp.get(BACKEND_ROUTES.api.namespace.count)
             .toPromise()
             .then(response => {
                 return this.responseService.getData(response).count;

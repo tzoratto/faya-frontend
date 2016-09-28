@@ -16,7 +16,7 @@ export class TokenService {
     }
 
     getTokenCount(): Promise<number> {
-        return this.authHttp.get(BACKEND_ROUTES.api.tokenCount)
+        return this.authHttp.get(BACKEND_ROUTES.api.token.count)
             .toPromise()
             .then(response => {
                 return this.responseService.getData(response).count;

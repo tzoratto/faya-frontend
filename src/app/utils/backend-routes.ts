@@ -1,20 +1,33 @@
 let url = process.env.API_URL || 'http://localhost:3000';
 
-export const BACKEND_ROUTES = {
-    'auth': {
-        'login': url + '/auth/login',
-        'signup': url + '/auth/signup',
-        'signupValidation': url + '/auth/signup-validation'
-    },
-    'setting': {
-        'subscription': url + '/setting/subscription'
-    },
-    'api': {
-        'user': url + '/api/user',
-        'namespace': url + '/api/namespace',
-        'namespaceCount': url + '/api/namespace/count',
-        'check': url + '/api/check',
-        'token': url + '/api/token',
-        'tokenCount': url + '/api/token/count'
-    }
+export const BACKEND_ROUTES = new function () {
+    this.auth = {};
+    this.auth.login = url + '/auth/login';
+    this.auth.signup = url + '/auth/signup';
+    this.auth.signupValidation = url + '/auth/signup-validation';
+
+    this.setting = {};
+    this.setting.subscription = url + '/setting/subscription';
+
+    this.api = {};
+    this.api.user = {};
+    this.api.user.user = url + '/api/user';
+    this.api.user.instance = id => this.api.user.user + '/' + id;
+
+    this.api.namespace = {};
+    this.api.namespace.namespace = url + '/api/namespace';
+    this.api.namespace.count = this.api.namespace.namespace + '/count';
+    this.api.namespace.instance = id => this.api.namespace.namespace + '/' + id;
+
+    this.api.check = url + '/api/check';
+
+    this.api.token = {};
+    this.api.token.token = url + '/api/token';
+    this.api.token.count = this.api.token.token + '/count';
+    this.api.token.instance = id => this.api.token.token + '/' + id;
+    this.api.token.description = id => this.api.token.instance(id) + '/description';
+    this.api.token.activation = id => this.api.token.instance(id) + '/activation';
+    this.api.token.startingDate = id => this.api.token.instance(id) + '/starting-date';
+    this.api.token.endingDate = id => this.api.token.instance(id) + '/ending-date';
+    this.api.token.pool = id => this.api.token.instance(id) + '/pool';
 };
