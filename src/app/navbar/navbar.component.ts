@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Router, NavigationStart} from '@angular/router';
+import {Router} from '@angular/router';
 
 import {AuthService} from '../utils/auth/auth.service';
 import {SettingService} from '../setting/setting.service';
@@ -30,12 +30,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.routerSubscription = this.router.events.subscribe(event => {
-           if (event instanceof NavigationStart) {
-               this.settingService.checkSubscriptionEnabled()
-                   .catch(error => {});
-           }
-        });
+        this.settingService.checkSubscriptionEnabled()
+            .catch(error => {});
     }
 
     ngOnDestroy(): void {
