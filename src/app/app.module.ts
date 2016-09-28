@@ -16,8 +16,12 @@ import {routing} from './app.routing';
 import {SignupComponent} from './signup/signup.component';
 import {SettingService} from './setting/setting.service';
 import {SettingGuard} from './setting/setting-guard.service';
-import {provideAuth} from 'angular2-jwt';
+import {provideAuth, JwtHelper} from 'angular2-jwt';
 import {MessagesService} from './utils/messages.service';
+import {AdminComponent} from './admin/admin.component';
+import {TokenService} from './token/token.service';
+import {NamespaceService} from './namespace/namespace.service';
+import {AdminGuard} from './admin/admin-guard.service';
 
 @NgModule({
     imports: [
@@ -37,7 +41,8 @@ import {MessagesService} from './utils/messages.service';
         NavbarComponent,
         DashboardComponent,
         SignupComponent,
-        AlertComponent
+        AlertComponent,
+        AdminComponent
     ],
     providers: [
         ResponseService,
@@ -54,7 +59,11 @@ import {MessagesService} from './utils/messages.service';
             globalHeaders: [{ 'Content-Type': 'application/json' }],
             noJwtError: true
         }),
-        MessagesService
+        MessagesService,
+        TokenService,
+        NamespaceService,
+        JwtHelper,
+        AdminGuard
     ],
     bootstrap: [AppComponent]
 })

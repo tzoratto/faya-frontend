@@ -12,5 +12,14 @@
         "signedUp": "Vous êtes bien inscrit. Vous devez avoir reçu un mail pour valider votre compte",
         "validated": "Votre compte est validé"
     },
+    "admin": {
+        "signupEnabledLabel": "Inscriptions activées :"
+    },
+    "token": {
+        "tokenCountLabel": "Nombre de token(s) :"
+    },
+    "namespace": {
+        "namespaceCountLabel": "Nombre de namespace(s) :"
+    },
     "unknownError": "Une erreur inattendue est survenue"
 }

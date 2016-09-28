@@ -8,5 +8,13 @@ export const BACKEND_ROUTES = {
     },
     'setting': {
         'subscription': url + '/setting/subscription'
+    },
+    'api': {
+        'user': url + '/api/user',
+        'namespace': url + '/api/namespace',
+        'namespaceCount': url + '/api/namespace/count',
+        'check': url + '/api/check',
+        'token': url + '/api/token',
+        'tokenCount': url + '/api/token/count'
     }
 };

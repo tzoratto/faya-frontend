@@ -12,5 +12,14 @@
         "signedUp": "You have successfully signed up. You must have received a mail to validate your account",
         "validated": "Your account is validated"
     },
+    "admin": {
+        "signupEnabledLabel": "Sign up enabled :"
+    },
+    "token": {
+        "tokenCountLabel": "Number of token(s) :"
+    },
+    "namespace": {
+        "namespaceCountLabel": "Number of namespace(s) :"
+    },
     "unknownError": "An unexpected error has occured"
 }

@@ -6,6 +6,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGuard} from './utils/auth/auth-guard.service';
 import {SignupComponent} from './signup/signup.component';
 import {SettingGuard} from './setting/setting-guard.service';
+import {AdminComponent} from './admin/admin.component';
+import {AdminGuard} from './admin/admin-guard.service';
 
 const appRoutes: Routes = [
     {
@@ -26,6 +28,11 @@ const appRoutes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [AuthGuard, AdminGuard]
     }
 ];
 
