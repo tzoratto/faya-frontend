@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../core/auth/auth.service';
 import {SettingService} from '../core/setting.service';
 import {Subscription} from 'rxjs';
-import {MessagesService} from '../core/messages.service';
+import {MessageService} from '../message/message.service';
 
 @Component({
     selector: 'my-navbar',
@@ -18,14 +18,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     constructor(private authService: AuthService,
                 private settingService: SettingService,
                 private router: Router,
-                private messagesService: MessagesService) {
+                private messageService: MessageService) {
 
     }
 
     logout(): boolean {
         this.authService.logout();
         this.router.navigate(['login']);
-        this.messagesService.clearAlert().addAlertAndTranslate('account.loggedOut');
+        this.messageService.clearAlert().addAlertAndTranslate('account.loggedOut');
         return false;
     }
 

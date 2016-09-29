@@ -3,7 +3,7 @@ import {Router, NavigationStart} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
 
 @Injectable()
-export class MessagesService {
+export class MessageService {
     public messages: Array<any> = [];
 
     constructor(private router: Router, private translateService: TranslateService) {
@@ -17,7 +17,7 @@ export class MessagesService {
     public addAlert(msg: string,
                     type: 'success'|'info'|'warning'|'danger' = 'success',
                     dismissOnTimeout = 5000,
-                    dismissible = true): MessagesService {
+                    dismissible = true): MessageService {
         if (!this.messages.find(message => message.msg === msg)) {
             this.messages.push({
                 msg: msg,
@@ -32,12 +32,12 @@ export class MessagesService {
     public addAlertAndTranslate(msg: string,
                     type: 'success'|'info'|'warning'|'danger' = 'success',
                     dismissOnTimeout = 5000,
-                    dismissible = true): MessagesService {
+                    dismissible = true): MessageService {
         this.addAlert(this.translateService.instant(msg), type, dismissOnTimeout, dismissible);
         return this;
     }
 
-    public clearAlert(): MessagesService {
+    public clearAlert(): MessageService {
         this.messages = [];
         return this;
     }

@@ -4,14 +4,14 @@ import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
-import {MessagesService} from '../core/messages.service';
+import {MessageService} from '../message/message.service';
 import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class NamespaceService {
     constructor(private authHttp: AuthHttp,
                 private responseService: ResponseService,
-                private messagesService: MessagesService) {
+                private messageService: MessageService) {
 
     }
 
@@ -21,6 +21,6 @@ export class NamespaceService {
             .then(response => {
                 return this.responseService.getData(response).count;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messagesService));
+            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
     }
 }

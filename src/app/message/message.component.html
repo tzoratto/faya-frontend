@@ -1,0 +1,7 @@
+<alert *ngFor="let message of messageService.messages;let i = index"
+       [type]="message.type"
+       [dismissible]="message.dismissible"
+       [dismissOnTimeout]="message.dismissOnTimeout"
+       (close)="messageService.closeAlert(i)">
+    {{ message?.msg }}
+</alert>

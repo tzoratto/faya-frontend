@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {AuthService} from '../core/auth/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import {MessagesService} from '../core/messages.service';
+import {MessageService} from '../message/message.service';
 
 @Component({
     selector: 'my-signup',
@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
     constructor(private authService: AuthService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private messagesService: MessagesService) {
+                private messageService: MessageService) {
 
     }
 
@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
         this.authService.signup(email, password)
             .then(() => {
                 this.router.navigate(['login']);
-                this.messagesService.clearAlert().addAlertAndTranslate('account.signedUp', 'success', 0);
+                this.messageService.clearAlert().addAlertAndTranslate('account.signedUp', 'success', 0);
             })
             .catch(error => {});
     }
@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
                 this.authService.signupValidation(params['email'], params['token'])
                     .then(() => {
                         this.router.navigate(['dashboard']);
-                        this.messagesService.clearAlert().addAlertAndTranslate('account.validated');
+                        this.messageService.clearAlert().addAlertAndTranslate('account.validated');
                     })
                     .catch(error => {});
             }

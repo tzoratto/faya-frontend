@@ -1,7 +1,6 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule, Http} from '@angular/http';
-import {AlertComponent} from 'ng2-bootstrap';
 import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 
 import {AppComponent} from './app.component';
@@ -15,6 +14,7 @@ import {NavbarModule} from './navbar/navbar.module';
 import {SignupModule} from './signup/signup.module';
 import {TokenModule} from './token/token.module';
 import {CoreModule} from './core/core.module';
+import {MessageModule} from './message/message.module';
 
 @NgModule({
     imports: [
@@ -34,10 +34,10 @@ import {CoreModule} from './core/core.module';
         SignupModule,
         TokenModule,
         CoreModule,
+        MessageModule
     ],
     declarations: [
-        AppComponent,
-        AlertComponent
+        AppComponent
     ],
     providers: [
         provideAuth({

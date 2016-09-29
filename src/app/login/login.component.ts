@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 import {AuthService} from '../core/auth/auth.service';
 import {Router} from '@angular/router';
-import {MessagesService} from '../core/messages.service';
+import {MessageService} from '../message/message.service';
 
 @Component({
     selector: 'my-login',
@@ -12,7 +12,7 @@ import {MessagesService} from '../core/messages.service';
 export class LoginComponent {
     constructor(private authService: AuthService,
                 private router: Router,
-                private messagesService: MessagesService) {
+                private messageService: MessageService) {
 
     }
 
@@ -20,7 +20,7 @@ export class LoginComponent {
         this.authService.login(email, password)
             .then(() => {
                 this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard']);
-                this.messagesService.clearAlert().addAlertAndTranslate('account.loggedIn');
+                this.messageService.clearAlert().addAlertAndTranslate('account.loggedIn');
             })
             .catch(error => {});
     }
