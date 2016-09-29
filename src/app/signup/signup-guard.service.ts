@@ -5,10 +5,10 @@ import {
     RouterStateSnapshot,
     Router
 }                           from '@angular/router';
-import {SettingService}      from './setting.service';
+import {SettingService}      from '../setting/setting.service';
 
 @Injectable()
-export class SettingGuard implements CanActivate {
+export class SignupGuard implements CanActivate {
     constructor(private settingService: SettingService, private router: Router) {
 
     }

@@ -15,7 +15,7 @@ import {AuthGuard} from './utils/auth/auth-guard.service';
 import {routing} from './app.routing';
 import {SignupComponent} from './signup/signup.component';
 import {SettingService} from './setting/setting.service';
-import {SettingGuard} from './setting/setting-guard.service';
+import {SignupGuard} from './signup/signup-guard.service';
 import {provideAuth, JwtHelper} from 'angular2-jwt';
 import {MessagesService} from './utils/messages.service';
 import {AdminComponent} from './admin/admin.component';
@@ -51,7 +51,7 @@ import {AdminResolve} from './admin/admin-resolve.service';
         AuthGuard,
         TranslateService,
         SettingService,
-        SettingGuard,
+        SignupGuard,
         provideAuth({
             headerName: 'Authorization',
             headerPrefix: 'JWT',
