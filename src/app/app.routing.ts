@@ -8,6 +8,7 @@ import {SignupComponent} from './signup/signup.component';
 import {SettingGuard} from './setting/setting-guard.service';
 import {AdminComponent} from './admin/admin.component';
 import {AdminGuard} from './admin/admin-guard.service';
+import {AdminResolve} from './admin/admin-resolve.service';
 
 const appRoutes: Routes = [
     {
@@ -32,7 +33,10 @@ const appRoutes: Routes = [
     {
         path: 'admin',
         component: AdminComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        canActivate: [AuthGuard, AdminGuard],
+        resolve: {
+            values: AdminResolve
+        }
     }
 ];
 

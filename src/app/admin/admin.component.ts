@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {SettingService} from '../setting/setting.service';
-import {TokenService} from '../token/token.service';
-import {NamespaceService} from '../namespace/namespace.service';
 
 @Component({
     selector: 'my-admin',
@@ -14,21 +12,15 @@ export class AdminComponent implements OnInit {
     private namespaceCount: number;
     private tokenCount: number;
 
-    constructor(private router: Router,
-                private settingService: SettingService,
-                private tokenService: TokenService,
-                private namespaceService: NamespaceService) {
+    constructor(private settingService: SettingService,
+                private route: ActivatedRoute) {
 
     }
 
     ngOnInit(): void {
-        this.settingService.checkSubscriptionEnabled()
-            .catch(error => {});
-        this.tokenService.getTokenCount()
-            .then(count => this.tokenCount = count)
-            .catch(error => {});
-        this.namespaceService.getNamespaceCount()
-            .then(count => this.namespaceCount = count)
-            .catch(error => {});
+        this.route.data.forEach((data: { values: any }) => {
+            this.namespaceCount = data.values.namespaceCount;
+            this.tokenCount = data.values.tokenCount;
+        });
     }
 }

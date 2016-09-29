@@ -22,6 +22,7 @@ import {AdminComponent} from './admin/admin.component';
 import {TokenService} from './token/token.service';
 import {NamespaceService} from './namespace/namespace.service';
 import {AdminGuard} from './admin/admin-guard.service';
+import {AdminResolve} from './admin/admin-resolve.service';
 
 @NgModule({
     imports: [
@@ -63,7 +64,8 @@ import {AdminGuard} from './admin/admin-guard.service';
         TokenService,
         NamespaceService,
         JwtHelper,
-        AdminGuard
+        AdminGuard,
+        AdminResolve
     ],
     bootstrap: [AppComponent]
 })
