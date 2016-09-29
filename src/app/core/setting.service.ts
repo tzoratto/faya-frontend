@@ -1,11 +1,11 @@
 import {BACKEND_ROUTES} from '../utils/backend-routes';
-import {ResponseService} from '../utils/response.service';
+import {ResponseService} from './response.service';
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
-import {MessagesService} from '../utils/messages.service';
+import {MessagesService} from './messages.service';
 
 @Injectable()
 export class SettingService {

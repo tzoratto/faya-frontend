@@ -1,10 +1,10 @@
 import {BACKEND_ROUTES} from '../utils/backend-routes';
-import {ResponseService} from '../utils/response.service';
+import {ResponseService} from '../core/response.service';
 import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
-import {MessagesService} from '../utils/messages.service';
+import {MessagesService} from '../core/messages.service';
 import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()

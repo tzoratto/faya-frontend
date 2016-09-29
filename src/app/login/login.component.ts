@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
-import {AuthService} from '../utils/auth/auth.service';
+import {AuthService} from '../core/auth/auth.service';
 import {Router} from '@angular/router';
-import {MessagesService} from '../utils/messages.service';
+import {MessagesService} from '../core/messages.service';
 
 @Component({
     selector: 'my-login',

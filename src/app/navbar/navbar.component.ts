@@ -1,10 +1,10 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {AuthService} from '../utils/auth/auth.service';
-import {SettingService} from '../setting/setting.service';
+import {AuthService} from '../core/auth/auth.service';
+import {SettingService} from '../core/setting.service';
 import {Subscription} from 'rxjs';
-import {MessagesService} from '../utils/messages.service';
+import {MessagesService} from '../core/messages.service';
 
 @Component({
     selector: 'my-navbar',

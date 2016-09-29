@@ -1,7 +1,7 @@
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {SettingService} from '../setting/setting.service';
+import {SettingService} from '../core/setting.service';
 import {TokenService} from '../token/token.service';
 import {NamespaceService} from '../namespace/namespace.service';
 

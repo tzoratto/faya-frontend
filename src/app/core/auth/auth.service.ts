@@ -1,11 +1,11 @@
-import {BACKEND_ROUTES} from '../backend-routes';
+import {BACKEND_ROUTES} from '../../utils/backend-routes';
 import {ResponseService} from '../response.service';
 import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
-import {handleErrorHttp} from '../errors';
+import {handleErrorHttp} from '../../utils/errors';
 import {MessagesService} from '../messages.service';
 import {User} from '../../user/user';
 

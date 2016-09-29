@@ -1,57 +1,45 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule, Http} from '@angular/http';
-import {CollapseModule} from 'ng2-bootstrap';
 import {AlertComponent} from 'ng2-bootstrap';
-import {TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
+import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 
 import {AppComponent} from './app.component';
-import {LoginComponent} from './login/login.component';
-import {ResponseService} from './utils/response.service';
-import {NavbarComponent} from './navbar/navbar.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {AuthService} from './utils/auth/auth.service';
-import {AuthGuard} from './utils/auth/auth-guard.service';
 import {routing} from './app.routing';
-import {SignupComponent} from './signup/signup.component';
-import {SettingService} from './setting/setting.service';
-import {SignupGuard} from './signup/signup-guard.service';
-import {provideAuth, JwtHelper} from 'angular2-jwt';
-import {MessagesService} from './utils/messages.service';
-import {AdminComponent} from './admin/admin.component';
-import {TokenService} from './token/token.service';
-import {NamespaceService} from './namespace/namespace.service';
-import {AdminGuard} from './admin/admin-guard.service';
-import {AdminResolve} from './admin/admin-resolve.service';
+import {provideAuth} from 'angular2-jwt';
+import {AdminModule} from './admin/admin.module';
+import {DashboardModule} from './dashboard/dashboard.module';
+import {LoginModule} from './login/login.module';
+import {NamespaceModule} from './namespace/namespace.module';
+import {NavbarModule} from './navbar/navbar.module';
+import {SignupModule} from './signup/signup.module';
+import {TokenModule} from './token/token.module';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         routing,
-        CollapseModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: (http: Http) => new TranslateStaticLoader(http, '/i18n', '.json'),
             deps: [Http]
-        })
+        }),
+        AdminModule,
+        DashboardModule,
+        LoginModule,
+        NamespaceModule,
+        NavbarModule,
+        SignupModule,
+        TokenModule,
+        CoreModule,
     ],
     declarations: [
         AppComponent,
-        LoginComponent,
-        NavbarComponent,
-        DashboardComponent,
-        SignupComponent,
-        AlertComponent,
-        AdminComponent
+        AlertComponent
     ],
     providers: [
-        ResponseService,
-        AuthService,
-        AuthGuard,
-        TranslateService,
-        SettingService,
-        SignupGuard,
         provideAuth({
             headerName: 'Authorization',
             headerPrefix: 'JWT',
@@ -59,13 +47,7 @@ import {AdminResolve} from './admin/admin-resolve.service';
             tokenGetter: (() => localStorage.getItem('token')),
             globalHeaders: [{ 'Content-Type': 'application/json' }],
             noJwtError: true
-        }),
-        MessagesService,
-        TokenService,
-        NamespaceService,
-        JwtHelper,
-        AdminGuard,
-        AdminResolve
+        })
     ],
     bootstrap: [AppComponent]
 })

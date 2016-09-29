@@ -5,7 +5,7 @@ import {
     RouterStateSnapshot,
     Router
 }                           from '@angular/router';
-import {SettingService}      from '../setting/setting.service';
+import {SettingService}      from '../core/setting.service';
 
 @Injectable()
 export class SignupGuard implements CanActivate {

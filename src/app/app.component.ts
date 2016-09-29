@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 import '../style/styles.css';
-import {MessagesService} from './utils/messages.service';
+import {MessagesService} from './core/messages.service';
 
 @Component({
     selector: 'my-app',
