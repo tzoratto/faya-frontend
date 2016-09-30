@@ -16,7 +16,7 @@ export class LoginComponent {
 
     }
 
-    login(email: string, password: string): void {
+    onSubmit(email: string, password: string): void {
         this.authService.login(email, password)
             .then(() => {
                 this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard']);
