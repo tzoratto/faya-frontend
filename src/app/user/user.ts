@@ -25,9 +25,11 @@ export class User {
         this.lastAccess = user.lastAccess;
         this.createdAt = user.createdAt;
         this.apiKeyPairs = [];
-        user.apiKeyPairs.forEach(entry => {
-            this.apiKeyPairs.push(new ApiKeyPair(entry));
-        });
+        if (user.apiKeyPairs) {
+            user.apiKeyPairs.forEach(entry => {
+                this.apiKeyPairs.push(new ApiKeyPair(entry));
+            });
+        }
         this.admin = user.admin;
     }
 
