@@ -15,8 +15,7 @@ export class SignupGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
         return this.settingService.checkSubscriptionEnabled()
-            .then(() => {
-                let subscriptionEnabled = this.settingService.getSubscriptionEnabled();
+            .then((subscriptionEnabled) => {
                 if (!subscriptionEnabled) {
                     this.router.navigate(['']);
                 }

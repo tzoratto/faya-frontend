@@ -17,11 +17,11 @@ export class SettingService {
 
     }
 
-    checkSubscriptionEnabled(): Promise<void> {
+    checkSubscriptionEnabled(): Promise<boolean> {
         return this.http.get(BACKEND_ROUTES.setting.subscription)
             .toPromise()
             .then(response => {
-                this.subscriptionEnabled = this.responseService.getData(response).subscriptionEnabled;
+                return this.subscriptionEnabled = this.responseService.getData(response).subscriptionEnabled;
             })
             .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
     }

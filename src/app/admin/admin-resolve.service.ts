@@ -20,6 +20,7 @@ export class AdminResolve implements Resolve<any> {
             this.namespaceService.getNamespaceCount()
         ]).then(data => {
             return {
+                subscriptionEnabled: data[0],
                 tokenCount: data[1],
                 namespaceCount: data[2]
             };
