@@ -20,16 +20,15 @@ export class ResponseService {
         return response.json().message;
     }
 
-    getErrorMessage(error: any): string {
+    getErrorMessage(error: Response): string {
+        if (error.status === 0) {
+            return this.translateService.instant('serverUnavailable');
+        }
         let errorMessage;
-        if (error instanceof Response) {
-            let errorJson = error.json();
-            errorMessage = errorJson.message;
-            if (!errorMessage && errorJson.data && errorJson.data.message) {
-                errorMessage = errorJson.data.message;
-            }
-        } else {
-            errorMessage = error.message;
+        let errorJson = error.json();
+        errorMessage = errorJson.message;
+        if (!errorMessage && errorJson.data && errorJson.data.message) {
+            errorMessage = errorJson.data.message;
         }
         errorMessage = errorMessage || this.translateService.instant('unknownError');
 

@@ -21,5 +21,6 @@
     "namespace": {
         "namespaceCountLabel": "Nombre de namespace(s) :"
     },
-    "unknownError": "Une erreur inattendue est survenue"
+    "unknownError": "Une erreur inattendue est survenue",
+    "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard"
 }
