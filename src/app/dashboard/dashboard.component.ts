@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-    selector: 'my-dashboard',
+    selector: 'faya-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css']
 })

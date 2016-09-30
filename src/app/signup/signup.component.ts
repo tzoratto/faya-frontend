@@ -5,7 +5,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {MessageService} from '../message/message.service';
 
 @Component({
-    selector: 'my-signup',
+    selector: 'faya-signup',
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.css']
 })

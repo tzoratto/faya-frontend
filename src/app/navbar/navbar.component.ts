@@ -6,7 +6,7 @@ import {SettingService} from '../core/setting.service';
 import {MessageService} from '../message/message.service';
 
 @Component({
-    selector: 'my-navbar',
+    selector: 'faya-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css'],
 })

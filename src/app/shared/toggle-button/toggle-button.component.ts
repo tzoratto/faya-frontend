@@ -9,7 +9,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-    selector: 'my-toggle-button',
+    selector: 'faya-toggle-button',
     templateUrl: 'toggle-button.component.html',
     styleUrls: ['./toggle-button.component.css'],
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]

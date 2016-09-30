@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {MessageService} from '../message/message.service';
 
 @Component({
-    selector: 'my-login',
+    selector: 'faya-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })

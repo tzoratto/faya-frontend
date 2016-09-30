@@ -1,6 +1,6 @@
 <div class="container">
     <form>
-    <my-toggle-button [(ngModel)]="subscriptionEnabled" name="subscriptionEnabled" (change)="onChangeSubscriptionEnabled($event)">{{'admin.signupEnabledLabel' | translate}}</my-toggle-button>
+    <faya-toggle-button [(ngModel)]="subscriptionEnabled" name="subscriptionEnabled" (change)="onChangeSubscriptionEnabled($event)">{{'admin.signupEnabledLabel' | translate}}</faya-toggle-button>
     </form>
     <label>{{'token.tokenCountLabel' | translate}}</label>{{tokenCount}}<br/>
     <label>{{'namespace.namespaceCountLabel' | translate}}</label>{{namespaceCount}}

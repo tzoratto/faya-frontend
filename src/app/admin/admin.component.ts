@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {SettingService} from '../core/setting.service';
 
 @Component({
-    selector: 'my-admin',
+    selector: 'faya-admin',
     templateUrl: './admin.component.html',
     styleUrls: ['./admin.component.css']
 })
