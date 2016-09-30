@@ -10,7 +10,10 @@
         "loggedIn": "You have successfully logged in",
         "loggedOut": "You have successfully logged out",
         "signedUp": "You have successfully signed up. You must have received a mail to validate your account",
-        "validated": "Your account is validated"
+        "validated": "Your account is validated",
+        "emailRaw": "Email",
+        "createdAtRaw": "Created",
+        "lastAccessRaw": "Last access"
     },
     "admin": {
         "signupEnabledLabel": "Sign up enabled :"
@@ -22,5 +25,10 @@
         "namespaceCountLabel": "Number of namespace(s) :"
     },
     "unknownError": "An unexpected error has occured",
-    "serverUnavailable": "The server is not responding. Please retry later"
+    "serverUnavailable": "The server is not responding. Please retry later",
+    "misc": {
+        "filterRaw": "Filter",
+        "detailsRaw": "Details",
+        "deleteRaw": "Delete"
+    }
 }

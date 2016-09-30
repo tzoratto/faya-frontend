@@ -10,7 +10,10 @@
         "loggedIn": "Vous êtes connecté",
         "loggedOut": "Vous êtes déconnecté",
         "signedUp": "Vous êtes bien inscrit. Vous devez avoir reçu un mail pour valider votre compte",
-        "validated": "Votre compte est validé"
+        "validated": "Votre compte est validé",
+        "emailRaw": "Email",
+        "createdAtRaw": "Crée",
+        "lastAccessRaw": "Dernier accès"
     },
     "admin": {
         "signupEnabledLabel": "Inscriptions activées :"
@@ -22,5 +25,10 @@
         "namespaceCountLabel": "Nombre de namespace(s) :"
     },
     "unknownError": "Une erreur inattendue est survenue",
-    "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard"
+    "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard",
+    "misc": {
+        "filterRaw": "Filtre",
+        "detailsRaw": "Détails",
+        "deleteRaw": "Supprimer"
+    }
 }

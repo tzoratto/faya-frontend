@@ -1,0 +1,23 @@
+<div>
+    <input type="text" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/>
+    <table>
+        <thead>
+            <tr>
+                <th>{{'account.emailRaw' | translate}}</th>
+                <th>{{'account.createdAtRaw' | translate}}</th>
+                <th>{{'account.lastAccessRaw' | translate}}</th>
+                <th>{{'misc.detailsRaw' | translate}}</th>
+                <th>{{'misc.deleteRaw' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.local.email}}</td>
+                <td>{{user.createdAt | date}}</td>
+                <td>{{user.lastAccess | date}}</td>
+                <td><span class="glyphicon glyphicon-info-sign"></span></td>
+                <td><span class="glyphicon glyphicon-trash"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
