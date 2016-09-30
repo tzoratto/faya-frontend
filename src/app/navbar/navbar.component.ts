@@ -1,9 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {AuthService} from '../core/auth/auth.service';
 import {SettingService} from '../core/setting.service';
-import {Subscription} from 'rxjs';
 import {MessageService} from '../message/message.service';
 
 @Component({
@@ -11,9 +10,8 @@ import {MessageService} from '../message/message.service';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
     isCollapsed: boolean = true;
-    private routerSubscription: Subscription;
 
     constructor(private authService: AuthService,
                 private settingService: SettingService,
@@ -32,9 +30,5 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.settingService.checkSubscriptionEnabled()
             .catch(error => {});
-    }
-
-    ngOnDestroy(): void {
-        this.routerSubscription.unsubscribe();
     }
 }
