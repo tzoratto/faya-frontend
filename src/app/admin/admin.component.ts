@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {ActivatedRoute} from '@angular/router';
+import {SettingService} from '../core/setting.service';
 
 @Component({
     selector: 'my-admin',
@@ -12,7 +13,8 @@ export class AdminComponent implements OnInit {
     private tokenCount: number;
     private subscriptionEnabled: boolean;
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private settingService: SettingService,
+                private route: ActivatedRoute) {
 
     }
 
@@ -22,5 +24,12 @@ export class AdminComponent implements OnInit {
             this.tokenCount = data.values.tokenCount;
             this.subscriptionEnabled = data.values.subscriptionEnabled;
         });
+    }
+
+    onChangeSubscriptionEnabled() {
+        this.settingService.updateSubscriptionEnabled(this.subscriptionEnabled)
+            .catch((error) => {
+                this.subscriptionEnabled = !this.subscriptionEnabled;
+            });
     }
 }

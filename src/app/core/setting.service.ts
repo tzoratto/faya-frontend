@@ -6,6 +6,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
 import {MessageService} from '../message/message.service';
+import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class SettingService {
@@ -13,7 +14,8 @@ export class SettingService {
 
     constructor(private http: Http,
                 private responseService: ResponseService,
-                private messageService: MessageService) {
+                private messageService: MessageService,
+                private authHttp: AuthHttp) {
 
     }
 
@@ -28,5 +30,16 @@ export class SettingService {
 
     getSubscriptionEnabled(): boolean {
         return this.subscriptionEnabled;
+    }
+
+    updateSubscriptionEnabled(value: boolean): Promise<void> {
+        let body = JSON.stringify({'subscriptionEnabled': value});
+
+        return this.authHttp.put(BACKEND_ROUTES.setting.subscription, body)
+            .toPromise()
+            .then(response => {
+                this.subscriptionEnabled = value;
+            })
+            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
     }
 }

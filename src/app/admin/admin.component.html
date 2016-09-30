@@ -1,5 +1,7 @@
 <div class="container">
-    <label>{{'admin.signupEnabledLabel' | translate}}</label>{{subscriptionEnabled}}<br/>
+    <form>
+    <my-toggle-button [(ngModel)]="subscriptionEnabled" name="subscriptionEnabled" (change)="onChangeSubscriptionEnabled($event)">{{'admin.signupEnabledLabel' | translate}}</my-toggle-button>
+    </form>
     <label>{{'token.tokenCountLabel' | translate}}</label>{{tokenCount}}<br/>
     <label>{{'namespace.namespaceCountLabel' | translate}}</label>{{namespaceCount}}
 </div>
