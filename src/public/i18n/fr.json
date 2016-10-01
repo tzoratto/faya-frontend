@@ -13,7 +13,8 @@
         "validated": "Votre compte est validé",
         "emailRaw": "Email",
         "createdAtRaw": "Crée",
-        "lastAccessRaw": "Dernier accès"
+        "lastAccessRaw": "Dernier accès",
+        "adminRaw": "Admin"
     },
     "admin": {
         "signupEnabledLabel": "Inscriptions activées :"
@@ -28,7 +29,6 @@
     "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard",
     "misc": {
         "filterRaw": "Filtre",
-        "detailsRaw": "Détails",
         "deleteRaw": "Supprimer"
     }
 }
