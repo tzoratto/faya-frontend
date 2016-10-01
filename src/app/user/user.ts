@@ -13,6 +13,7 @@ class Local {
 }
 
 export class User {
+    id: string;
     local: Local;
     lastAccess: Date;
     createdAt: Date;
@@ -20,6 +21,7 @@ export class User {
     admin: boolean;
 
     constructor(user: any) {
+        this.id = user._id;
         this.local = new Local(user.local);
 
         this.lastAccess = user.lastAccess;
