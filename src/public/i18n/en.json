@@ -1,34 +1,32 @@
 {
-    "account": {
-        "loginLink": "Sign in",
-        "logoutLink": "Sign out",
-        "signupLink": "Sign up",
-        "signupButton": "Sign up",
-        "emailField": "Email :",
-        "passwordField": "Password :",
-        "loginButton": "Login",
-        "loggedIn": "You have successfully logged in",
-        "loggedOut": "You have successfully logged out",
-        "signedUp": "You have successfully signed up. You must have received a mail to validate your account",
-        "validated": "Your account is validated",
-        "emailRaw": "Email",
-        "createdAtRaw": "Created",
-        "lastAccessRaw": "Last access",
-        "adminRaw": "Admin"
-    },
-    "admin": {
-        "signupEnabledLabel": "Sign up enabled :"
-    },
-    "token": {
-        "tokenCountLabel": "Number of token(s) :"
-    },
-    "namespace": {
-        "namespaceCountLabel": "Number of namespace(s) :"
-    },
-    "unknownError": "An unexpected error has occured",
+  "account": {
+    "adminRaw": "Admin",
+    "createdAtRaw": "Created",
+    "emailField": "Email :",
+    "emailRaw": "Email",
+    "lastAccessRaw": "Last access",
+    "loginButton": "Login",
+    "loginLink": "Sign in",
+    "loggedIn": "You have successfully logged in",
+    "loggedOut": "You have successfully logged out",
+    "logoutLink": "Sign out",
+    "passwordField": "Password :",
+    "signedUp": "You have successfully signed up. You must have received a mail to validate your account",
+    "signupButton": "Sign up",
+    "signupEnabledLabel": "Sign up enabled :",
+    "signupLink": "Sign up",
+    "validated": "Your account is validated"
+  },
+  "misc": {
+    "deleteRaw": "Delete",
+    "filterRaw": "Filter",
     "serverUnavailable": "The server is not responding. Please retry later",
-    "misc": {
-        "filterRaw": "Filter",
-        "deleteRaw": "Delete"
-    }
+    "unknownError": "An unexpected error has occured"
+  },
+  "namespace": {
+    "namespaceCountLabel": "Number of namespace(s) :"
+  },
+  "token": {
+    "tokenCountLabel": "Number of token(s) :"
+  }
 }

@@ -22,7 +22,7 @@ export class ResponseService {
 
     getErrorMessage(error: Response): string {
         if (error.status === 0) {
-            return this.translateService.instant('serverUnavailable');
+            return this.translateService.instant('misc.serverUnavailable');
         }
         let errorMessage;
         let errorJson = error.json();
@@ -30,7 +30,7 @@ export class ResponseService {
         if (!errorMessage && errorJson.data && errorJson.data.message) {
             errorMessage = errorJson.data.message;
         }
-        errorMessage = errorMessage || this.translateService.instant('unknownError');
+        errorMessage = errorMessage || this.translateService.instant('misc.unknownError');
 
         return errorMessage;
     }

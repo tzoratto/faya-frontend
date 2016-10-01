@@ -1,34 +1,32 @@
 {
-    "account": {
-        "loginLink": "Se connecter",
-        "logoutLink": "Se déconnecter",
-        "signupLink": "S'inscrire",
-        "signupButton": "S'inscrire",
-        "emailField": "Email :",
-        "passwordField": "Mot de passe :",
-        "loginButton": "Connexion",
-        "loggedIn": "Vous êtes connecté",
-        "loggedOut": "Vous êtes déconnecté",
-        "signedUp": "Vous êtes bien inscrit. Vous devez avoir reçu un mail pour valider votre compte",
-        "validated": "Votre compte est validé",
-        "emailRaw": "Email",
-        "createdAtRaw": "Crée",
-        "lastAccessRaw": "Dernier accès",
-        "adminRaw": "Admin"
-    },
-    "admin": {
-        "signupEnabledLabel": "Inscriptions activées :"
-    },
-    "token": {
-        "tokenCountLabel": "Nombre de token(s) :"
-    },
-    "namespace": {
-        "namespaceCountLabel": "Nombre de namespace(s) :"
-    },
-    "unknownError": "Une erreur inattendue est survenue",
+  "account": {
+    "adminRaw": "Admin",
+    "createdAtRaw": "Crée",
+    "emailField": "Email :",
+    "emailRaw": "Email",
+    "lastAccessRaw": "Dernier accès",
+    "loginButton": "Connexion",
+    "loginLink": "Se connecter",
+    "loggedIn": "Vous êtes connecté",
+    "loggedOut": "Vous êtes déconnecté",
+    "logoutLink": "Se déconnecter",
+    "passwordField": "Mot de passe :",
+    "signedUp": "Vous êtes bien inscrit. Vous devez avoir reçu un mail pour valider votre compte",
+    "signupButton": "S'inscrire",
+    "signupEnabledLabel": "Inscriptions activées :",
+    "signupLink": "S'inscrire",
+    "validated": "Votre compte est validé"
+  },
+  "misc": {
+    "deleteRaw": "Supprimer",
+    "filterRaw": "Filtre",
     "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard",
-    "misc": {
-        "filterRaw": "Filtre",
-        "deleteRaw": "Supprimer"
-    }
+    "unknownError": "Une erreur inattendue est survenue"
+  },
+  "namespace": {
+    "namespaceCountLabel": "Nombre de namespace(s) :"
+  },
+  "token": {
+    "tokenCountLabel": "Nombre de token(s) :"
+  }
 }
