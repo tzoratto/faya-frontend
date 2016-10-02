@@ -2,7 +2,13 @@
   "account": {
     "adminLabel": "Admin :",
     "adminRaw": "Admin",
+    "apiKeyPairConfirmDelete": "Vous allez supprimer la clef API avec l'id '{{apiKeyId}}'. Êtes-vous certain de vouloir le faire ?",
+    "apiKeyPairCreateButton": "Créer une clef API",
+    "apiKeyPairCreated": "La clef API avec l'id '{{apiKeyId}}' et le secret '{{apiKeySecret}}' a bien été créée",
+    "apiKeyPairDeleted": "La clef API avec l'id '{{apiKeyId}}' a bien été supprimée",
+    "apiKeyPairIdRaw": "Id",
     "apiKeyPairLink": "Gérer mes clefs API",
+    "apiKeyPairSecretRaw": "Secret",
     "confirmDelete": "Vous allez supprimer l'utilisateur '{{userEmail}}' et toutes ses données. Êtes-vous certain de vouloir le faire ?",
     "createdAtLabel": "Crée :",
     "createdAtRaw": "Crée",

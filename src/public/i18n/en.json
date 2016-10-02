@@ -2,7 +2,13 @@
   "account": {
     "adminLabel": "Admin :",
     "adminRaw": "Admin",
+    "apiKeyPairConfirmDelete": "You're about to delete the API key with id '{{apiKeyId}}'. Are you sure you want to do this ?",
+    "apiKeyPairCreateButton": "Create an API key",
+    "apiKeyPairCreated": "The API key with id '{{apiKeyId}}' and secret '{{apiKeySecret}}' has been successfully created",
+    "apiKeyPairDeleted": "The API key with id '{{apiKeyId}}' has been successfully deleted",
+    "apiKeyPairIdRaw": "Id",
     "apiKeyPairLink": "Manage API keys",
+    "apiKeyPairSecretRaw": "Secret",
     "confirmDelete": "You're about to delete the user '{{userEmail}}' and all its data. Are you sure you want to do this ?",
     "createdAtLabel": "Created :",
     "createdAtRaw": "Created",

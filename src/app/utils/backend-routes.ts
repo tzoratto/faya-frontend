@@ -9,6 +9,10 @@ export const BACKEND_ROUTES = new function () {
     this.setting = {};
     this.setting.subscription = url + '/setting/subscription';
 
+    this.apiKey = {};
+    this.apiKey.apiKey = url + '/api-key';
+    this.apiKey.instance = id => this.apiKey.apiKey + '/' + id;
+
     this.api = {};
     this.api.user = {};
     this.api.user.user = url + '/api/user';

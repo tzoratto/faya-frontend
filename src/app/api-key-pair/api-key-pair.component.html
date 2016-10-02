@@ -1,0 +1,19 @@
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>{{'account.apiKeyPairIdRaw' | translate}}</th>
+                <th>{{'account.apiKeyPairSecretRaw' | translate}}</th>
+                <th>{{'misc.deleteRaw' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let apiKeyPair of apiKeyPairs">
+                <td>{{apiKeyPair.keyId}}</td>
+                <td>{{apiKeyPair.keySecret}}</td>
+                <td (click)="onClickDelete(apiKeyPair)" class="clickable"><span class="glyphicon glyphicon-trash"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="onClickCreate()" class="btn btn-default">{{'account.apiKeyPairCreateButton' | translate}}</button>
+</div>
