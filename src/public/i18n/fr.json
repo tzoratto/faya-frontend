@@ -1,10 +1,12 @@
 {
   "account": {
+    "adminLabel": "Admin :",
     "adminRaw": "Admin",
     "confirmDelete": "Vous allez supprimer l'utilisateur '{{userEmail}}' et toutes ses données. Êtes-vous certain de vouloir le faire ?",
+    "createdAtLabel": "Crée :",
     "createdAtRaw": "Crée",
     "deleted": "L'utilisateur '{{userEmail}}' a bien été supprimé",
-    "emailField": "Email :",
+    "emailLabel": "Email :",
     "emailRaw": "Email",
     "lastAccessRaw": "Dernier accès",
     "loginButton": "Connexion",
@@ -12,7 +14,7 @@
     "loggedIn": "Vous êtes connecté",
     "loggedOut": "Vous êtes déconnecté",
     "logoutLink": "Se déconnecter",
-    "passwordField": "Mot de passe :",
+    "passwordLabel": "Mot de passe :",
     "signedUp": "Vous êtes bien inscrit. Vous devez avoir reçu un mail pour valider votre compte",
     "signupButton": "S'inscrire",
     "signupEnabledLabel": "Inscriptions activées :",
@@ -26,7 +28,8 @@
     "deleteRaw": "Supprimer",
     "filterRaw": "Filtre",
     "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard",
-    "unknownError": "Une erreur inattendue est survenue"
+    "unknownError": "Une erreur inattendue est survenue",
+    "yesRaw": "Oui"
   },
   "namespace": {
     "namespaceCountLabel": "Nombre de namespace(s) :"

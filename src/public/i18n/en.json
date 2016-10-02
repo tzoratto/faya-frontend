@@ -1,10 +1,12 @@
 {
   "account": {
+    "adminLabel": "Admin :",
     "adminRaw": "Admin",
     "confirmDelete": "You're about to delete the user '{{userEmail}}' and all its data. Are you sure you want to do this ?",
+    "createdAtLabel": "Created :",
     "createdAtRaw": "Created",
     "deleted": "The user '{{userEmail}}' has been successfully deleted",
-    "emailField": "Email :",
+    "emailLabel": "Email :",
     "emailRaw": "Email",
     "lastAccessRaw": "Last access",
     "loginButton": "Login",
@@ -12,7 +14,7 @@
     "loggedIn": "You have successfully logged in",
     "loggedOut": "You have successfully logged out",
     "logoutLink": "Sign out",
-    "passwordField": "Password :",
+    "passwordLabel": "Password :",
     "signedUp": "You have successfully signed up. You must have received a mail to validate your account",
     "signupButton": "Sign up",
     "signupEnabledLabel": "Sign up enabled :",
@@ -26,7 +28,8 @@
     "deleteRaw": "Delete",
     "filterRaw": "Filter",
     "serverUnavailable": "The server is not responding. Please retry later",
-    "unknownError": "An unexpected error has occured"
+    "unknownError": "An unexpected error has occured",
+    "yesRaw": "Yes"
   },
   "namespace": {
     "namespaceCountLabel": "Number of namespace(s) :"

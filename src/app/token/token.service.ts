@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
 import {MessageService} from '../message/message.service';
 import {AuthHttp} from 'angular2-jwt';
+import {User} from '../user/user';
 
 @Injectable()
 export class TokenService {
@@ -15,8 +16,8 @@ export class TokenService {
 
     }
 
-    getTokenCount(): Promise<number> {
-        return this.authHttp.get(BACKEND_ROUTES.api.token.count)
+    getTokenCount(user?: User): Promise<number> {
+        return this.authHttp.get(BACKEND_ROUTES.api.token.count + (user ? '?user=' + user.id : ''))
             .toPromise()
             .then(response => {
                 return this.responseService.getData(response).count;
