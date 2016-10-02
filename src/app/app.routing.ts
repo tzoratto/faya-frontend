@@ -9,6 +9,7 @@ import {SignupGuard} from './signup/signup-guard.service';
 import {AdminComponent} from './admin/admin.component';
 import {AdminGuard} from './admin/admin-guard.service';
 import {AdminResolve} from './admin/admin-resolve.service';
+import {TokenManagerComponent} from './token-manager/token-manager.component';
 
 const appRoutes: Routes = [
     {
@@ -37,6 +38,11 @@ const appRoutes: Routes = [
         resolve: {
             values: AdminResolve
         }
+    },
+    {
+        path: 'token-manager',
+        component: TokenManagerComponent,
+        canActivate: [AuthGuard]
     }
 ];
 

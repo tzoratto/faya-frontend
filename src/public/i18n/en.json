@@ -35,6 +35,7 @@
     "namespaceCountLabel": "Number of namespace(s) :"
   },
   "token": {
+    "managerLink": "Token Manager",
     "tokenCountLabel": "Number of token(s) :"
   }
 }

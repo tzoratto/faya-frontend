@@ -16,6 +16,7 @@ import {TokenModule} from './token/token.module';
 import {CoreModule} from './core/core.module';
 import {MessageModule} from './message/message.module';
 import {ModalModule as FayaModalModule} from './modal/modal.module';
+import {TokenManagerModule} from './token-manager/token-manager.module';
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import {ModalModule as FayaModalModule} from './modal/modal.module';
         TokenModule,
         CoreModule,
         MessageModule,
-        FayaModalModule
+        FayaModalModule,
+        TokenManagerModule
     ],
     declarations: [
         AppComponent
