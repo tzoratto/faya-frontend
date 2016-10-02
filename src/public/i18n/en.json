@@ -25,6 +25,7 @@
     "cancelButton": "Cancel",
     "confirmationRaw": "Confirmation",
     "confirmButton": "Confirm",
+    "dashboardRaw": "Dashboard",
     "deleteRaw": "Delete",
     "filterRaw": "Filter",
     "serverUnavailable": "The server is not responding. Please retry later",

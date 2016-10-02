@@ -11,9 +11,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed">
             <ul class="nav navbar-nav">
-                <li *ngIf="authService.isLoggedIn()" routerLinkActive="active"><a routerLink="dashboard">Dashboard</a></li>
+                <li *ngIf="authService.isLoggedIn()" routerLinkActive="active"><a routerLink="dashboard">{{'misc.dashboardRaw' | translate}}</a></li>
                 <li *ngIf="authService.isLoggedIn()" routerLinkActive="active"><a routerLink="token-manager">{{'token.managerLink' | translate}}</a></li>
-                <li *ngIf="authService.isLoggedIn() && authService.getUser().isAdmin()" routerLinkActive="active"><a routerLink="admin">Admin</a></li>
+                <li *ngIf="authService.isLoggedIn() && authService.getUser().isAdmin()" routerLinkActive="active"><a routerLink="admin">{{'account.adminRaw' | translate}}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="!authService.isLoggedIn()" routerLinkActive="active"><a routerLink="login">{{'account.loginLink' | translate}}</a></li>
