@@ -1,7 +1,9 @@
 {
   "account": {
     "adminRaw": "Admin",
+    "confirmDelete": "You're about to delete the user '{{userEmail}}' and all its data. Are you sure you want to do this ?",
     "createdAtRaw": "Created",
+    "deleted": "The user '{{userEmail}}' has been successfully deleted",
     "emailField": "Email :",
     "emailRaw": "Email",
     "lastAccessRaw": "Last access",

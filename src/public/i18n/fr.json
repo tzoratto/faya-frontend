@@ -1,7 +1,9 @@
 {
   "account": {
     "adminRaw": "Admin",
+    "confirmDelete": "Vous allez supprimer l'utilisateur '{{userEmail}}' et toutes ses données. Êtes-vous certain de vouloir le faire ?",
     "createdAtRaw": "Crée",
+    "deleted": "L'utilisateur '{{userEmail}}' a bien été supprimé",
     "emailField": "Email :",
     "emailRaw": "Email",
     "lastAccessRaw": "Dernier accès",

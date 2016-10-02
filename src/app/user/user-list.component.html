@@ -16,7 +16,7 @@
                 <td>{{user.createdAt | date}}</td>
                 <td>{{user.lastAccess | date}}</td>
                 <td><span *ngIf="user.admin" class="glyphicon glyphicon-ok-sign"></span></td>
-                <td><span class="glyphicon glyphicon-trash"></span></td>
+                <td (click)="onClickDelete(user)" class="clickable"><span class="glyphicon glyphicon-trash"></span></td>
             </tr>
         </tbody>
     </table>

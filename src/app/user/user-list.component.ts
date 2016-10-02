@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from './user.service';
 import {User} from './user';
 import {FormControl} from '@angular/forms';
+import {ModalService} from '../modal/modal.service';
+import {MessageService} from '../message/message.service';
 
 
 @Component({
@@ -13,17 +15,24 @@ export class UserListComponent implements OnInit {
     private users: Array<User> = [];
     private filter = new FormControl();
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+                private modalService: ModalService,
+                private messageService: MessageService) {
 
     }
 
     ngOnInit(): void {
-        this.userService.getUsers()
-            .subscribe(users => {
-                this.users = users;
-            },
-            error => {});
+        this.fetchUsers();
         this.listenFilter();
+    }
+
+    private fetchUsers(filter?: string) {
+        this.userService.getUsers(filter)
+            .subscribe(users => {
+                    this.users = users;
+                },
+                error => {
+                });
     }
 
     listenFilter(): void {
@@ -33,5 +42,20 @@ export class UserListComponent implements OnInit {
             .switchMap(filter => this.userService.getUsers(filter))
             .subscribe(users => this.users = users,
                 error => this.listenFilter());
+    }
+
+    onClickDelete(user: User): void {
+        this.modalService.showModal({key: 'account.confirmDelete', variables: {userEmail: user.local.email}},
+            () => {
+                this.userService.deleteUser(user)
+                    .then(() => {
+                        this.messageService.clearAlert().addAlertAndTranslate({
+                            key: 'account.deleted',
+                            variables: {userEmail: user.local.email}
+                        });
+                        this.fetchUsers(this.filter.value);
+                    })
+                    .catch(error => {});
+            });
     }
 }
