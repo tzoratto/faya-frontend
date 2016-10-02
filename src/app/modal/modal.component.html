@@ -1,0 +1,17 @@
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{'misc.confirmationRaw' | translate}}</h4>
+            </div>
+            <div class="modal-body">
+                {{message}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="onCancellation()">{{'misc.cancelButton' | translate}}</button>
+                <button type="button" class="btn btn-primary" (click)="onValidation()">{{'misc.confirmButton' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

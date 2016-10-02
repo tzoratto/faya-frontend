@@ -18,6 +18,9 @@
     "validated": "Votre compte est validé"
   },
   "misc": {
+    "cancelButton": "Annuler",
+    "confirmationRaw": "Confirmation",
+    "confirmButton": "Confirmer",
     "deleteRaw": "Supprimer",
     "filterRaw": "Filtre",
     "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard",

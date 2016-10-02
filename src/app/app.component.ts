@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewContainerRef} from '@angular/core';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 import '../style/styles.css';
@@ -8,7 +8,8 @@ import '../style/styles.css';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    constructor(translateService: TranslateService) {
+    constructor(translateService: TranslateService,
+                public viewContainerRef: ViewContainerRef) {
         translateService.setDefaultLang('en');
 
         let lang = navigator.language ? navigator.language.split('-')[0] : 'en';

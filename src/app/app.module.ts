@@ -15,6 +15,7 @@ import {SignupModule} from './signup/signup.module';
 import {TokenModule} from './token/token.module';
 import {CoreModule} from './core/core.module';
 import {MessageModule} from './message/message.module';
+import {ModalModule as FayaModalModule} from './modal/modal.module';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import {MessageModule} from './message/message.module';
         SignupModule,
         TokenModule,
         CoreModule,
-        MessageModule
+        MessageModule,
+        FayaModalModule
     ],
     declarations: [
         AppComponent
