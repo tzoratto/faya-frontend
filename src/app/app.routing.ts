@@ -10,6 +10,7 @@ import {AdminComponent} from './admin/admin.component';
 import {AdminGuard} from './admin/admin-guard.service';
 import {AdminResolve} from './admin/admin-resolve.service';
 import {TokenManagerComponent} from './token-manager/token-manager.component';
+import {ApiKeyPairComponent} from './api-key-pair/api-key-pair.component';
 
 const appRoutes: Routes = [
     {
@@ -42,6 +43,11 @@ const appRoutes: Routes = [
     {
         path: 'token-manager',
         component: TokenManagerComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'api-key-pair',
+        component: ApiKeyPairComponent,
         canActivate: [AuthGuard]
     }
 ];

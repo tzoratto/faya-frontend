@@ -2,6 +2,7 @@
   "account": {
     "adminLabel": "Admin :",
     "adminRaw": "Admin",
+    "apiKeyPairLink": "Manage API keys",
     "confirmDelete": "You're about to delete the user '{{userEmail}}' and all its data. Are you sure you want to do this ?",
     "createdAtLabel": "Created :",
     "createdAtRaw": "Created",

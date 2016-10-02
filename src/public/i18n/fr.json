@@ -2,6 +2,7 @@
   "account": {
     "adminLabel": "Admin :",
     "adminRaw": "Admin",
+    "apiKeyPairLink": "Gérer mes clefs API",
     "confirmDelete": "Vous allez supprimer l'utilisateur '{{userEmail}}' et toutes ses données. Êtes-vous certain de vouloir le faire ?",
     "createdAtLabel": "Crée :",
     "createdAtRaw": "Crée",
