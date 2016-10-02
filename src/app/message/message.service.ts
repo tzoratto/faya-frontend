@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router, NavigationStart} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
+import {Message} from '../utils/message';
 
 @Injectable()
 export class MessageService {
@@ -29,11 +30,15 @@ export class MessageService {
         return this;
     }
 
-    public addAlertAndTranslate(msg: string,
+    public addAlertAndTranslate(msg: string | Message,
                     type: 'success'|'info'|'warning'|'danger' = 'success',
                     dismissOnTimeout = 5000,
                     dismissible = true): MessageService {
-        this.addAlert(this.translateService.instant(msg), type, dismissOnTimeout, dismissible);
+        if (typeof msg === 'string') {
+            this.addAlert(this.translateService.instant(msg), type, dismissOnTimeout, dismissible);
+        } else {
+            this.addAlert(this.translateService.instant(msg.key, msg.variables), type, dismissOnTimeout, dismissible);
+        }
         return this;
     }
 
