@@ -32,6 +32,7 @@
     "cancelButton": "Annuler",
     "confirmationRaw": "Confirmation",
     "confirmButton": "Confirmer",
+    "createButton": "Créer",
     "dashboardRaw": "Dashboard",
     "deleteRaw": "Supprimer",
     "filterRaw": "Filtre",
@@ -40,6 +41,12 @@
     "yesRaw": "Oui"
   },
   "namespace": {
+    "confirmDelete": "Vous allez supprimer le namespace '{{namespaceName}}'. Êtes-vous sûr de vouloir le faire ?",
+    "createButton": "Créer un namespace",
+    "created": "Le namespace '{{namespaceName}}' a bien été créé",
+    "deleted": "Le namespace '{{namespaceName}}' a bien été supprimé",
+    "descriptionLabel": "Description :",
+    "nameLabel": "Nom :",
     "namespaceCountLabel": "Nombre de namespace(s) :"
   },
   "token": {

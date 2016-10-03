@@ -32,6 +32,7 @@
     "cancelButton": "Cancel",
     "confirmationRaw": "Confirmation",
     "confirmButton": "Confirm",
+    "createButton": "Create",
     "dashboardRaw": "Dashboard",
     "deleteRaw": "Delete",
     "filterRaw": "Filter",
@@ -40,6 +41,12 @@
     "yesRaw": "Yes"
   },
   "namespace": {
+    "confirmDelete": "You're about to delete the namespace '{{namespaceName}}'. Are you sure you want to do this ?",
+    "createButton": "Create a namespace",
+    "created": "The namespace '{{namespaceName}}' has been successfully created",
+    "deleted": "The namespace '{{namespaceName}}' has been successfully deleted",
+    "descriptionLabel": "Description :",
+    "nameLabel": "Name :",
     "namespaceCountLabel": "Number of namespace(s) :"
   },
   "token": {

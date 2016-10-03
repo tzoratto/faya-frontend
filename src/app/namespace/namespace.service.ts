@@ -7,6 +7,8 @@ import {handleErrorHttp} from '../utils/errors';
 import {MessageService} from '../message/message.service';
 import {AuthHttp} from 'angular2-jwt';
 import {User} from '../user/user';
+import {Observable} from 'rxjs';
+import {Namespace} from './namespace';
 
 @Injectable()
 export class NamespaceService {
@@ -21,6 +23,37 @@ export class NamespaceService {
             .toPromise()
             .then(response => {
                 return this.responseService.getData(response).count;
+            })
+            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+    }
+
+    getNamespaces(filter = ''): Observable<Array<Namespace>> {
+        return this.authHttp.get(BACKEND_ROUTES.api.namespace.namespace + '?q=' + filter)
+            .map(response => {
+                let namespacesRaw = this.responseService.getData(response);
+                let namespaces: Array<Namespace> = [];
+                namespacesRaw.forEach(namespace => {
+                    namespaces.push(new Namespace(namespace));
+                });
+                return namespaces;
+            })
+            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+    }
+
+    deleteNamespace(namespace: Namespace): Promise<void> {
+        return this.authHttp.delete(BACKEND_ROUTES.api.namespace.instance(namespace.id))
+            .toPromise()
+            .then(response => {})
+            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+    }
+
+    createNamespace(name: string, description: string): Promise<Namespace> {
+        let body = JSON.stringify({'name': name, 'description': description});
+
+        return this.authHttp.post(BACKEND_ROUTES.api.namespace.namespace, body)
+            .toPromise()
+            .then(response => {
+                return new Namespace(this.responseService.getData(response));
             })
             .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
     }

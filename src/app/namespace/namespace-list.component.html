@@ -1,0 +1,10 @@
+<div>
+    <div *ngIf="!createNamespace">
+        <button (click)="onClickCreate()" class="btn btn-primary">{{'namespace.createButton' | translate}}</button><br/>
+        <input type="text" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
+        <div class="list-group">
+            <button *ngFor="let namespace of namespaces" class="list-group-item" type="button">{{namespace.name}}<span (click)="onClickDelete(namespace)" class="clickable glyphicon glyphicon-trash"></span></button>
+        </div>
+    </div>
+    <faya-namespace-create *ngIf="createNamespace" (created)="onCreated()"></faya-namespace-create>
+</div>
