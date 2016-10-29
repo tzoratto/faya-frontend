@@ -17,11 +17,13 @@ try {
 
         stage 'Build'
 
-            def nodeHome = tool 'node4'
-            sh "${nodeHome}/bin/node -v"
-            sh "${nodeHome}/bin/npm prune"
-            sh "${nodeHome}/bin/npm install"
-            sh "${nodeHome}/bin/npm run build"
+            def nodeHome = tool 'node6'
+            withEnv(["PATH+NODE=${nodeHome}/bin"]) {
+                sh "${nodeHome}/bin/node -v"
+                sh "${nodeHome}/bin/npm prune"
+                sh "${nodeHome}/bin/npm install"
+                sh "${nodeHome}/bin/npm run build"
+            }
 
         if (env.BRANCH_NAME == 'master') {
             stage 'Build & Push Docker hub'
