@@ -5,7 +5,6 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --inline --progress",
-    "version": "replace '(sonar.projectVersion=).*'  '$1'$npm_package_version sonar-project.properties && git add sonar-project.properties",
     "build": "rimraf dist && webpack --progress --profile --bail",
     "lint": "tslint -o tslint-report --force \"src/**/*.ts\""
   },
