@@ -1,7 +1,7 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule, Http} from '@angular/http';
-import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
+import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
 
 import {AppComponent} from './app.component';
 import {routing} from './app.routing';

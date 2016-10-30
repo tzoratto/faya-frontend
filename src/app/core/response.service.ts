@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
-import {TranslateService} from 'ng2-translate/ng2-translate';
+import {TranslateService} from 'ng2-translate';
 
 @Injectable()
 export class ResponseService {
