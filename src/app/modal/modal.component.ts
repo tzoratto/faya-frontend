@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ViewChild} from '@angular/core';
-import {ModalDirective} from 'ng2-bootstrap';
+import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {ModalService} from './modal.service';
 
 
