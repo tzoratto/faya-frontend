@@ -13,7 +13,8 @@ import {MessageService} from '../message/message.service';
 export class NamespaceListComponent implements OnInit {
     private namespaces: Array<Namespace> = [];
     private filter = new FormControl();
-    private createNamespace: boolean = false;
+    private displayNamespaceDetails: boolean = false;
+    private namespaceToModify: Namespace;
 
     constructor(private namespaceService: NamespaceService,
                 private modalService: ModalService,
@@ -59,12 +60,18 @@ export class NamespaceListComponent implements OnInit {
             });
     }
 
-    onClickCreate(): void {
-        this.createNamespace = true;
+    onClickDetails(namespace: Namespace): void {
+        this.namespaceToModify = namespace;
+        this.displayNamespaceDetails = true;
     }
 
-    onCreated(): void {
-        this.createNamespace = false;
+    onClickCreate(): void {
+        this.displayNamespaceDetails = true;
+    }
+
+    onDetailsDone(): void {
+        this.displayNamespaceDetails = false;
+        this.namespaceToModify = null;
         this.fetchNamespaces(this.filter.value ? this.filter.value : '');
     }
 }

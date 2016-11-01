@@ -36,6 +36,7 @@
     "dashboardRaw": "Dashboard",
     "deleteRaw": "Supprimer",
     "filterRaw": "Filtre",
+    "saveButton": "Sauvegarder",
     "serverUnavailable": "Le serveur ne répond pas. Veuillez réessayer plus tard",
     "unknownError": "Une erreur inattendue est survenue",
     "yesRaw": "Oui"
@@ -47,7 +48,8 @@
     "deleted": "Le namespace '{{namespaceName}}' a bien été supprimé",
     "descriptionLabel": "Description :",
     "nameLabel": "Nom :",
-    "namespaceCountLabel": "Nombre de namespace(s) :"
+    "namespaceCountLabel": "Nombre de namespace(s) :",
+    "updated": "Le namespace '{{namespaceName}}' a bien été mis à jour"
   },
   "token": {
     "managerLink": "Gérer mes tokens",

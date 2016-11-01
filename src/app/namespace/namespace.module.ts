@@ -4,7 +4,7 @@ import {NamespaceListComponent} from './namespace-list.component';
 import {TranslateModule} from 'ng2-translate';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {NamespaceCreateComponent} from './namespace-create.component';
+import {NamespaceDetailsComponent} from './namespace-details.component';
 
 @NgModule({
     imports: [
@@ -15,11 +15,11 @@ import {NamespaceCreateComponent} from './namespace-create.component';
     ],
     declarations: [
         NamespaceListComponent,
-        NamespaceCreateComponent
+        NamespaceDetailsComponent
     ],
     exports: [
         NamespaceListComponent,
-        NamespaceCreateComponent
+        NamespaceDetailsComponent
     ],
     providers: [
         NamespaceService

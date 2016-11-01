@@ -57,4 +57,15 @@ export class NamespaceService {
             })
             .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
     }
+
+    updateNamespace(namespace: Namespace): Promise<Namespace> {
+        let body = JSON.stringify({'name': namespace.name, 'description': namespace.description});
+
+        return this.authHttp.put(BACKEND_ROUTES.api.namespace.instance(namespace.id), body)
+            .toPromise()
+            .then(response => {
+                return new Namespace(this.responseService.getData(response));
+            })
+            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+    }
 }
