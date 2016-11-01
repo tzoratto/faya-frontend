@@ -42,7 +42,7 @@ export class ApiKeyPairComponent implements OnInit {
                 }, 'success', 0);
                 this.fetchApiKeyPairs();
             })
-            .catch();
+            .catch(error => {});
     }
 
     private fetchApiKeyPairs(): void {
@@ -50,8 +50,7 @@ export class ApiKeyPairComponent implements OnInit {
             .then(apiKeyPairs => {
                 this.apiKeyPairs = apiKeyPairs;
             })
-            .catch(error => {
-            });
+            .catch(error => {});
     }
 
     ngOnInit(): void {
