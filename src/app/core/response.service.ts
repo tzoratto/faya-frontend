@@ -30,6 +30,12 @@ export class ResponseService {
         if (!errorMessage && errorJson.data && errorJson.data.message) {
             errorMessage = errorJson.data.message;
         }
+        if (!errorMessage && errorJson.data) {
+            errorMessage = '';
+            Object.keys(errorJson.data).forEach(function (key) {
+                errorMessage += errorJson.data[key] + '\n';
+            });
+        }
         errorMessage = errorMessage || this.translateService.instant('misc.unknownError');
 
         return errorMessage;
