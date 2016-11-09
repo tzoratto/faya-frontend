@@ -52,7 +52,23 @@
     "updated": "The namespace '{{namespaceName}}' has been successfully updated"
   },
   "token": {
+    "activeLabel": "Active :",
+    "activeRaw": "Active",
+    "confirmDelete": "You're about to delete the token '{{tokenValue}}'. Are you sure you want to do this ?",
+    "countRaw": "Count",
+    "createButton": "Create a token",
+    "created": "The token '{{tokenValue}}' has been successfully created",
+    "deleted": "The token '{{tokenValue}}' has been successfully deleted",
+    "descriptionLabel": "Description :",
+    "endsAtLabel": "To :",
+    "endsAtRaw": "To",
     "managerLink": "Token Manager",
-    "tokenCountLabel": "Number of token(s) :"
+    "poolLabel": "Pool :",
+    "poolRaw": "Pool",
+    "startsAtLabel": "From :",
+    "startsAtRaw": "From",
+    "tokenCountLabel": "Number of token(s) :",
+    "updated": "The token '{{tokenValue}}' has been successfully updated",
+    "valueRaw": "Value"
   }
 }

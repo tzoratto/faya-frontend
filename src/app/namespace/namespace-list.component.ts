@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Namespace} from './namespace';
 import {NamespaceService} from './namespace.service';
 import {FormControl} from '@angular/forms';
@@ -15,6 +15,9 @@ export class NamespaceListComponent implements OnInit {
     private filter = new FormControl();
     private displayNamespaceDetails: boolean = false;
     private namespaceToModify: Namespace;
+    @Output()
+    namespaceSelected = new EventEmitter<Namespace>();
+    private _namespaceSelected: Namespace;
 
     constructor(private namespaceService: NamespaceService,
                 private modalService: ModalService,
@@ -31,6 +34,10 @@ export class NamespaceListComponent implements OnInit {
         this.namespaceService.getNamespaces(filter)
             .subscribe(namespaces => {
                     this.namespaces = namespaces;
+                    if (!this._namespaceSelected) {
+                        this._namespaceSelected = this.namespaces[0];
+                        this.onClickNamespace(this._namespaceSelected);
+                    }
                 },
                 error => {
                 });
@@ -73,5 +80,10 @@ export class NamespaceListComponent implements OnInit {
         this.displayNamespaceDetails = false;
         this.namespaceToModify = null;
         this.fetchNamespaces(this.filter.value ? this.filter.value : '');
+    }
+
+    onClickNamespace(namespace: Namespace): void {
+        this._namespaceSelected = namespace;
+        this.namespaceSelected.emit(namespace);
     }
 }

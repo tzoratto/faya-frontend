@@ -3,7 +3,11 @@
         <button (click)="onClickCreate()" class="btn btn-primary">{{'namespace.createButton' | translate}}</button><br/>
         <input type="text" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
         <div class="list-group">
-            <button *ngFor="let namespace of namespaces" class="list-group-item" type="button">{{namespace.name}}
+            <button *ngFor="let namespace of namespaces"
+                    [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
+                    class="list-group-item" type="button"
+                    (click)="onClickNamespace(namespace)">
+                    {{namespace.name}}
                 <span (click)="onClickDelete(namespace)" class="clickable glyphicon glyphicon-trash"></span>
                 <span (click)="onClickDetails(namespace)" class="clickable glyphicon glyphicon-edit"></span>
             </button>

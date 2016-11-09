@@ -52,7 +52,23 @@
     "updated": "Le namespace '{{namespaceName}}' a bien été mis à jour"
   },
   "token": {
+    "activeLabel": "Actif :",
+    "activeRaw": "Actif",
+    "confirmDelete": "Vous allez supprimer le token '{{tokenValue}}'. Êtes-vous sûr de vouloir le faire ?",
+    "countRaw": "Compteur",
+    "createButton": "Créer un token",
+    "created": "Le token '{{tokenValue}}' a bien été créé",
+    "deleted": "Le token '{{tokenValue}}' a bien été supprimé",
+    "descriptionLabel": "Description :",
+    "endsAtLabel": "Au :",
+    "endsAtRaw": "Au",
     "managerLink": "Gérer mes tokens",
-    "tokenCountLabel": "Nombre de token(s) :"
+    "poolLabel": "Pool :",
+    "poolRaw": "Pool",
+    "startsAtLabel": "Du :",
+    "startsAtRaw": "Du",
+    "tokenCountLabel": "Nombre de token(s) :",
+    "updated": "Le token '{{tokenValue}}' a bien été mis à jour",
+    "valueRaw": "Valeur"
   }
 }

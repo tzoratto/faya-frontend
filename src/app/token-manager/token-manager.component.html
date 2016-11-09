@@ -1,7 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <faya-namespace-list></faya-namespace-list>
+            <faya-namespace-list (namespaceSelected)="onNamespaceSelected($event)"></faya-namespace-list>
+        </div>
+        <div class="col-md-8">
+            <faya-token-list [namespace]="namespaceSelected"></faya-token-list>
         </div>
     </div>
 </div>

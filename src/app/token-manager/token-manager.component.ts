@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Namespace} from '../namespace/namespace';
 
 @Component({
     selector: 'faya-token-manager',
@@ -6,7 +7,13 @@ import {Component} from '@angular/core';
     styleUrls: ['token-manager.component.css']
 })
 export class TokenManagerComponent {
+    private namespaceSelected: Namespace;
+
     constructor() {
 
+    }
+
+    onNamespaceSelected(namespace: Namespace): void {
+        this.namespaceSelected = namespace;
     }
 }

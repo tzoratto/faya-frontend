@@ -1,0 +1,33 @@
+<div *ngIf="namespace">
+    <div *ngIf="!displayTokenDetails">
+        <button (click)="onClickCreate()" class="btn btn-primary">{{'token.createButton' | translate}}</button><br/>
+        <input type="text" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{'token.valueRaw' | translate}}</th>
+                    <th>{{'token.activeRaw' | translate}}</th>
+                    <th>{{'token.startsAtRaw' | translate}}</th>
+                    <th>{{'token.endsAtRaw' | translate}}</th>
+                    <th>{{'token.poolRaw' | translate}}</th>
+                    <th>{{'token.countRaw' | translate}}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let token of tokens">
+                    <td>{{token.value}}</td>
+                    <td>{{token.active}}</td>
+                    <td>{{token.startsAt}}</td>
+                    <td>{{token.endsAt}}</td>
+                    <td>{{token.pool}}</td>
+                    <td>{{token.count}}</td>
+                    <td><span (click)="onClickDelete(token)" class="clickable glyphicon glyphicon-trash"></span></td>
+                    <td><span (click)="onClickDetails(token)" class="clickable glyphicon glyphicon-edit"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <faya-token-details *ngIf="displayTokenDetails" [namespace]="namespace" [token]="tokenToModify" (done)="onDetailsDone()"></faya-token-details>
+</div>

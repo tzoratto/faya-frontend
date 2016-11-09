@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit()" #tokenForm="ngForm" class="form-horizontal">
+    <div class="form-group">
+        <label for="description" class="col-md-3 control-label">{{'token.descriptionLabel' | translate}}</label>
+        <div class="col-md-9">
+            <textarea [(ngModel)]="token.description" class="form-control" id="description" name="description"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="active" class="col-md-3 control-label">{{'token.activeLabel' | translate}}</label>
+        <div class="col-md-9">
+            <input type="checkbox" [(ngModel)]="token.active" class="form-control" id="active" name="active"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="startsAt" class="col-md-3 control-label">{{'token.startsAtLabel' | translate}}</label>
+        <div class="col-md-9">
+            <input type="text" [(ngModel)]="token.startsAt" class="form-control" id="startsAt" name="startsAt"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="endsAt" class="col-md-3 control-label">{{'token.endsAtLabel' | translate}}</label>
+        <div class="col-md-9">
+            <input type="text" [(ngModel)]="token.endsAt" class="form-control" id="endsAt" name="endsAt"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="pool" class="col-md-3 control-label">{{'token.poolLabel' | translate}}</label>
+        <div class="col-md-9">
+            <input type="number" [(ngModel)]="token.pool" class="form-control" id="pool" name="pool"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <button (click)="onCancel()" type="button" class="btn btn-default">{{'misc.cancelButton' | translate}}</button>
+            <button type="submit" [disabled]="!tokenForm.form.valid" class="btn btn-default">{{token.id ? ('misc.saveButton' | translate) : ('misc.createButton' | translate)}}</button>
+        </div>
+    </div>
+</form>
