@@ -3,5 +3,5 @@
        [dismissible]="message.dismissible"
        [dismissOnTimeout]="message.dismissOnTimeout"
        (close)="messageService.closeAlert(i)">
-    {{ message?.msg }}
+    <p style="white-space: pre-wrap;">{{ message?.msg }}</p>
 </alert>
