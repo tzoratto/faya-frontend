@@ -4,9 +4,8 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
-import {handleErrorHttp} from '../utils/errors';
 import {AuthHttp} from 'angular2-jwt';
-import {MessageService} from './message/message.service';
+import {HandleErrorService} from './handle-error.service';
 
 @Injectable()
 export class SettingService {
@@ -14,8 +13,8 @@ export class SettingService {
 
     constructor(private http: Http,
                 private responseService: ResponseService,
-                private messageService: MessageService,
-                private authHttp: AuthHttp) {
+                private authHttp: AuthHttp,
+                private handleErrorService: HandleErrorService) {
 
     }
 
@@ -25,7 +24,7 @@ export class SettingService {
             .then(response => {
                 return this.subscriptionEnabled = this.responseService.getData(response).subscriptionEnabled;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     getSubscriptionEnabled(): boolean {
@@ -40,6 +39,6 @@ export class SettingService {
             .then(response => {
                 this.subscriptionEnabled = value;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 }

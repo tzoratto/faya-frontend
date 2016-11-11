@@ -3,18 +3,17 @@ import {ResponseService} from '../core/response.service';
 import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
-import {handleErrorHttp} from '../utils/errors';
 import {AuthHttp} from 'angular2-jwt';
 import {User} from '../user/user';
 import {Observable} from 'rxjs';
 import {Token} from './token';
-import {MessageService} from '../core/message/message.service';
+import {HandleErrorService} from '../core/handle-error.service';
 
 @Injectable()
 export class TokenService {
     constructor(private authHttp: AuthHttp,
                 private responseService: ResponseService,
-                private messageService: MessageService) {
+                private handleErrorService: HandleErrorService) {
 
     }
 
@@ -24,7 +23,7 @@ export class TokenService {
             .then(response => {
                 return this.responseService.getData(response).count;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     getTokens(filter = '', namespaceId = ''): Observable<Array<Token>> {
@@ -37,7 +36,7 @@ export class TokenService {
                 });
                 return tokens;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttpObservable(error));
     }
 
     createToken(token: Token): Promise<Token> {
@@ -48,14 +47,14 @@ export class TokenService {
             .then(response => {
                 return new Token(this.responseService.getData(response));
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     deleteToken(token: Token): Promise<void> {
         return this.authHttp.delete(BACKEND_ROUTES.api.token.instance(token.id))
             .toPromise()
             .then(response => {})
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     updateToken(token: Token): Promise<Token> {
@@ -66,6 +65,6 @@ export class TokenService {
             .then(response => {
                 return new Token(this.responseService.getData(response));
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 }

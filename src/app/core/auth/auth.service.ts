@@ -5,9 +5,8 @@ import {Headers, Http, RequestOptions} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
-import {handleErrorHttp} from '../../utils/errors';
 import {User} from '../../user/user';
-import {MessageService} from '../message/message.service';
+import {HandleErrorService} from '../handle-error.service';
 
 @Injectable()
 export class AuthService {
@@ -16,8 +15,8 @@ export class AuthService {
 
     constructor(private http: Http,
                 private responseService: ResponseService,
-                private messageService: MessageService,
-                private jwtHelper: JwtHelper) {
+                private jwtHelper: JwtHelper,
+                private handleErrorService: HandleErrorService) {
 
     }
 
@@ -40,7 +39,7 @@ export class AuthService {
         return this.http.post(BACKEND_ROUTES.auth.login, body, options)
             .toPromise()
             .then(response => this.handleLoginResponse(response))
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     isLoggedIn(): boolean {
@@ -66,14 +65,14 @@ export class AuthService {
         return this.http.post(BACKEND_ROUTES.auth.signup, body, options)
             .toPromise()
             .then(() => null)
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     signupValidation(email: string, token: string): Promise<void> {
         return this.http.get(BACKEND_ROUTES.auth.signupValidation + '?email=' + email + '&token=' + token)
             .toPromise()
             .then(response => this.handleLoginResponse(response))
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     passwordReset(email: string): Promise<void> {
@@ -84,7 +83,7 @@ export class AuthService {
         return this.http.post(BACKEND_ROUTES.auth.passwordReset, body, options)
             .toPromise()
             .then(() => null)
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     passwordResetValidation(email: string, token: string, password: string): Promise<void> {
@@ -95,6 +94,6 @@ export class AuthService {
         return this.http.post(BACKEND_ROUTES.auth.passwordResetValidation, body, options)
             .toPromise()
             .then(response => this.handleLoginResponse(response))
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 }

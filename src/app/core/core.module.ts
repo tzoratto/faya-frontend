@@ -12,6 +12,7 @@ import {AlertComponent} from 'ng2-bootstrap/ng2-bootstrap';
 import {ModalModule} from 'ng2-bootstrap/ng2-bootstrap';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from 'ng2-translate';
+import {HandleErrorService} from './handle-error.service';
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import {TranslateModule} from 'ng2-translate';
         JwtHelper,
         SettingService,
         ModalService,
-        MessageService
+        MessageService,
+        HandleErrorService
     ]
 })
 export class CoreModule {

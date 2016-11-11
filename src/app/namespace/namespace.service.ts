@@ -3,18 +3,17 @@ import {ResponseService} from '../core/response.service';
 import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
-import {handleErrorHttp} from '../utils/errors';
 import {AuthHttp} from 'angular2-jwt';
 import {User} from '../user/user';
 import {Observable} from 'rxjs';
 import {Namespace} from './namespace';
-import {MessageService} from '../core/message/message.service';
+import {HandleErrorService} from '../core/handle-error.service';
 
 @Injectable()
 export class NamespaceService {
     constructor(private authHttp: AuthHttp,
                 private responseService: ResponseService,
-                private messageService: MessageService) {
+                private handleErrorService: HandleErrorService) {
 
     }
 
@@ -24,7 +23,7 @@ export class NamespaceService {
             .then(response => {
                 return this.responseService.getData(response).count;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     getNamespaces(filter = ''): Observable<Array<Namespace>> {
@@ -37,14 +36,14 @@ export class NamespaceService {
                 });
                 return namespaces;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttpObservable(error));
     }
 
     deleteNamespace(namespace: Namespace): Promise<void> {
         return this.authHttp.delete(BACKEND_ROUTES.api.namespace.instance(namespace.id))
             .toPromise()
             .then(response => {})
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     createNamespace(namespace: Namespace): Promise<Namespace> {
@@ -55,7 +54,7 @@ export class NamespaceService {
             .then(response => {
                 return new Namespace(this.responseService.getData(response));
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     updateNamespace(namespace: Namespace): Promise<Namespace> {
@@ -66,6 +65,6 @@ export class NamespaceService {
             .then(response => {
                 return new Namespace(this.responseService.getData(response));
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 }

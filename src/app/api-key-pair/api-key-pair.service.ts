@@ -3,14 +3,13 @@ import {ApiKeyPair} from './api-key-pair';
 import {AuthHttp} from 'angular2-jwt';
 import {BACKEND_ROUTES} from '../utils/backend-routes';
 import {ResponseService} from '../core/response.service';
-import {handleErrorHttp} from '../utils/errors';
-import {MessageService} from '../core/message/message.service';
+import {HandleErrorService} from '../core/handle-error.service';
 
 @Injectable()
 export class ApiKeyPairService {
     constructor(private authHttp: AuthHttp,
                 private responseService: ResponseService,
-                private messageService: MessageService) {
+                private handleErrorService: HandleErrorService) {
 
     }
 
@@ -25,14 +24,14 @@ export class ApiKeyPairService {
                 });
                 return apiKeyPairs;
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     deleteApiKeyPair(apiKeyPair: ApiKeyPair): Promise<void> {
         return this.authHttp.delete(BACKEND_ROUTES.apiKey.instance(apiKeyPair.id))
             .toPromise()
             .then(response => {})
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
     createApiKeyPair(): Promise<ApiKeyPair> {
@@ -41,6 +40,6 @@ export class ApiKeyPairService {
             .then(response => {
                 return new ApiKeyPair(this.responseService.getData(response));
             })
-            .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 }
