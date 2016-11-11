@@ -1,8 +1,8 @@
 import {Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
-import {MessageService} from '../message/message.service';
 import {Token} from './token';
 import {TokenService} from './token.service';
 import {Namespace} from '../namespace/namespace';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-token-details',

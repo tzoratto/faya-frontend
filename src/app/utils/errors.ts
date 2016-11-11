@@ -1,6 +1,6 @@
 import {ResponseService} from '../core/response.service';
-import {MessageService} from '../message/message.service';
 import {Observable} from 'rxjs';
+import {MessageService} from '../core/message/message.service';
 
 let handleError = function (responseService: ResponseService, error: any, messageService: MessageService) {
     let message = responseService.getErrorMessage(error);

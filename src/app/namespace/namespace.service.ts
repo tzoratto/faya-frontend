@@ -4,11 +4,11 @@ import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
-import {MessageService} from '../message/message.service';
 import {AuthHttp} from 'angular2-jwt';
 import {User} from '../user/user';
 import {Observable} from 'rxjs';
 import {Namespace} from './namespace';
+import {MessageService} from '../core/message/message.service';
 
 @Injectable()
 export class NamespaceService {

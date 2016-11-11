@@ -4,10 +4,10 @@ import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttpObservable, handleErrorHttp} from '../utils/errors';
-import {MessageService} from '../message/message.service';
 import {AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs';
 import {User} from './user';
+import {MessageService} from '../core/message/message.service';
 
 @Injectable()
 export class UserService {

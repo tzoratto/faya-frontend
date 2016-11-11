@@ -2,8 +2,8 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Namespace} from './namespace';
 import {NamespaceService} from './namespace.service';
 import {FormControl} from '@angular/forms';
-import {ModalService} from '../modal/modal.service';
-import {MessageService} from '../message/message.service';
+import {ModalService} from '../core/modal/modal.service';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-namespace-list',

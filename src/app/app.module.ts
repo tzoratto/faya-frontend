@@ -14,8 +14,6 @@ import {NavbarModule} from './navbar/navbar.module';
 import {SignupModule} from './signup/signup.module';
 import {TokenModule} from './token/token.module';
 import {CoreModule} from './core/core.module';
-import {MessageModule} from './message/message.module';
-import {ModalModule as FayaModalModule} from './modal/modal.module';
 import {TokenManagerModule} from './token-manager/token-manager.module';
 import {ApiKeyPairModule} from './api-key-pair/api-key-pair.module';
 import {PasswordResetModule} from './password-reset/password-reset.module';
@@ -38,8 +36,6 @@ import {PasswordResetModule} from './password-reset/password-reset.module';
         SignupModule,
         TokenModule,
         CoreModule,
-        MessageModule,
-        FayaModalModule,
         TokenManagerModule,
         ApiKeyPairModule,
         PasswordResetModule

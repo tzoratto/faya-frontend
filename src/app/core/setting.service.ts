@@ -5,8 +5,8 @@ import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import {handleErrorHttp} from '../utils/errors';
-import {MessageService} from '../message/message.service';
 import {AuthHttp} from 'angular2-jwt';
+import {MessageService} from './message/message.service';
 
 @Injectable()
 export class SettingService {

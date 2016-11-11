@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from './user.service';
 import {User} from './user';
 import {FormControl} from '@angular/forms';
-import {ModalService} from '../modal/modal.service';
-import {MessageService} from '../message/message.service';
+import {ModalService} from '../core/modal/modal.service';
+import {MessageService} from '../core/message/message.service';
 
 
 @Component({

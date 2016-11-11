@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 import {AuthService} from '../core/auth/auth.service';
 import {SettingService} from '../core/setting.service';
-import {MessageService} from '../message/message.service';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-navbar',

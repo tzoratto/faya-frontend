@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiKeyPair} from './api-key-pair';
-import {ModalService} from '../modal/modal.service';
 import {ApiKeyPairService} from './api-key-pair.service';
-import {MessageService} from '../message/message.service';
+import {ModalService} from '../core/modal/modal.service';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-api-key-pair',

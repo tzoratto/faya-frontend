@@ -1,6 +1,6 @@
 import {Injectable, EventEmitter} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
-import {Message} from '../utils/message';
+import {Message} from '../../utils/message';
 
 @Injectable()
 export class ModalService {

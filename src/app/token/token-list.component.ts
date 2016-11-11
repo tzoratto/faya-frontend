@@ -3,8 +3,8 @@ import {Token} from './token';
 import {FormControl} from '@angular/forms';
 import {TokenService} from './token.service';
 import {Namespace} from '../namespace/namespace';
-import {ModalService} from '../modal/modal.service';
-import {MessageService} from '../message/message.service';
+import {ModalService} from '../core/modal/modal.service';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-token-list',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../core/auth/auth.service';
-import {MessageService} from '../message/message.service';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-password-reset',

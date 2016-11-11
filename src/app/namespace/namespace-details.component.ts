@@ -1,7 +1,7 @@
 import {Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
 import {NamespaceService} from './namespace.service';
-import {MessageService} from '../message/message.service';
 import {Namespace} from './namespace';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-namespace-details',

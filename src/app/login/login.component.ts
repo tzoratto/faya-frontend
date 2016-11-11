@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 import {AuthService} from '../core/auth/auth.service';
 import {Router} from '@angular/router';
-import {MessageService} from '../message/message.service';
+import {MessageService} from '../core/message/message.service';
 
 @Component({
     selector: 'faya-login',

@@ -3,8 +3,8 @@ import {ApiKeyPair} from './api-key-pair';
 import {AuthHttp} from 'angular2-jwt';
 import {BACKEND_ROUTES} from '../utils/backend-routes';
 import {ResponseService} from '../core/response.service';
-import {MessageService} from '../message/message.service';
 import {handleErrorHttp} from '../utils/errors';
+import {MessageService} from '../core/message/message.service';
 
 @Injectable()
 export class ApiKeyPairService {

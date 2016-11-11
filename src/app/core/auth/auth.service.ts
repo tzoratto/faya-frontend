@@ -6,8 +6,8 @@ import {Headers, Http, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 import {handleErrorHttp} from '../../utils/errors';
-import {MessageService} from '../../message/message.service';
 import {User} from '../../user/user';
+import {MessageService} from '../message/message.service';
 
 @Injectable()
 export class AuthService {
