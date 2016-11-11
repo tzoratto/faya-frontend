@@ -25,6 +25,18 @@ try {
             }
         }
 
+        stage('Quality analysis') {
+            def nodeHome = tool 'node6'
+            withEnv(["PATH+NODE=${nodeHome}/bin"]) {
+                sh "${nodeHome}/bin/npm run lint"
+                sh 'wc -l < tslint-report > numberOfIssues'
+                def numberOfIssues = readFile('numberOfIssues').trim() as int
+                if (numberOfIssues != 0) {
+                    throw new Exception('There are quality issues')
+                }
+            }
+        }
+
         if (env.BRANCH_NAME == 'master') {
             stage('Build & Push Docker hub') {
                 docker.withRegistry('https://index.docker.io/v1/', 'docker_hub_tzoratto') {
