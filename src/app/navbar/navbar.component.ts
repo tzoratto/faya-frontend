@@ -22,8 +22,10 @@ export class NavbarComponent implements OnInit {
 
     logout(): boolean {
         this.authService.logout();
-        this.router.navigate(['login']);
-        this.messageService.clearAlert().addAlertAndTranslate('account.loggedOut');
+        this.router.navigate(['login'])
+            .then(() => {
+                this.messageService.clearAlert().addAlertAndTranslate('account.loggedOut');
+            });
         return false;
     }
 

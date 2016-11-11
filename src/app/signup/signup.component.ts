@@ -20,8 +20,10 @@ export class SignupComponent implements OnInit {
     signup(email: string, password: string): void {
         this.authService.signup(email, password)
             .then(() => {
-                this.router.navigate(['login']);
-                this.messageService.clearAlert().addAlertAndTranslate('account.signedUp', 'success', 0);
+                this.router.navigate(['login'])
+                    .then(() => {
+                        this.messageService.clearAlert().addAlertAndTranslate('account.signedUp', 'success', 0);
+                    });
             })
             .catch(error => {});
     }
@@ -31,8 +33,10 @@ export class SignupComponent implements OnInit {
             if (params['email'] && params['token']) {
                 this.authService.signupValidation(params['email'], params['token'])
                     .then(() => {
-                        this.router.navigate(['dashboard']);
-                        this.messageService.clearAlert().addAlertAndTranslate('account.validated');
+                        this.router.navigate(['dashboard'])
+                            .then(() => {
+                                this.messageService.clearAlert().addAlertAndTranslate('account.validated');
+                            });
                     })
                     .catch(error => {});
             }

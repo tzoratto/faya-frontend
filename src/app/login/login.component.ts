@@ -19,8 +19,10 @@ export class LoginComponent {
     onSubmit(email: string, password: string): void {
         this.authService.login(email, password)
             .then(() => {
-                this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard']);
-                this.messageService.clearAlert().addAlertAndTranslate('account.loggedIn');
+                this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard'])
+                    .then(() => {
+                        this.messageService.clearAlert().addAlertAndTranslate('account.loggedIn');
+                    });
             })
             .catch(error => {});
     }
