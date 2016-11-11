@@ -11,6 +11,7 @@ import {AdminGuard} from './admin/admin-guard.service';
 import {AdminResolve} from './admin/admin-resolve.service';
 import {TokenManagerComponent} from './token-manager/token-manager.component';
 import {ApiKeyPairComponent} from './api-key-pair/api-key-pair.component';
+import {PasswordResetComponent} from './password-reset/password-reset.component';
 
 const appRoutes: Routes = [
     {
@@ -49,6 +50,10 @@ const appRoutes: Routes = [
         path: 'api-key-pair',
         component: ApiKeyPairComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'password-reset',
+        component: PasswordResetComponent
     }
 ];
 

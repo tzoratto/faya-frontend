@@ -5,6 +5,8 @@ export const BACKEND_ROUTES = new function () {
     this.auth.login = url + '/auth/login';
     this.auth.signup = url + '/auth/signup';
     this.auth.signupValidation = url + '/auth/signup-validation';
+    this.auth.passwordReset = url + '/auth/password-reset';
+    this.auth.passwordResetValidation = url + '/auth/password-reset-validation';
 
     this.setting = {};
     this.setting.subscription = url + '/setting/subscription';
