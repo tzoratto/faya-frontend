@@ -18,7 +18,7 @@ export class NamespaceDetailsComponent implements OnInit {
 
     }
 
-    onSubmit(name: string, description: string) {
+    onSubmit() {
         if (this.namespace.id) {
 
             this.namespaceService.updateNamespace(this.namespace)
@@ -31,7 +31,7 @@ export class NamespaceDetailsComponent implements OnInit {
                 })
                 .catch(error => {});
         } else {
-            this.namespaceService.createNamespace(name, description)
+            this.namespaceService.createNamespace(this.namespace.name, this.namespace.description)
                 .then(namespace => {
                     this.messageService.clearAlert().addAlertAndTranslate({
                         key: 'namespace.created',
