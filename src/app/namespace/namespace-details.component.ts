@@ -31,7 +31,7 @@ export class NamespaceDetailsComponent implements OnInit {
                 })
                 .catch(error => {});
         } else {
-            this.namespaceService.createNamespace(this.namespace.name, this.namespace.description)
+            this.namespaceService.createNamespace(this.namespace)
                 .then(namespace => {
                     this.messageService.clearAlert().addAlertAndTranslate({
                         key: 'namespace.created',

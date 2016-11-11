@@ -1,6 +1,6 @@
 export class Token {
     id: string;
-    namespaceId: string;
+    namespace: string;
     value: string;
     description: string;
     count: number;
@@ -14,7 +14,7 @@ export class Token {
     constructor(token?: any) {
         if (token) {
             this.id = token._id;
-            this.namespaceId = token.namespaceId;
+            this.namespace = token.namespace;
             this.value = token.value;
             this.description = token.description;
             this.count = token.count;

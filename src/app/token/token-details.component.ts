@@ -34,12 +34,7 @@ export class TokenDetailsComponent implements OnInit {
                 })
                 .catch(error => {});
         } else {
-            this.tokenService.createToken(this.namespace.id,
-                this.token.description,
-                this.token.active,
-                this.token.startsAt,
-                this.token.endsAt,
-                this.token.pool)
+            this.tokenService.createToken(this.token)
                 .then(token => {
                     this.messageService.clearAlert().addAlertAndTranslate({
                         key: 'token.created',
@@ -56,6 +51,6 @@ export class TokenDetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.token = this.token ? this.token : new Token({active: true});
+        this.token = this.token ? this.token : new Token({namespace: this.namespace.id, active: true});
     }
 }

@@ -40,21 +40,8 @@ export class TokenService {
             .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
     }
 
-    createToken(namespaceId: string,
-                description: string,
-                active: boolean,
-                startsAt: Date,
-                endsAt: Date,
-                pool: number): Promise<Token> {
-        let body = JSON.stringify({
-            'namespace': namespaceId,
-            'description': description,
-            'active': active,
-            'startsAt': startsAt,
-            'endsAt': endsAt,
-            'pool': pool
-
-        });
+    createToken(token: Token): Promise<Token> {
+        let body = JSON.stringify(token);
 
         return this.authHttp.post(BACKEND_ROUTES.api.token.token, body)
             .toPromise()
@@ -72,13 +59,7 @@ export class TokenService {
     }
 
     updateToken(token: Token): Promise<Token> {
-        let body = JSON.stringify({
-            'description': token.description,
-            'active': token.active,
-            'startsAt': token.startsAt,
-            'endsAt': token.endsAt,
-            'pool': token.pool
-        });
+        let body = JSON.stringify(token);
 
         return this.authHttp.put(BACKEND_ROUTES.api.token.instance(token.id), body)
             .toPromise()

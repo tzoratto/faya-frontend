@@ -47,8 +47,8 @@ export class NamespaceService {
             .catch(error => handleErrorHttp(error, this.responseService, this.messageService));
     }
 
-    createNamespace(name: string, description: string): Promise<Namespace> {
-        let body = JSON.stringify({'name': name, 'description': description});
+    createNamespace(namespace: Namespace): Promise<Namespace> {
+        let body = JSON.stringify(namespace);
 
         return this.authHttp.post(BACKEND_ROUTES.api.namespace.namespace, body)
             .toPromise()
@@ -59,7 +59,7 @@ export class NamespaceService {
     }
 
     updateNamespace(namespace: Namespace): Promise<Namespace> {
-        let body = JSON.stringify({'name': namespace.name, 'description': namespace.description});
+        let body = JSON.stringify(namespace);
 
         return this.authHttp.put(BACKEND_ROUTES.api.namespace.instance(namespace.id), body)
             .toPromise()
