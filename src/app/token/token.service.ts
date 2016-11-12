@@ -8,6 +8,8 @@ import {User} from '../user/user';
 import {Observable} from 'rxjs';
 import {Token} from './token';
 import {HandleErrorService} from '../core/handle-error.service';
+import {PaginationParameter} from '../utils/pagination-parameter';
+import {PaginatedResult} from '../utils/paginated-result';
 
 @Injectable()
 export class TokenService {
@@ -26,15 +28,10 @@ export class TokenService {
             .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
-    getTokens(filter = '', namespaceId = ''): Observable<Array<Token>> {
-        return this.authHttp.get(BACKEND_ROUTES.api.token.token + '?q=' + filter + '&namespace=' + namespaceId)
+    getTokens(paginationParameter: PaginationParameter, namespaceId = ''): Observable<PaginatedResult<Token>> {
+        return this.authHttp.get(BACKEND_ROUTES.api.token.token + paginationParameter.buildQueryString() + '&namespace=' + namespaceId)
             .map(response => {
-                let tokensRaw = this.responseService.getData(response);
-                let tokens: Array<Token> = [];
-                tokensRaw.forEach(token => {
-                    tokens.push(new Token(token));
-                });
-                return tokens;
+                return new PaginatedResult<Token>(this.responseService.getData(response), Token);
             })
             .catch(error => this.handleErrorService.handleErrorHttpObservable(error));
     }

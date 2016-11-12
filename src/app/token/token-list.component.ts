@@ -5,6 +5,8 @@ import {TokenService} from './token.service';
 import {Namespace} from '../namespace/namespace';
 import {ModalService} from '../core/modal/modal.service';
 import {MessageService} from '../core/message/message.service';
+import {PaginatedResult} from '../utils/paginated-result';
+import {PaginationParameter} from '../utils/pagination-parameter';
 
 @Component({
     selector: 'faya-token-list',
@@ -12,7 +14,8 @@ import {MessageService} from '../core/message/message.service';
     styleUrls: ['token-list.component.css']
 })
 export class TokenListComponent implements OnInit, OnChanges {
-    private tokens: Array<Token> = [];
+    private tokens: PaginatedResult<Token> = new PaginatedResult<Token>();
+    private paginationParameter: PaginationParameter = new PaginationParameter(20, 1, '-createdAt', '');
     private filter = new FormControl();
     private displayTokenDetails: boolean = false;
     private tokenToModify: Token;
@@ -29,12 +32,13 @@ export class TokenListComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-        this.fetchTokens(this.filter.value ? this.filter.value : '');
+        this.paginationParameter.page = 1;
+        this.fetchTokens();
     }
 
-    private fetchTokens(filter?: string) {
+    private fetchTokens() {
         if (this.namespace)  {
-            this.tokenService.getTokens(filter, this.namespace.id)
+            this.tokenService.getTokens(this.paginationParameter, this.namespace.id)
                 .subscribe(tokens => {
                         this.tokens = tokens;
                     },
@@ -46,21 +50,32 @@ export class TokenListComponent implements OnInit, OnChanges {
         this.filter.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(filter => this.tokenService.getTokens(filter, this.namespace.id))
+            .switchMap(filter => {
+                this.paginationParameter.page = 1;
+                this.paginationParameter.filter = filter;
+                return this.tokenService.getTokens(this.paginationParameter, this.namespace.id);
+            })
             .subscribe(tokens => this.tokens = tokens,
-                error => this.listenFilter());
+                error => {
+                    this.filter.setValue('');
+                    this.paginationParameter.filter = '';
+                    this.listenFilter();
+                });
     }
 
     onClickDelete(token: Token): void {
         this.modalService.showModal({key: 'token.confirmDelete', variables: {tokenValue: token.value}},
             () => {
+                if (this.paginationParameter.page > 1 && this.tokens.resultCount === 1) {
+                    this.paginationParameter.page--;
+                }
                 this.tokenService.deleteToken(token)
                     .then(() => {
                         this.messageService.clearAlert().addAlertAndTranslate({
                             key: 'token.deleted',
                             variables: {tokenValue: token.value}
                         });
-                        this.fetchTokens(this.filter.value ? this.filter.value : '');
+                        this.fetchTokens();
                     })
                     .catch(error => {});
             });
@@ -78,6 +93,12 @@ export class TokenListComponent implements OnInit, OnChanges {
     onDetailsDone(): void {
         this.displayTokenDetails = false;
         this.tokenToModify = null;
-        this.fetchTokens(this.filter.value ? this.filter.value : '');
+        this.fetchTokens();
+    }
+
+    pageChanged($event): void {
+        setTimeout(() => {
+            this.fetchTokens();
+        }, 0);
     }
 }

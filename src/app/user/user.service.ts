@@ -7,6 +7,8 @@ import {AuthHttp} from 'angular2-jwt';
 import {Observable} from 'rxjs';
 import {User} from './user';
 import {HandleErrorService} from '../core/handle-error.service';
+import {PaginatedResult} from '../utils/paginated-result';
+import {PaginationParameter} from '../utils/pagination-parameter';
 
 @Injectable()
 export class UserService {
@@ -16,15 +18,10 @@ export class UserService {
 
     }
 
-    getUsers(filter = ''): Observable<Array<User>> {
-        return this.authHttp.get(BACKEND_ROUTES.api.user.user + '?q=' + filter)
+    getUsers(paginationParameter: PaginationParameter): Observable<PaginatedResult<User>> {
+        return this.authHttp.get(BACKEND_ROUTES.api.user.user + paginationParameter.buildQueryString())
             .map(response => {
-                let users: Array<User> = [];
-                let data = this.responseService.getData(response);
-                data.forEach(user => {
-                    users.push(new User(user));
-                });
-                return users;
+                return new PaginatedResult<User>(this.responseService.getData(response), User);
             })
             .catch(error => this.handleErrorService.handleErrorHttpObservable(error));
     }

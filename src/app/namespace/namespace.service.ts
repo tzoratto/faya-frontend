@@ -8,6 +8,8 @@ import {User} from '../user/user';
 import {Observable} from 'rxjs';
 import {Namespace} from './namespace';
 import {HandleErrorService} from '../core/handle-error.service';
+import {PaginatedResult} from '../utils/paginated-result';
+import {PaginationParameter} from '../utils/pagination-parameter';
 
 @Injectable()
 export class NamespaceService {
@@ -26,15 +28,10 @@ export class NamespaceService {
             .catch(error => this.handleErrorService.handleErrorHttp(error));
     }
 
-    getNamespaces(filter = ''): Observable<Array<Namespace>> {
-        return this.authHttp.get(BACKEND_ROUTES.api.namespace.namespace + '?q=' + filter)
+    getNamespaces(paginationParameter: PaginationParameter): Observable<PaginatedResult<Namespace>> {
+        return this.authHttp.get(BACKEND_ROUTES.api.namespace.namespace + paginationParameter.buildQueryString())
             .map(response => {
-                let namespacesRaw = this.responseService.getData(response);
-                let namespaces: Array<Namespace> = [];
-                namespacesRaw.forEach(namespace => {
-                    namespaces.push(new Namespace(namespace));
-                });
-                return namespaces;
+                return new PaginatedResult<Namespace>(this.responseService.getData(response), Namespace);
             })
             .catch(error => this.handleErrorService.handleErrorHttpObservable(error));
     }

@@ -4,6 +4,8 @@ import {User} from './user';
 import {FormControl} from '@angular/forms';
 import {ModalService} from '../core/modal/modal.service';
 import {MessageService} from '../core/message/message.service';
+import {PaginatedResult} from '../utils/paginated-result';
+import {PaginationParameter} from '../utils/pagination-parameter';
 
 
 @Component({
@@ -12,7 +14,8 @@ import {MessageService} from '../core/message/message.service';
     styleUrls: ['user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-    private users: Array<User> = [];
+    private users: PaginatedResult<User> = new PaginatedResult<User>();
+    private paginationParameter: PaginationParameter = new PaginationParameter(20, 1, '', '');
     private filter = new FormControl();
 
     constructor(private userService: UserService,
@@ -26,8 +29,8 @@ export class UserListComponent implements OnInit {
         this.listenFilter();
     }
 
-    private fetchUsers(filter?: string) {
-        this.userService.getUsers(filter)
+    private fetchUsers() {
+        this.userService.getUsers(this.paginationParameter)
             .subscribe(users => {
                     this.users = users;
                 },
@@ -39,23 +42,40 @@ export class UserListComponent implements OnInit {
         this.filter.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(filter => this.userService.getUsers(filter))
+            .switchMap(filter => {
+                this.paginationParameter.page = 1;
+                this.paginationParameter.filter = filter;
+                return this.userService.getUsers(this.paginationParameter);
+            })
             .subscribe(users => this.users = users,
-                error => this.listenFilter());
+                error => {
+                    this.filter.setValue('');
+                    this.paginationParameter.filter = '';
+                    this.listenFilter();
+                });
     }
 
     onClickDelete(user: User): void {
         this.modalService.showModal({key: 'account.confirmDelete', variables: {userEmail: user.local.email}},
             () => {
+                if (this.paginationParameter.page > 1 && this.users.resultCount === 1) {
+                    this.paginationParameter.page--;
+                }
                 this.userService.deleteUser(user)
                     .then(() => {
                         this.messageService.clearAlert().addAlertAndTranslate({
                             key: 'account.deleted',
                             variables: {userEmail: user.local.email}
                         });
-                        this.fetchUsers(this.filter.value);
+                        this.fetchUsers();
                     })
                     .catch(error => {});
             });
+    }
+
+    pageChanged($event): void {
+        setTimeout(() => {
+            this.fetchUsers();
+        }, 0);
     }
 }

@@ -5,13 +5,15 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {TokenListComponent} from './token-list.component';
 import {CommonModule} from '@angular/common';
 import {TokenDetailsComponent} from './token-details.component';
+import {PaginationModule} from 'ng2-bootstrap/ng2-bootstrap';
 
 @NgModule({
     imports: [
         TranslateModule,
         CommonModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        PaginationModule
     ],
     declarations: [
         TokenListComponent,

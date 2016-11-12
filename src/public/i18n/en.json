@@ -40,6 +40,7 @@
     "dashboardRaw": "Dashboard",
     "deleteRaw": "Delete",
     "filterRaw": "Filter",
+    "paginationCount": "{{from}} to {{to}} of {{of}}",
     "saveButton": "Save",
     "serverUnavailable": "The server is not responding. Please retry later",
     "unknownError": "An unexpected error has occured",

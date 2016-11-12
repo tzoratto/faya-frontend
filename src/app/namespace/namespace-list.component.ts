@@ -4,6 +4,8 @@ import {NamespaceService} from './namespace.service';
 import {FormControl} from '@angular/forms';
 import {ModalService} from '../core/modal/modal.service';
 import {MessageService} from '../core/message/message.service';
+import {PaginatedResult} from '../utils/paginated-result';
+import {PaginationParameter} from '../utils/pagination-parameter';
 
 @Component({
     selector: 'faya-namespace-list',
@@ -11,7 +13,8 @@ import {MessageService} from '../core/message/message.service';
     styleUrls: ['namespace-list.component.css']
 })
 export class NamespaceListComponent implements OnInit {
-    private namespaces: Array<Namespace> = [];
+    private namespaces: PaginatedResult<Namespace> = new PaginatedResult<Namespace>();
+    private paginationParameter: PaginationParameter = new PaginationParameter(10, 1, 'name', '');
     private filter = new FormControl();
     private displayNamespaceDetails: boolean = false;
     private namespaceToModify: Namespace;
@@ -30,12 +33,12 @@ export class NamespaceListComponent implements OnInit {
         this.listenFilter();
     }
 
-    private fetchNamespaces(filter?: string) {
-        this.namespaceService.getNamespaces(filter)
+    private fetchNamespaces() {
+        this.namespaceService.getNamespaces(this.paginationParameter)
             .subscribe(namespaces => {
                     this.namespaces = namespaces;
                     if (!this._namespaceSelected) {
-                        this._namespaceSelected = this.namespaces[0];
+                        this._namespaceSelected = this.namespaces.result[0];
                         this.onClickNamespace(this._namespaceSelected);
                     }
                 },
@@ -47,21 +50,32 @@ export class NamespaceListComponent implements OnInit {
         this.filter.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(filter => this.namespaceService.getNamespaces(filter))
+            .switchMap(filter => {
+                this.paginationParameter.page = 1;
+                this.paginationParameter.filter = filter;
+                return this.namespaceService.getNamespaces(this.paginationParameter);
+            })
             .subscribe(namespaces => this.namespaces = namespaces,
-                error => this.listenFilter());
+                error => {
+                    this.filter.setValue('');
+                    this.paginationParameter.filter = '';
+                    this.listenFilter();
+                });
     }
 
     onClickDelete(namespace: Namespace): void {
         this.modalService.showModal({key: 'namespace.confirmDelete', variables: {namespaceName: namespace.name}},
             () => {
+                if (this.paginationParameter.page > 1 && this.namespaces.resultCount === 1) {
+                    this.paginationParameter.page--;
+                }
                 this.namespaceService.deleteNamespace(namespace)
                     .then(() => {
                         this.messageService.clearAlert().addAlertAndTranslate({
                             key: 'namespace.deleted',
                             variables: {namespaceName: namespace.name}
                         });
-                        this.fetchNamespaces(this.filter.value ? this.filter.value : '');
+                        this.fetchNamespaces();
                     })
                     .catch(error => {});
             });
@@ -79,11 +93,17 @@ export class NamespaceListComponent implements OnInit {
     onDetailsDone(): void {
         this.displayNamespaceDetails = false;
         this.namespaceToModify = null;
-        this.fetchNamespaces(this.filter.value ? this.filter.value : '');
+        this.fetchNamespaces();
     }
 
     onClickNamespace(namespace: Namespace): void {
         this._namespaceSelected = namespace;
         this.namespaceSelected.emit(namespace);
+    }
+
+    pageChanged($event): void {
+        setTimeout(() => {
+            this.fetchNamespaces();
+        }, 0);
     }
 }

@@ -3,7 +3,7 @@
         <button (click)="onClickCreate()" class="btn btn-primary">{{'namespace.createButton' | translate}}</button><br/>
         <input type="text" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
         <div class="list-group">
-            <button *ngFor="let namespace of namespaces"
+            <button *ngFor="let namespace of namespaces.result"
                     [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
                     class="list-group-item" type="button"
                     (click)="onClickNamespace(namespace)">
@@ -11,6 +11,23 @@
                 <span (click)="onClickDelete(namespace)" class="clickable glyphicon glyphicon-trash"></span>
                 <span (click)="onClickDetails(namespace)" class="clickable glyphicon glyphicon-edit"></span>
             </button>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <div>{{'misc.paginationCount' | translate:{
+                    from: (namespaces.page - 1) * paginationParameter.limit,
+                    to: (namespaces.page - 1) * paginationParameter.limit + namespaces.resultCount,
+                    of: namespaces.totalCount}
+                    }}</div>
+                <pagination (pageChanged)="pageChanged($event)"
+                            [(ngModel)]="paginationParameter.page"
+                            [totalItems]="namespaces.totalCount"
+                            [itemsPerPage]="paginationParameter.limit"
+                            [maxSize]="5"
+                            [boundaryLinks]="true"
+                            class="pagination-sm">
+                </pagination>
+            </div>
         </div>
     </div>
     <faya-namespace-details *ngIf="displayNamespaceDetails" [namespace]="namespaceToModify" (done)="onDetailsDone()"></faya-namespace-details>

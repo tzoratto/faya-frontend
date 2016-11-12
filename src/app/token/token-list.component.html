@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let token of tokens">
+                <tr *ngFor="let token of tokens.result">
                     <td>{{token.value}}</td>
                     <td>{{token.active}}</td>
                     <td>{{token.startsAt}}</td>
@@ -28,6 +28,23 @@
                 </tr>
             </tbody>
         </table>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <div>{{'misc.paginationCount' | translate:{
+                    from: (tokens.page - 1) * paginationParameter.limit,
+                    to: (tokens.page - 1) * paginationParameter.limit + tokens.resultCount,
+                    of: tokens.totalCount}
+                    }}</div>
+                <pagination (pageChanged)="pageChanged($event)"
+                            [(ngModel)]="paginationParameter.page"
+                            [totalItems]="tokens.totalCount"
+                            [itemsPerPage]="paginationParameter.limit"
+                            [maxSize]="5"
+                            [boundaryLinks]="true"
+                            class="pagination-sm">
+                </pagination>
+            </div>
+        </div>
     </div>
     <faya-token-details *ngIf="displayTokenDetails" [namespace]="namespace" [token]="tokenToModify" (done)="onDetailsDone()"></faya-token-details>
 </div>
