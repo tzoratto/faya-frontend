@@ -1,5 +1,9 @@
-<label>
-    <ng-content></ng-content>
-    <input type="checkbox" class="toggle-button-cb" [checked]="checked" (change)="onToggle($event)">
-    <span class="toggle-button"></span>
-</label>
+<div class="form-group">
+    <label class="{{labelClasses}} control-label">
+        <ng-content></ng-content>
+    </label>
+    <div class="{{inputClasses}}">
+        <input type="checkbox" class="toggle-button-cb" [checked]="checked">
+        <span (click)="onToggle($event)" class="toggle-button"></span>
+    </div>
+</div>

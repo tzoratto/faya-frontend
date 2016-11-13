@@ -1,8 +1,16 @@
 <div *ngIf="namespace">
     <div *ngIf="!displayTokenDetails">
-        <button (click)="onClickCreate()" class="btn btn-primary">{{'token.createButton' | translate}}</button><br/>
-        <input type="text" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
-        <table class="table">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button (click)="onClickCreate()" class="btn btn-primary">{{'token.createButton' | translate}}</button><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
+            </div>
+        </div>
+        <table class="table table-condensed margin-top-10">
             <thead>
                 <tr>
                     <th>{{'token.valueRaw' | translate}}</th>

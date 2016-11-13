@@ -1,50 +1,57 @@
 <div class="container">
-    <div class="col-md-offset-3 col-md-6">
-        <form class="form-horizontal">
-            <div>
-                <div class="form-group">
-                    <label class="col-md-5 control-label">{{'token.tokenCountLabel' | translate}}</label>
-                    <div class="col-md-7">
-                        <p class="form-control-static">{{tokenCount | async}}</p>
+    <div class="row">
+        <div class="page-header">
+            <h2>{{'misc.dashboardRaw' | translate}} <small>{{'account.myInformationRaw' | translate}}</small></h2>
+        </div>
+        <div class="col-md-offset-3 col-md-6">
+            <form class="form-horizontal">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{'account.myContentRaw' | translate}}</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">{{'token.tokenCountLabel' | translate}}</label>
+                            <div class="col-md-7">
+                                <p class="form-control-static">{{tokenCount | async}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">{{'namespace.namespaceCountLabel' | translate}}</label>
+                            <div class="col-md-7">
+                                <p class="form-control-static">{{namespaceCount | async}}</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-default" routerLink="/token-manager">{{'token.managerLink' | translate}}</button>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-5 control-label">{{'namespace.namespaceCountLabel' | translate}}</label>
-                    <div class="col-md-7">
-                        <p class="form-control-static">{{namespaceCount | async}}</p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{'account.myAccountRaw' | translate}}</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">{{'account.createdAtLabel' | translate}}</label>
+                            <div class="col-md-7">
+                                <p class="form-control-static">{{user.createdAt | date}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">{{'account.emailLabel' | translate}}</label>
+                            <div class="col-md-7">
+                                <p class="form-control-static">{{user.local.email}}</p>
+                            </div>
+                        </div>
+                        <div *ngIf="user.admin" class="form-group">
+                            <label class="col-md-5 control-label">{{'account.adminLabel' | translate}}</label>
+                            <div class="col-md-7">
+                                <p class="form-control-static">{{'misc.yesRaw' | translate}}</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-default" routerLink="/api-key-pair">{{'account.apiKeyPairLink' | translate}}</button>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6">
-                        <button class="btn btn-default" routerLink="/token-manager">{{'token.managerLink' | translate}}</button>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="form-group">
-                    <label class="col-md-5 control-label">{{'account.createdAtLabel' | translate}}</label>
-                    <div class="col-md-7">
-                        <p class="form-control-static">{{user.createdAt | date}}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-5 control-label">{{'account.emailLabel' | translate}}</label>
-                    <div class="col-md-7">
-                        <p class="form-control-static">{{user.local.email}}</p>
-                    </div>
-                </div>
-                <div *ngIf="user.admin" class="form-group">
-                    <label class="col-md-5 control-label">{{'account.adminLabel' | translate}}</label>
-                    <div class="col-md-7">
-                        <p class="form-control-static">{{'misc.yesRaw' | translate}}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6">
-                        <button class="btn btn-default" routerLink="/api-key-pair">{{'account.apiKeyPairLink' | translate}}</button>
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

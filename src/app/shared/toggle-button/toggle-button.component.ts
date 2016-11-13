@@ -1,4 +1,4 @@
-import {Component, forwardRef, EventEmitter} from '@angular/core';
+import {Component, forwardRef, EventEmitter, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Output} from '@angular/core';
 
@@ -18,6 +18,10 @@ export class ToggleButtonComponent implements ControlValueAccessor {
     private _checked: boolean = false;
     private onChange: (_: any) => {};
     private onTouched: (_: any) => {};
+    @Input()
+    labelClasses: string;
+    @Input()
+    inputClasses: string;
     @Output()
     change = new EventEmitter<boolean>();
 

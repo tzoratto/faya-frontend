@@ -1,8 +1,32 @@
 <div class="container">
-    <form>
-    <faya-toggle-button [(ngModel)]="subscriptionEnabled" name="subscriptionEnabled" (change)="onChangeSubscriptionEnabled($event)">{{'account.signupEnabledLabel' | translate}}</faya-toggle-button>
-    </form>
-    <label>{{'token.tokenCountLabel' | translate}}</label>{{tokenCount}}<br/>
-    <label>{{'namespace.namespaceCountLabel' | translate}}</label>{{namespaceCount}}
-    <faya-user-list></faya-user-list>
+    <div class="row">
+        <div class="page-header">
+            <h2>{{'account.adminRaw' | translate}} <small>{{'misc.adminShortDescription' | translate}}</small></h2>
+        </div>
+        <div class="col-md-4 margin-top-20">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{'misc.generalInformationRaw' | translate}}</div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <faya-toggle-button labelClasses="col-md-8" inputclasses="col-md-4" [(ngModel)]="subscriptionEnabled" name="subscriptionEnabled" (change)="onChangeSubscriptionEnabled($event)">{{'account.signupEnabledLabel' | translate}}</faya-toggle-button>
+                        <div class="form-group">
+                            <label class="col-md-8 control-label">{{'token.tokenCountLabel' | translate}}</label>
+                            <div class="col-md-4">
+                                <p class="form-control-static">{{tokenCount}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-8 control-label">{{'namespace.namespaceCountLabel' | translate}}</label>
+                            <div class="col-md-4">
+                                <p class="form-control-static">{{namespaceCount}}</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <faya-user-list></faya-user-list>
+        </div>
+    </div>
 </div>
