@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {NamespaceDetailsComponent} from './namespace-details.component';
 import {PaginationModule} from 'ng2-bootstrap/ng2-bootstrap';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import {PaginationModule} from 'ng2-bootstrap/ng2-bootstrap';
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
-        PaginationModule
+        PaginationModule,
+        SharedModule
     ],
     declarations: [
         NamespaceListComponent,

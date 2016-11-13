@@ -30,11 +30,7 @@
         </table>
         <div class="row">
             <div class="col-md-12 text-right">
-                <div>{{'misc.paginationCount' | translate:{
-                    from: (tokens.page - 1) * paginationParameter.limit,
-                    to: (tokens.page - 1) * paginationParameter.limit + tokens.resultCount,
-                    of: tokens.totalCount}
-                    }}</div>
+                <faya-pagination-info [page]="tokens.page" [limit]="paginationParameter.limit" [resultCount]="tokens.resultCount" [totalCount]="tokens.totalCount"></faya-pagination-info>
                 <pagination (pageChanged)="pageChanged($event)"
                             [(ngModel)]="paginationParameter.page"
                             [totalItems]="tokens.totalCount"

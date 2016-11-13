@@ -14,11 +14,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-right">
-                <div>{{'misc.paginationCount' | translate:{
-                    from: (namespaces.page - 1) * paginationParameter.limit,
-                    to: (namespaces.page - 1) * paginationParameter.limit + namespaces.resultCount,
-                    of: namespaces.totalCount}
-                    }}</div>
+                <faya-pagination-info [page]="namespaces.page" [limit]="paginationParameter.limit" [resultCount]="namespaces.resultCount" [totalCount]="namespaces.totalCount"></faya-pagination-info>
                 <pagination (pageChanged)="pageChanged($event)"
                             [(ngModel)]="paginationParameter.page"
                             [totalItems]="namespaces.totalCount"
