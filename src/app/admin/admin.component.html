@@ -8,7 +8,7 @@
                 <div class="panel-heading">{{'misc.generalInformationRaw' | translate}}</div>
                 <div class="panel-body">
                     <form class="form-horizontal">
-                        <faya-toggle-button labelClasses="col-md-8" inputclasses="col-md-4" [(ngModel)]="subscriptionEnabled" name="subscriptionEnabled" (change)="onChangeSubscriptionEnabled($event)">{{'account.signupEnabledLabel' | translate}}</faya-toggle-button>
+                        <faya-toggle-button labelClasses="col-md-8 control-label" inputClasses="col-md-4" [(ngModel)]="subscriptionEnabled" name="subscriptionEnabled" (change)="onChangeSubscriptionEnabled($event)">{{'account.signupEnabledLabel' | translate}}</faya-toggle-button>
                         <div class="form-group">
                             <label class="col-md-8 control-label">{{'token.tokenCountLabel' | translate}}</label>
                             <div class="col-md-4">

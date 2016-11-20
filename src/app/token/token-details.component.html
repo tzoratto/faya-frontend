@@ -1,36 +1,52 @@
-<form (ngSubmit)="onSubmit()" #tokenForm="ngForm" class="form-horizontal">
-    <div class="form-group">
-        <label for="description" class="col-md-3 control-label">{{'token.descriptionLabel' | translate}}</label>
-        <div class="col-md-9">
-            <textarea [(ngModel)]="token.description" class="form-control" id="description" name="description"></textarea>
+<form (ngSubmit)="onSubmit()" #tokenForm="ngForm">
+    <div class="form-horizontal">
+        <faya-toggle-button labelClasses="control-label col-md-2" inputClasses="col-md-2" [(ngModel)]="token.active" name="active">{{'token.activeLabel' | translate}}</faya-toggle-button>
+        <div class="form-group">
+            <label class="control-label col-md-2">{{'token.startsAtLabel' | translate}}</label>
+            <div class="col-md-4">
+                <p class="form-control-static">
+                    {{token.startsAt | date}}
+                    <span *ngIf="token.startsAt" (click)="resetStartsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span>
+                    <span (click)="displayStartsAtPicker = true" class="clickable glyphicon glyphicon-calendar margin-left-10"></span>
+                </p>
+            </div>
+            <label class="control-label col-md-2">{{'token.endsAtLabel' | translate}}</label>
+            <div class="col-md-4">
+                <p class="form-control-static">
+                    {{token.endsAt | date}}
+                    <span *ngIf="token.endsAt" (click)="resetEndsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span>
+                    <span (click)="displayEndsAtPicker = true" class="clickable glyphicon glyphicon-calendar margin-left-10"></span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div [hidden]="!displayStartsAtPicker" class="col-md-6">
+                <button type="button" class="close margin-10" (click)="displayStartsAtPicker = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <datepicker [(ngModel)]="startsAt" name="startsAt" (selectionDone)="startsAtSelected()"></datepicker>
+            </div>
+            <div [hidden]="!displayEndsAtPicker" class="col-md-6"
+                 [ngClass]="{'col-md-offset-6': !displayStartsAtPicker}">
+                <button type="button" class="close margin-10" (click)="displayEndsAtPicker = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <datepicker [(ngModel)]="endsAt" name="endsAt" (selectionDone)="endsAtSelected()"></datepicker>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pool" class="control-label col-md-2">{{'token.poolLabel' | translate}}</label>
+            <div class="col-md-4">
+                <input type="number" [(ngModel)]="token.pool" class="form-control" id="pool" name="pool"/>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label for="active" class="col-md-3 control-label">{{'token.activeLabel' | translate}}</label>
-        <div class="col-md-9">
-            <input type="checkbox" [(ngModel)]="token.active" class="form-control" id="active" name="active"/>
-        </div>
+    <div class="form-group col-md-offset-1">
+        <label for="description">{{'token.descriptionLabel' | translate}}</label>
+        <textarea [(ngModel)]="token.description" class="form-control" id="description" name="description"></textarea>
     </div>
     <div class="form-group">
-        <label for="startsAt" class="col-md-3 control-label">{{'token.startsAtLabel' | translate}}</label>
-        <div class="col-md-9">
-            <input type="text" [(ngModel)]="token.startsAt" class="form-control" id="startsAt" name="startsAt"/>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="endsAt" class="col-md-3 control-label">{{'token.endsAtLabel' | translate}}</label>
-        <div class="col-md-9">
-            <input type="text" [(ngModel)]="token.endsAt" class="form-control" id="endsAt" name="endsAt"/>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="pool" class="col-md-3 control-label">{{'token.poolLabel' | translate}}</label>
-        <div class="col-md-9">
-            <input type="number" [(ngModel)]="token.pool" class="form-control" id="pool" name="pool"/>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-3 col-md-9">
+        <div class="pull-right">
             <button (click)="onCancel()" type="button" class="btn btn-default">{{'misc.cancelButton' | translate}}</button>
             <button type="submit" [disabled]="!tokenForm.form.valid" class="btn btn-default">{{token.id ? ('misc.saveButton' | translate) : ('misc.createButton' | translate)}}</button>
         </div>
