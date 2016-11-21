@@ -3,3 +3,7 @@ textarea
     resize: vertical;
     min-height: 100px;
 }
+
+.label {
+    font-size: 1.0em;
+}

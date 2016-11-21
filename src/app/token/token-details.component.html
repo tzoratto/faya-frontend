@@ -5,33 +5,39 @@
             <label class="control-label col-md-2">{{'token.startsAtLabel' | translate}}</label>
             <div class="col-md-4">
                 <p class="form-control-static">
-                    {{token.startsAt | date}}
-                    <span *ngIf="token.startsAt" (click)="resetStartsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span>
-                    <span (click)="displayStartsAtPicker = true" class="clickable glyphicon glyphicon-calendar margin-left-10"></span>
+                    <span class="label label-default"><!--
+                        -->{{token.startsAt | date:'y/M/d, hh:mm a'}}<!--
+                        --><span *ngIf="token.startsAt" (click)="resetStartsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
+                    --></span>
+                    <span (click)="displayStartsAtPicker = !displayStartsAtPicker" class="clickable glyphicon glyphicon-calendar pull-right"></span>
                 </p>
             </div>
             <label class="control-label col-md-2">{{'token.endsAtLabel' | translate}}</label>
             <div class="col-md-4">
                 <p class="form-control-static">
-                    {{token.endsAt | date}}
-                    <span *ngIf="token.endsAt" (click)="resetEndsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span>
-                    <span (click)="displayEndsAtPicker = true" class="clickable glyphicon glyphicon-calendar margin-left-10"></span>
+                    <span class="label label-default"><!--
+                        -->{{token.endsAt | date:'y/M/d, hh:mm a'}}<!--
+                        --><span *ngIf="token.endsAt" (click)="resetEndsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
+                    --></span>
+                    <span (click)="displayEndsAtPicker = !displayEndsAtPicker" class="clickable glyphicon glyphicon-calendar pull-right"></span>
                 </p>
             </div>
         </div>
         <div class="row">
-            <div [hidden]="!displayStartsAtPicker" class="col-md-6">
-                <button type="button" class="close margin-10" (click)="displayStartsAtPicker = false">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <datepicker [(ngModel)]="startsAt" name="startsAt" (selectionDone)="startsAtSelected()"></datepicker>
+            <div *ngIf="displayStartsAtPicker" class="col-md-6">
+                <faya-datetime-picker [(ngModel)]="token.startsAt"
+                                      (close)="displayStartsAtPicker = false"
+                                      (selectionDone)="displayStartsAtPicker = false"
+                                      name="startsAt">
+                </faya-datetime-picker>
             </div>
-            <div [hidden]="!displayEndsAtPicker" class="col-md-6"
+            <div *ngIf="displayEndsAtPicker" class="col-md-6"
                  [ngClass]="{'col-md-offset-6': !displayStartsAtPicker}">
-                <button type="button" class="close margin-10" (click)="displayEndsAtPicker = false">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <datepicker [(ngModel)]="endsAt" name="endsAt" (selectionDone)="endsAtSelected()"></datepicker>
+                <faya-datetime-picker [(ngModel)]="token.endsAt"
+                                      (close)="displayEndsAtPicker = false"
+                                      (selectionDone)="displayEndsAtPicker = false"
+                                      name="endsAt">
+                </faya-datetime-picker>
             </div>
         </div>
         <div class="form-group">

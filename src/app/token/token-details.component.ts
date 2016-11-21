@@ -18,8 +18,6 @@ export class TokenDetailsComponent implements OnInit {
     namespace: Namespace;
     private displayStartsAtPicker: boolean = false;
     private displayEndsAtPicker: boolean = false;
-    private startsAt: Date = new Date();
-    private endsAt: Date = new Date();
 
     constructor(private tokenService: TokenService,
                 private messageService: MessageService) {
@@ -58,25 +56,13 @@ export class TokenDetailsComponent implements OnInit {
         this.token = this.token ? this.token : new Token({namespace: this.namespace.id, active: true});
     }
 
-    startsAtSelected(): void {
-        this.displayStartsAtPicker = false;
-        setTimeout(() => {
-            this.token.startsAt = this.startsAt;
-        }, 0);
-    }
-
     resetStartsAt(): void {
+        this.displayStartsAtPicker = false;
         this.token.startsAt = null;
     }
 
-    endsAtSelected(): void {
-        this.displayEndsAtPicker = false;
-        setTimeout(() => {
-            this.token.endsAt = this.endsAt;
-        }, 0);
-    }
-
     resetEndsAt(): void {
+        this.displayEndsAtPicker = false;
         this.token.endsAt = null;
     }
 }

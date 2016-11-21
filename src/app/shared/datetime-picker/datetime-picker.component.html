@@ -1,0 +1,5 @@
+<button type="button" class="close margin-10" (click)="onClickClose()">
+    <span aria-hidden="true">&times;</span>
+</button>
+<timepicker [(ngModel)]="dateTime" name="time"></timepicker>
+<datepicker [(ngModel)]="date" name="date" (selectionDone)="onSelectionDone()"></datepicker>
