@@ -12,10 +12,10 @@
                     class="list-group-item" type="button"
                     (click)="onClickNamespace(namespace)">
                     {{namespace.name}}
-                <span class="pull-right">
-                    <span (click)="onClickDelete(namespace)" class="clickable glyphicon glyphicon-trash"></span>
-                    <span (click)="onClickDetails(namespace)" class="clickable glyphicon glyphicon-edit"></span>
-                </span>
+                <faya-more-button class="pull-right">
+                    <faya-more-button-row (click)="onClickDelete(namespace)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
+                    <faya-more-button-row (click)="onClickDetails(namespace)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
+                </faya-more-button>
             </button>
         </div>
         <div class="row">

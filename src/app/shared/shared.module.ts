@@ -4,8 +4,10 @@ import {PaginationInfoComponent} from './pagination-info/pagination-info.compone
 import {TranslateModule} from 'ng2-translate';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {TimepickerModule, DatepickerModule} from 'ng2-bootstrap/ng2-bootstrap';
+import {TimepickerModule, DatepickerModule, DropdownModule, TooltipModule} from 'ng2-bootstrap/ng2-bootstrap';
 import {DateTimePickerComponent} from './datetime-picker/datetime-picker.component';
+import {MoreButtonComponent} from './more-button/more-button.component';
+import {MoreButtonRowComponent} from './more-button/more-button-row.component';
 
 @NgModule({
     imports: [
@@ -13,17 +15,23 @@ import {DateTimePickerComponent} from './datetime-picker/datetime-picker.compone
         CommonModule,
         FormsModule,
         DatepickerModule,
-        TimepickerModule
+        TimepickerModule,
+        DropdownModule,
+        TooltipModule
     ],
     declarations: [
         ToggleButtonComponent,
         PaginationInfoComponent,
-        DateTimePickerComponent
+        DateTimePickerComponent,
+        MoreButtonComponent,
+        MoreButtonRowComponent
     ],
     exports: [
         ToggleButtonComponent,
         PaginationInfoComponent,
         DateTimePickerComponent,
+        MoreButtonComponent,
+        MoreButtonRowComponent,
         CommonModule,
         TranslateModule,
         FormsModule

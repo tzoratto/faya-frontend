@@ -20,7 +20,6 @@
                     <th>{{'token.poolRaw' | translate}}</th>
                     <th>{{'token.countRaw' | translate}}</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -31,8 +30,12 @@
                     <td>{{token.endsAt}}</td>
                     <td>{{token.pool}}</td>
                     <td>{{token.count}}</td>
-                    <td><span (click)="onClickDelete(token)" class="clickable glyphicon glyphicon-trash"></span></td>
-                    <td><span (click)="onClickDetails(token)" class="clickable glyphicon glyphicon-edit"></span></td>
+                    <td>
+                        <faya-more-button class="pull-right">
+                            <faya-more-button-row (click)="onClickDelete(token)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
+                            <faya-more-button-row (click)="onClickDetails(token)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
+                        </faya-more-button>
+                    </td>
                 </tr>
             </tbody>
         </table>
