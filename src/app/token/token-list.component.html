@@ -23,11 +23,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let token of tokens.result">
-                    <td>{{token.value}}</td>
-                    <td>{{token.active}}</td>
-                    <td>{{token.startsAt}}</td>
-                    <td>{{token.endsAt}}</td>
+                <tr *ngFor="let token of tokens.result"
+                    tooltipPlacement="bottom"
+                    [tooltip]="token.description"
+                    tooltipPopupDelay="1250"
+                    [ngClass]="{'bg-success': token.isValid()}">
+                    <td class="crop">{{token.value}}</td>
+                    <td>
+                        <span *ngIf="token.active" class="glyphicon glyphicon-ok"></span>
+                        <span *ngIf="!token.active" class="glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>{{token.startsAt | date:'y/M/d, hh:mm a'}}</td>
+                    <td>{{token.endsAt | date:'y/M/d, hh:mm a'}}</td>
                     <td>{{token.pool}}</td>
                     <td>{{token.count}}</td>
                     <td>

@@ -34,7 +34,8 @@ import {MoreButtonRowComponent} from './more-button/more-button-row.component';
         MoreButtonRowComponent,
         CommonModule,
         TranslateModule,
-        FormsModule
+        FormsModule,
+        TooltipModule
     ]
 })
 export class SharedModule {

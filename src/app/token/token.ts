@@ -19,11 +19,22 @@ export class Token {
             this.description = token.description;
             this.count = token.count;
             this.active = token.active;
-            this.startsAt = token.startsAt;
-            this.endsAt = token.endsAt;
+            this.startsAt = token.startsAt ? new Date(token.startsAt) : null;
+            this.endsAt = token.endsAt ? new Date(token.endsAt) : null;
             this.pool = token.pool;
             this.createdAt = token.createdAt;
             this.updatedAt = token.updatedAt;
         }
+    }
+
+    isValid(): boolean {
+        if (this.active) {
+            let currentDate = new Date();
+            let respectStartDate = !this.startsAt || this.startsAt < currentDate;
+            let respectEndDate = !this.endsAt || this.endsAt > currentDate;
+            let respectPool = this.pool === undefined || this.pool === null || this.pool > 0;
+            return !!(respectStartDate && respectEndDate && respectPool);
+        }
+        return false;
     }
 }
