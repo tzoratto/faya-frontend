@@ -17,6 +17,7 @@ const noop = () => {};
 })
 export class DateTimePickerComponent implements ControlValueAccessor {
     private _dateTime: Date;
+    // DatePickerComponent and TimePickerComponent can't share the same Date variable (it work but not flawlessly)
     private date: Date;
     private onChange: (_: any) => void = noop;
     private onTouched: (_: any) => void = noop;
@@ -57,6 +58,7 @@ export class DateTimePickerComponent implements ControlValueAccessor {
     }
 
     onSelectionDone() {
+        // When selectionDone is triggered, the selected date is not directly updated
         setTimeout(() => {
             if (this.dateTime) {
                 this.date.setHours(this.dateTime.getHours());
