@@ -37,4 +37,8 @@ export class Token {
         }
         return false;
     }
+
+    get shortValue(): string {
+        return this.value.slice(0, this.value.indexOf('-'));
+    }
 }
