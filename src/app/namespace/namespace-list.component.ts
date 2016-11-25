@@ -102,8 +102,6 @@ export class NamespaceListComponent implements OnInit {
     }
 
     pageChanged($event): void {
-        setTimeout(() => {
-            this.fetchNamespaces();
-        }, 0);
+        this.fetchNamespaces();
     }
 }

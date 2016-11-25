@@ -74,8 +74,6 @@ export class UserListComponent implements OnInit {
     }
 
     pageChanged($event): void {
-        setTimeout(() => {
-            this.fetchUsers();
-        }, 0);
+        this.fetchUsers();
     }
 }

@@ -97,8 +97,6 @@ export class TokenListComponent implements OnInit, OnChanges {
     }
 
     pageChanged($event): void {
-        setTimeout(() => {
-            this.fetchTokens();
-        }, 0);
+        this.fetchTokens();
     }
 }

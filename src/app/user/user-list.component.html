@@ -26,15 +26,11 @@
     </table>
     <div class="row">
         <div class="col-md-12 text-right">
-            <faya-pagination-info [page]="users.page" [limit]="paginationParameter.limit" [resultCount]="users.resultCount" [totalCount]="users.totalCount"></faya-pagination-info>
-            <pagination (pageChanged)="pageChanged($event)"
-                        [(ngModel)]="paginationParameter.page"
-                        [totalItems]="users.totalCount"
-                        [itemsPerPage]="paginationParameter.limit"
-                        [maxSize]="5"
-                        [boundaryLinks]="true"
-                        class="pagination-sm">
-            </pagination>
+            <faya-pagination [limit]="paginationParameter.limit"
+                             [resultCount]="users.resultCount"
+                             [totalCount]="users.totalCount"
+                             [(ngModel)]="paginationParameter.page"
+                             (pageChanged)="pageChanged($event)"></faya-pagination>
         </div>
     </div>
 </div>

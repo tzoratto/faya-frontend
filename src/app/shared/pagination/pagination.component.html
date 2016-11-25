@@ -1,0 +1,18 @@
+<div>{{'misc.paginationCount' | translate:{
+    from: (page - 1) * limit + (resultCount > 0 ? 1 : 0),
+    to: (page - 1) * limit + resultCount,
+    of: totalCount}
+    }}
+</div>
+<pagination (pageChanged)="onPageChanged($event)"
+            [(ngModel)]="page"
+            [totalItems]="totalCount"
+            [itemsPerPage]="limit"
+            [maxSize]="maxSize"
+            [boundaryLinks]="boundaryLinks"
+            class="pagination-sm"
+            previousText="‹"
+            nextText="›"
+            firstText="«"
+            lastText="»">
+</pagination>

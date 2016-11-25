@@ -20,15 +20,11 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-right">
-                <faya-pagination-info [page]="namespaces.page" [limit]="paginationParameter.limit" [resultCount]="namespaces.resultCount" [totalCount]="namespaces.totalCount"></faya-pagination-info>
-                <pagination (pageChanged)="pageChanged($event)"
-                            [(ngModel)]="paginationParameter.page"
-                            [totalItems]="namespaces.totalCount"
-                            [itemsPerPage]="paginationParameter.limit"
-                            [maxSize]="5"
-                            [boundaryLinks]="true"
-                            class="pagination-sm">
-                </pagination>
+                <faya-pagination [limit]="paginationParameter.limit"
+                                 [resultCount]="namespaces.resultCount"
+                                 [totalCount]="namespaces.totalCount"
+                                 [(ngModel)]="paginationParameter.page"
+                                 (pageChanged)="pageChanged($event)"></faya-pagination>
             </div>
         </div>
     </div>
