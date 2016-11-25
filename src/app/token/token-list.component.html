@@ -13,6 +13,7 @@
         <table class="table table-condensed margin-top-10">
             <thead>
                 <tr>
+                    <th></th>
                     <th>{{'token.valueRaw' | translate}}</th>
                     <th>{{'token.activeRaw' | translate}}</th>
                     <th>{{'token.startsAtRaw' | translate}}</th>
@@ -28,6 +29,14 @@
                     [tooltip]="token.description"
                     tooltipPopupDelay="1250"
                     [ngClass]="{'bg-success': token.isValid()}">
+                    <td><span class="clickable glyphicon glyphicon-copy"
+                              fayaClipboard
+                              (onCopy)="onCopyToClipboard($event, token.value)"
+                              [textToCopy]="token.value"
+                              tooltipPlacement="top"
+                              tooltip="{{'misc.copyToClipboardRaw' | translate}}"
+                              tooltipPopupDelay="1250">
+                    </span></td>
                     <td class="crop">{{token.value}}</td>
                     <td>
                         <span *ngIf="token.active" class="glyphicon glyphicon-ok"></span>
