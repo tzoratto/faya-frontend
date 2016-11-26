@@ -32,9 +32,6 @@ export class DateTimePickerComponent implements ControlValueAccessor {
     private selectionDone = new EventEmitter();
 
     constructor() {
-        if (this.header) {
-            // TODO remove this useless statement when tslint/codelyzer doesn't complain about unused variable with external templates
-        }
     }
 
     writeValue(obj: any): void {
