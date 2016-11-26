@@ -10,7 +10,10 @@
             <button *ngFor="let namespace of namespaces.result"
                     [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
                     class="list-group-item" type="button"
-                    (click)="onClickNamespace(namespace)">
+                    (click)="onClickNamespace(namespace)"
+                    tooltipPlacement="bottom"
+                    [tooltip]="namespace.description"
+                    tooltipPopupDelay="1250">
                     {{namespace.name}}
                 <faya-more-button class="pull-right">
                     <faya-more-button-row (click)="onClickDelete(namespace)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
