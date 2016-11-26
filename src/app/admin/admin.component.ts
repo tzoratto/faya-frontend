@@ -30,7 +30,9 @@ export class AdminComponent implements OnInit {
             this.tokenCount = data[1];
             this.namespaceCount = data[2];
             this.loading = false;
-        }).catch(error => {});
+        }).catch(error => {
+            this.loading = false;
+        });
     }
 
     onChangeSubscriptionEnabled() {

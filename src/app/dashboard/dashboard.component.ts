@@ -30,6 +30,8 @@ export class DashboardComponent implements OnInit {
             this.tokenCount = data[0];
             this.namespaceCount = data[1];
             this.loading = false;
-        }).catch(error => {});
+        }).catch(error => {
+            this.loading = false;
+        });
     }
 }

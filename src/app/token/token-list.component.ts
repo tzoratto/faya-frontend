@@ -46,6 +46,7 @@ export class TokenListComponent implements OnInit, OnChanges {
                         this.loading = false;
                     },
                     error => {
+                        this.loading = false;
                     });
         }
     }
@@ -68,6 +69,7 @@ export class TokenListComponent implements OnInit, OnChanges {
                     this.filter.setValue('');
                     this.paginationParameter.filter = '';
                     this.listenFilter();
+                    this.loading = false;
                 });
     }
 

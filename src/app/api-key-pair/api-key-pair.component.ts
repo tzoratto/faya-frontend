@@ -53,7 +53,9 @@ export class ApiKeyPairComponent implements OnInit {
                 this.apiKeyPairs = apiKeyPairs;
                 this.loading = false;
             })
-            .catch(error => {});
+            .catch(error => {
+                this.loading = false;
+            });
     }
 
     ngOnInit(): void {

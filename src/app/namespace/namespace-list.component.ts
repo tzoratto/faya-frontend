@@ -46,6 +46,7 @@ export class NamespaceListComponent implements OnInit {
                     this.loading = false;
                 },
                 error => {
+                    this.loading = false;
                 });
     }
 
@@ -67,6 +68,7 @@ export class NamespaceListComponent implements OnInit {
                     this.filter.setValue('');
                     this.paginationParameter.filter = '';
                     this.listenFilter();
+                    this.loading = false;
                 }
             );
     }
