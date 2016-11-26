@@ -42,8 +42,8 @@
                         <span *ngIf="token.active" class="glyphicon glyphicon-ok"></span>
                         <span *ngIf="!token.active" class="glyphicon glyphicon-remove"></span>
                     </td>
-                    <td>{{token.startsAt | date:'y/M/d, hh:mm a'}}</td>
-                    <td>{{token.endsAt | date:'y/M/d, hh:mm a'}}</td>
+                    <td>{{token.startsAt | date:'y/MM/dd, HH:mm'}}</td>
+                    <td>{{token.endsAt | date:'y/MM/dd, HH:mm'}}</td>
                     <td class="text-center">{{token.pool}}</td>
                     <td class="text-center"><span class="badge">{{token.count}}</span></td>
                     <td>

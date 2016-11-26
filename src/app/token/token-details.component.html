@@ -7,7 +7,7 @@
                 <div class="input-group">
                     <div class="form-control">
                         <span><!--
-                            -->{{token.startsAt | date:'y/M/d, hh:mm a'}}<!--
+                            -->{{token.startsAt | date:'y/MM/dd, HH:mm'}}<!--
                             --><span *ngIf="token.startsAt" (click)="resetStartsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
                         --></span>
                     </div>
@@ -19,7 +19,7 @@
                 <div class="input-group">
                     <div class="form-control">
                         <span><!--
-                            -->{{token.endsAt | date:'y/M/d, hh:mm a'}}<!--
+                            -->{{token.endsAt | date:'y/MM/dd, HH:mm'}}<!--
                             --><span *ngIf="token.endsAt" (click)="resetEndsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
                         --></span>
                     </div>
