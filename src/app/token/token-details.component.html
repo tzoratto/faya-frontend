@@ -4,23 +4,27 @@
         <div class="form-group">
             <label class="control-label col-md-2">{{'token.startsAtLabel' | translate}}</label>
             <div class="col-md-4">
-                <p class="form-control-static">
-                    <span class="label label-default"><!--
-                        -->{{token.startsAt | date:'y/M/d, hh:mm a'}}<!--
-                        --><span *ngIf="token.startsAt" (click)="resetStartsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
-                    --></span>
-                    <span (click)="displayStartsAtPicker = !displayStartsAtPicker" class="clickable glyphicon glyphicon-calendar pull-right"></span>
-                </p>
+                <div class="input-group">
+                    <div class="form-control">
+                        <span><!--
+                            -->{{token.startsAt | date:'y/M/d, hh:mm a'}}<!--
+                            --><span *ngIf="token.startsAt" (click)="resetStartsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
+                        --></span>
+                    </div>
+                    <div (click)="displayStartsAtPicker = !displayStartsAtPicker" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar pull-right"></span></div>
+                </div>
             </div>
             <label class="control-label col-md-2">{{'token.endsAtLabel' | translate}}</label>
             <div class="col-md-4">
-                <p class="form-control-static">
-                    <span class="label label-default"><!--
-                        -->{{token.endsAt | date:'y/M/d, hh:mm a'}}<!--
-                        --><span *ngIf="token.endsAt" (click)="resetEndsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
-                    --></span>
-                    <span (click)="displayEndsAtPicker = !displayEndsAtPicker" class="clickable glyphicon glyphicon-calendar pull-right"></span>
-                </p>
+                <div class="input-group">
+                    <div class="form-control">
+                        <span><!--
+                            -->{{token.endsAt | date:'y/M/d, hh:mm a'}}<!--
+                            --><span *ngIf="token.endsAt" (click)="resetEndsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
+                        --></span>
+                    </div>
+                    <div (click)="displayEndsAtPicker = !displayEndsAtPicker" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar pull-right"></span></div>
+                </div>
             </div>
         </div>
         <div class="row">

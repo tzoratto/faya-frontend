@@ -10,8 +10,8 @@
                 <th>{{'account.emailRaw' | translate}}</th>
                 <th>{{'account.createdAtRaw' | translate}}</th>
                 <th>{{'account.lastAccessRaw' | translate}}</th>
-                <th>{{'account.adminRaw' | translate}}</th>
-                <th>{{'misc.deleteRaw' | translate}}</th>
+                <th class="text-center">{{'account.adminRaw' | translate}}</th>
+                <th class="text-center">{{'misc.deleteRaw' | translate}}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +19,8 @@
                 <td>{{user.local.email}}</td>
                 <td>{{user.createdAt | date}}</td>
                 <td>{{user.lastAccess | date}}</td>
-                <td><span *ngIf="user.admin" class="glyphicon glyphicon-ok-sign"></span></td>
-                <td (click)="onClickDelete(user)" class="clickable"><span class="glyphicon glyphicon-trash"></span></td>
+                <td class="text-center"><span *ngIf="user.admin" class="glyphicon glyphicon-ok-sign"></span></td>
+                <td (click)="onClickDelete(user)" class="clickable text-center"><span class="glyphicon glyphicon-trash"></span></td>
             </tr>
         </tbody>
     </table>

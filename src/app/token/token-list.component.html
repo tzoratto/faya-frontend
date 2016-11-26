@@ -15,11 +15,11 @@
                 <tr>
                     <th></th>
                     <th>{{'token.valueRaw' | translate}}</th>
-                    <th>{{'token.activeRaw' | translate}}</th>
+                    <th class="text-center">{{'token.activeRaw' | translate}}</th>
                     <th>{{'token.startsAtRaw' | translate}}</th>
                     <th>{{'token.endsAtRaw' | translate}}</th>
-                    <th>{{'token.poolRaw' | translate}}</th>
-                    <th>{{'token.countRaw' | translate}}</th>
+                    <th class="text-center">{{'token.poolRaw' | translate}}</th>
+                    <th class="text-center">{{'token.countRaw' | translate}}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,8 +28,8 @@
                     tooltipPlacement="bottom"
                     [tooltip]="token.description"
                     tooltipPopupDelay="1250"
-                    [ngClass]="{'bg-success': token.isValid()}">
-                    <td><span class="clickable glyphicon glyphicon-copy"
+                    [ngClass]="{'success': token.isValid()}">
+                    <td class="text-center"><span class="clickable glyphicon glyphicon-copy"
                               fayaClipboard
                               (onCopy)="onCopyToClipboard($event, token.value)"
                               [textToCopy]="token.value"
@@ -38,14 +38,14 @@
                               tooltipPopupDelay="1250">
                     </span></td>
                     <td>{{token.shortValue}}</td>
-                    <td>
+                    <td class="text-center">
                         <span *ngIf="token.active" class="glyphicon glyphicon-ok"></span>
                         <span *ngIf="!token.active" class="glyphicon glyphicon-remove"></span>
                     </td>
                     <td>{{token.startsAt | date:'y/M/d, hh:mm a'}}</td>
                     <td>{{token.endsAt | date:'y/M/d, hh:mm a'}}</td>
-                    <td>{{token.pool}}</td>
-                    <td>{{token.count}}</td>
+                    <td class="text-center">{{token.pool}}</td>
+                    <td class="text-center"><span class="badge">{{token.count}}</span></td>
                     <td>
                         <faya-more-button class="pull-right">
                             <faya-more-button-row (click)="onClickDelete(token)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
