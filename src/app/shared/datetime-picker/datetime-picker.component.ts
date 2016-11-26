@@ -1,4 +1,4 @@
-import {Component, forwardRef, Output, EventEmitter} from '@angular/core';
+import {Component, forwardRef, Output, EventEmitter, Input} from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -22,6 +22,9 @@ export class DateTimePickerComponent implements ControlValueAccessor {
     private onChange: (_: any) => void = noop;
     private onTouched: (_: any) => void = noop;
 
+    @Input()
+    private header: string;
+
     @Output()
     private close = new EventEmitter();
 
@@ -29,6 +32,9 @@ export class DateTimePickerComponent implements ControlValueAccessor {
     private selectionDone = new EventEmitter();
 
     constructor() {
+        if (this.header) {
+            // TODO remove this useless statement when tslint/codelyzer doesn't complain about unused variable with external templates
+        }
     }
 
     writeValue(obj: any): void {

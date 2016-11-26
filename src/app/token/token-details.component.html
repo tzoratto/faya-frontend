@@ -12,6 +12,14 @@
                         --></span>
                     </div>
                     <div (click)="displayStartsAtPicker = !displayStartsAtPicker" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar pull-right"></span></div>
+                    <div *ngIf="displayStartsAtPicker">
+                        <faya-datetime-picker [(ngModel)]="token.startsAt"
+                                              (close)="displayStartsAtPicker = false"
+                                              (selectionDone)="displayStartsAtPicker = false"
+                                              header="{{'token.startsAtRaw' | translate}}"
+                                              name="startsAt">
+                        </faya-datetime-picker>
+                    </div>
                 </div>
             </div>
             <label class="control-label col-md-2">{{'token.endsAtLabel' | translate}}</label>
@@ -24,24 +32,15 @@
                         --></span>
                     </div>
                     <div (click)="displayEndsAtPicker = !displayEndsAtPicker" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar pull-right"></span></div>
+                    <div *ngIf="displayEndsAtPicker">
+                        <faya-datetime-picker [(ngModel)]="token.endsAt"
+                                              (close)="displayEndsAtPicker = false"
+                                              (selectionDone)="displayEndsAtPicker = false"
+                                              header="{{'token.endsAtRaw' | translate}}"
+                                              name="endsAt">
+                        </faya-datetime-picker>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div *ngIf="displayStartsAtPicker" class="col-md-6">
-                <faya-datetime-picker [(ngModel)]="token.startsAt"
-                                      (close)="displayStartsAtPicker = false"
-                                      (selectionDone)="displayStartsAtPicker = false"
-                                      name="startsAt">
-                </faya-datetime-picker>
-            </div>
-            <div *ngIf="displayEndsAtPicker" class="col-md-6"
-                 [ngClass]="{'col-md-offset-6': !displayStartsAtPicker}">
-                <faya-datetime-picker [(ngModel)]="token.endsAt"
-                                      (close)="displayEndsAtPicker = false"
-                                      (selectionDone)="displayEndsAtPicker = false"
-                                      name="endsAt">
-                </faya-datetime-picker>
             </div>
         </div>
         <div class="form-group">

@@ -1,5 +1,12 @@
-<button type="button" class="close margin-10" (click)="onClickClose()">
-    <span aria-hidden="true">&times;</span>
-</button>
-<timepicker [(ngModel)]="dateTime" [showMeridian]="false" name="time"></timepicker>
-<datepicker [(ngModel)]="date" name="date" (selectionDone)="onSelectionDone()"></datepicker>
+<div class="faya-datetime-picker panel panel-default">
+    <div class="panel-heading clearfix">
+        {{header}}
+        <button type="button" class="close" (click)="onClickClose()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="panel-body">
+        <timepicker [(ngModel)]="dateTime" [showMeridian]="false" name="time"></timepicker>
+        <datepicker [(ngModel)]="date" name="date" (selectionDone)="onSelectionDone()"></datepicker>
+    </div>
+</div>
