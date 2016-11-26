@@ -16,6 +16,9 @@
                 </tr>
             </thead>
             <tbody>
+                <tr *ngIf="users.resultCount === 0">
+                    <td colspan="5" class="text-center text-muted">{{'account.noResults' | translate}}</td>
+                </tr>
                 <tr *ngFor="let user of users.result">
                     <td>{{user.local.email}}</td>
                     <td>{{user.createdAt | date}}</td>

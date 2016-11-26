@@ -11,7 +11,7 @@
             </div>
         </div>
         <faya-loading [loading]="loading">
-            <table class="table table-condensed margin-top-10">
+            <table class="table table-condensed margin-top-10 faya-token-list">
                 <thead>
                     <tr>
                         <th></th>
@@ -25,6 +25,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngIf="tokens.resultCount === 0">
+                        <td colspan="8" class="text-center text-muted">{{'token.noResults' | translate}}</td>
+                    </tr>
                     <tr *ngFor="let token of tokens.result"
                         tooltipPlacement="bottom"
                         [tooltip]="token.description"
@@ -65,4 +68,10 @@
                          class="pull-right text-right"></faya-pagination>
     </div>
     <faya-token-details *ngIf="displayTokenDetails" [namespace]="namespace" [token]="tokenToModify" (done)="onDetailsDone()"></faya-token-details>
+</div>
+<div *ngIf="!namespace">
+    <div class="jumbotron">
+        <h2>{{'namespace.noneSelected' | translate}}</h2>
+        <p>{{'token.createNamespaceFirst' | translate}}</p>
+    </div>
 </div>

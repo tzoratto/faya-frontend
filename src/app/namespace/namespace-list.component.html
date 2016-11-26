@@ -7,10 +7,10 @@
         </div>
         <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
         <faya-loading [loading]="loading">
-            <div class="list-group margin-top-10">
-                <button *ngFor="let namespace of namespaces.result"
+            <ul *ngIf="namespaces.resultCount > 0" class="list-group margin-top-10">
+                <li *ngFor="let namespace of namespaces.result"
                         [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
-                        class="list-group-item" type="button"
+                        class="list-group-item clearfix clickable"
                         (click)="onClickNamespace(namespace)"
                         tooltipPlacement="bottom"
                         [tooltip]="namespace.description"
@@ -20,7 +20,10 @@
                         <faya-more-button-row (click)="onClickDelete(namespace)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
                         <faya-more-button-row (click)="onClickDetails(namespace)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
                     </faya-more-button>
-                </button>
+                </li>
+            </ul>
+            <div *ngIf="namespaces.resultCount === 0" class="well well-sm text-muted">
+                {{'namespace.noResults' | translate}}
             </div>
         </faya-loading>
         <faya-pagination [limit]="paginationParameter.limit"
