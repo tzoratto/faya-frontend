@@ -11,6 +11,7 @@ import {MessageService} from '../core/message/message.service';
 })
 export class ApiKeyPairComponent implements OnInit {
     private apiKeyPairs: Array<ApiKeyPair> = [];
+    private loading: boolean = true;
 
     constructor(private modalService: ModalService,
                 private apiKeyPairService: ApiKeyPairService,
@@ -46,9 +47,11 @@ export class ApiKeyPairComponent implements OnInit {
     }
 
     private fetchApiKeyPairs(): void {
+        this.loading = true;
         this.apiKeyPairService.getApiKeyPairs()
             .then(apiKeyPairs => {
                 this.apiKeyPairs = apiKeyPairs;
+                this.loading = false;
             })
             .catch(error => {});
     }

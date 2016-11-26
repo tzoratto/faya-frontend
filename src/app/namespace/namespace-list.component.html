@@ -6,21 +6,23 @@
             </div>
         </div>
         <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
-        <div class="list-group margin-top-10">
-            <button *ngFor="let namespace of namespaces.result"
-                    [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
-                    class="list-group-item" type="button"
-                    (click)="onClickNamespace(namespace)"
-                    tooltipPlacement="bottom"
-                    [tooltip]="namespace.description"
-                    tooltipPopupDelay="1250">
-                    {{namespace.name}}
-                <faya-more-button class="pull-right">
-                    <faya-more-button-row (click)="onClickDelete(namespace)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
-                    <faya-more-button-row (click)="onClickDetails(namespace)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
-                </faya-more-button>
-            </button>
-        </div>
+        <faya-loading [loading]="loading">
+            <div class="list-group margin-top-10">
+                <button *ngFor="let namespace of namespaces.result"
+                        [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
+                        class="list-group-item" type="button"
+                        (click)="onClickNamespace(namespace)"
+                        tooltipPlacement="bottom"
+                        [tooltip]="namespace.description"
+                        tooltipPopupDelay="1250">
+                        {{namespace.name}}
+                    <faya-more-button class="pull-right">
+                        <faya-more-button-row (click)="onClickDelete(namespace)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
+                        <faya-more-button-row (click)="onClickDetails(namespace)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
+                    </faya-more-button>
+                </button>
+            </div>
+        </faya-loading>
         <faya-pagination [limit]="paginationParameter.limit"
                          [resultCount]="namespaces.resultCount"
                          [totalCount]="namespaces.totalCount"

@@ -8,7 +8,6 @@ import {SignupComponent} from './signup/signup.component';
 import {SignupGuard} from './signup/signup-guard.service';
 import {AdminComponent} from './admin/admin.component';
 import {AdminGuard} from './admin/admin-guard.service';
-import {AdminResolve} from './admin/admin-resolve.service';
 import {TokenManagerComponent} from './token-manager/token-manager.component';
 import {ApiKeyPairComponent} from './api-key-pair/api-key-pair.component';
 import {PasswordResetComponent} from './password-reset/password-reset.component';
@@ -36,10 +35,7 @@ const appRoutes: Routes = [
     {
         path: 'admin',
         component: AdminComponent,
-        canActivate: [AuthGuard, AdminGuard],
-        resolve: {
-            values: AdminResolve
-        }
+        canActivate: [AuthGuard, AdminGuard]
     },
     {
         path: 'token-manager',

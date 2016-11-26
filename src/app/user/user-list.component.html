@@ -4,26 +4,28 @@
             <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/>
         </div>
     </div>
-    <table class="table margin-top-10">
-        <thead>
-            <tr>
-                <th>{{'account.emailRaw' | translate}}</th>
-                <th>{{'account.createdAtRaw' | translate}}</th>
-                <th>{{'account.lastAccessRaw' | translate}}</th>
-                <th class="text-center">{{'account.adminRaw' | translate}}</th>
-                <th class="text-center">{{'misc.deleteRaw' | translate}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users.result">
-                <td>{{user.local.email}}</td>
-                <td>{{user.createdAt | date}}</td>
-                <td>{{user.lastAccess | date}}</td>
-                <td class="text-center"><span *ngIf="user.admin" class="glyphicon glyphicon-ok-sign"></span></td>
-                <td (click)="onClickDelete(user)" class="clickable text-center"><span class="glyphicon glyphicon-trash"></span></td>
-            </tr>
-        </tbody>
-    </table>
+    <faya-loading [loading]="loading">
+        <table class="table margin-top-10">
+            <thead>
+                <tr>
+                    <th>{{'account.emailRaw' | translate}}</th>
+                    <th>{{'account.createdAtRaw' | translate}}</th>
+                    <th>{{'account.lastAccessRaw' | translate}}</th>
+                    <th class="text-center">{{'account.adminRaw' | translate}}</th>
+                    <th class="text-center">{{'misc.deleteRaw' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users.result">
+                    <td>{{user.local.email}}</td>
+                    <td>{{user.createdAt | date}}</td>
+                    <td>{{user.lastAccess | date}}</td>
+                    <td class="text-center"><span *ngIf="user.admin" class="glyphicon glyphicon-ok-sign"></span></td>
+                    <td (click)="onClickDelete(user)" class="clickable text-center"><span class="glyphicon glyphicon-trash"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </faya-loading>
     <faya-pagination [limit]="paginationParameter.limit"
                      [resultCount]="users.resultCount"
                      [totalCount]="users.totalCount"

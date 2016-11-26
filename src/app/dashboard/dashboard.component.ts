@@ -10,9 +10,10 @@ import {User} from '../user/user';
     styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-    private tokenCount: Promise<number>;
-    private namespaceCount: Promise<number>;
+    private tokenCount: number;
+    private namespaceCount: number;
     private user: User;
+    private loading: boolean = true;
 
     constructor(private tokenService: TokenService,
                 private namespaceService: NamespaceService,
@@ -22,9 +23,13 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() {
         this.user = this.authService.getUser();
-        this.tokenCount = this.tokenService.getTokenCount(this.user)
-            .catch(error => {});
-        this.namespaceCount = this.namespaceService.getNamespaceCount(this.user)
-            .catch(error => {});
+        Promise.all([
+            this.tokenService.getTokenCount(this.user),
+            this.namespaceService.getNamespaceCount(this.user)
+        ]).then(data => {
+            this.tokenCount = data[0];
+            this.namespaceCount = data[1];
+            this.loading = false;
+        }).catch(error => {});
     }
 }

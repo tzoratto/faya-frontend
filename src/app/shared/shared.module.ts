@@ -12,6 +12,7 @@ import {DateTimePickerComponent} from './datetime-picker/datetime-picker.compone
 import {MoreButtonComponent} from './more-button/more-button.component';
 import {MoreButtonRowComponent} from './more-button/more-button-row.component';
 import {ClipboardDirective} from './clipboard/clipboard.directive';
+import {LoadingComponent} from './loading/loading.component';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import {ClipboardDirective} from './clipboard/clipboard.directive';
         DateTimePickerComponent,
         MoreButtonComponent,
         MoreButtonRowComponent,
-        ClipboardDirective
+        ClipboardDirective,
+        LoadingComponent
     ],
     exports: [
         ToggleButtonComponent,
@@ -39,6 +41,7 @@ import {ClipboardDirective} from './clipboard/clipboard.directive';
         MoreButtonComponent,
         MoreButtonRowComponent,
         ClipboardDirective,
+        LoadingComponent,
         CommonModule,
         TranslateModule,
         FormsModule,

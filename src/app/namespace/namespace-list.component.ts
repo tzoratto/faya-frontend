@@ -18,6 +18,7 @@ export class NamespaceListComponent implements OnInit {
     private filter = new FormControl();
     private displayNamespaceDetails: boolean = false;
     private namespaceToModify: Namespace;
+    private loading: boolean = true;
     @Output()
     namespaceSelected = new EventEmitter<Namespace>();
     private _namespaceSelected: Namespace;
@@ -34,6 +35,7 @@ export class NamespaceListComponent implements OnInit {
     }
 
     private fetchNamespaces() {
+        this.loading = true;
         this.namespaceService.getNamespaces(this.paginationParameter)
             .subscribe(namespaces => {
                     this.namespaces = namespaces;
@@ -41,6 +43,7 @@ export class NamespaceListComponent implements OnInit {
                         this._namespaceSelected = this.namespaces.result[0];
                         this.onClickNamespace(this._namespaceSelected);
                     }
+                    this.loading = false;
                 },
                 error => {
                 });
@@ -51,16 +54,21 @@ export class NamespaceListComponent implements OnInit {
             .debounceTime(400)
             .distinctUntilChanged()
             .switchMap(filter => {
+                this.loading = true;
                 this.paginationParameter.page = 1;
                 this.paginationParameter.filter = filter;
                 return this.namespaceService.getNamespaces(this.paginationParameter);
             })
-            .subscribe(namespaces => this.namespaces = namespaces,
+            .subscribe(namespaces => {
+                    this.namespaces = namespaces;
+                    this.loading = false;
+                },
                 error => {
                     this.filter.setValue('');
                     this.paginationParameter.filter = '';
                     this.listenFilter();
-                });
+                }
+            );
     }
 
     onClickDelete(namespace: Namespace): void {

@@ -1,13 +1,11 @@
 import {NgModule}      from '@angular/core';
 import {ApiKeyPairComponent} from './api-key-pair.component';
-import {CommonModule} from '@angular/common';
-import {TranslateModule} from 'ng2-translate';
 import {ApiKeyPairService} from './api-key-pair.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
     imports: [
-        CommonModule,
-        TranslateModule
+        SharedModule
     ],
     declarations: [ApiKeyPairComponent],
     providers: [

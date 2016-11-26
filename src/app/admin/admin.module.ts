@@ -1,7 +1,6 @@
 import {NgModule}      from '@angular/core';
 import {AdminComponent} from './admin.component';
 import {AdminGuard} from './admin-guard.service';
-import {AdminResolve} from './admin-resolve.service';
 import {SharedModule} from '../shared/shared.module';
 import {UserModule} from '../user/user.module';
 
@@ -14,8 +13,7 @@ import {UserModule} from '../user/user.module';
         AdminComponent
     ],
     providers: [
-        AdminGuard,
-        AdminResolve
+        AdminGuard
     ]
 })
 export class AdminModule {

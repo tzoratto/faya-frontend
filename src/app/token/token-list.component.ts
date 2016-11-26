@@ -19,6 +19,7 @@ export class TokenListComponent implements OnInit, OnChanges {
     private filter = new FormControl();
     private displayTokenDetails: boolean = false;
     private tokenToModify: Token;
+    private loading: boolean = true;
     @Input()
     namespace: Namespace;
 
@@ -37,12 +38,15 @@ export class TokenListComponent implements OnInit, OnChanges {
     }
 
     private fetchTokens() {
-        if (this.namespace)  {
+        if (this.namespace) {
+            this.loading = true;
             this.tokenService.getTokens(this.paginationParameter, this.namespace.id)
                 .subscribe(tokens => {
                         this.tokens = tokens;
+                        this.loading = false;
                     },
-                    error => {});
+                    error => {
+                    });
         }
     }
 
@@ -51,11 +55,15 @@ export class TokenListComponent implements OnInit, OnChanges {
             .debounceTime(400)
             .distinctUntilChanged()
             .switchMap(filter => {
+                this.loading = true;
                 this.paginationParameter.page = 1;
                 this.paginationParameter.filter = filter;
                 return this.tokenService.getTokens(this.paginationParameter, this.namespace.id);
             })
-            .subscribe(tokens => this.tokens = tokens,
+            .subscribe(tokens => {
+                    this.tokens = tokens;
+                    this.loading = false;
+                },
                 error => {
                     this.filter.setValue('');
                     this.paginationParameter.filter = '';

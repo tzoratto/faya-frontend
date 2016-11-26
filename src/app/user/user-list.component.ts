@@ -17,6 +17,7 @@ export class UserListComponent implements OnInit {
     private users: PaginatedResult<User> = new PaginatedResult<User>();
     private paginationParameter: PaginationParameter = new PaginationParameter(20, 1, '', '');
     private filter = new FormControl();
+    private loading: boolean = true;
 
     constructor(private userService: UserService,
                 private modalService: ModalService,
@@ -30,9 +31,11 @@ export class UserListComponent implements OnInit {
     }
 
     private fetchUsers() {
+        this.loading = true;
         this.userService.getUsers(this.paginationParameter)
             .subscribe(users => {
                     this.users = users;
+                    this.loading = false;
                 },
                 error => {
                 });
@@ -43,11 +46,15 @@ export class UserListComponent implements OnInit {
             .debounceTime(400)
             .distinctUntilChanged()
             .switchMap(filter => {
+                this.loading = true;
                 this.paginationParameter.page = 1;
                 this.paginationParameter.filter = filter;
                 return this.userService.getUsers(this.paginationParameter);
             })
-            .subscribe(users => this.users = users,
+            .subscribe(users => {
+                    this.users = users;
+                    this.loading = false;
+            },
                 error => {
                     this.filter.setValue('');
                     this.paginationParameter.filter = '';

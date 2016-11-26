@@ -10,51 +10,53 @@
                 <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
             </div>
         </div>
-        <table class="table table-condensed margin-top-10">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>{{'token.valueRaw' | translate}}</th>
-                    <th class="text-center">{{'token.activeRaw' | translate}}</th>
-                    <th>{{'token.startsAtRaw' | translate}}</th>
-                    <th>{{'token.endsAtRaw' | translate}}</th>
-                    <th class="text-center">{{'token.poolRaw' | translate}}</th>
-                    <th class="text-center">{{'token.countRaw' | translate}}</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let token of tokens.result"
-                    tooltipPlacement="bottom"
-                    [tooltip]="token.description"
-                    tooltipPopupDelay="1250"
-                    [ngClass]="{'success': token.isValid()}">
-                    <td class="text-center"><span class="clickable glyphicon glyphicon-copy"
-                              fayaClipboard
-                              (onCopy)="onCopyToClipboard($event, token.value)"
-                              [textToCopy]="token.value"
-                              tooltipPlacement="top"
-                              tooltip="{{'misc.copyToClipboardRaw' | translate}}"
-                              tooltipPopupDelay="1250">
-                    </span></td>
-                    <td>{{token.shortValue}}</td>
-                    <td class="text-center">
-                        <span *ngIf="token.active" class="glyphicon glyphicon-ok"></span>
-                        <span *ngIf="!token.active" class="glyphicon glyphicon-remove"></span>
-                    </td>
-                    <td>{{token.startsAt | date:'y/MM/dd, HH:mm'}}</td>
-                    <td>{{token.endsAt | date:'y/MM/dd, HH:mm'}}</td>
-                    <td class="text-center">{{token.pool}}</td>
-                    <td class="text-center"><span class="badge">{{token.count}}</span></td>
-                    <td>
-                        <faya-more-button class="pull-right">
-                            <faya-more-button-row (click)="onClickDelete(token)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
-                            <faya-more-button-row (click)="onClickDetails(token)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
-                        </faya-more-button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <faya-loading [loading]="loading">
+            <table class="table table-condensed margin-top-10">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>{{'token.valueRaw' | translate}}</th>
+                        <th class="text-center">{{'token.activeRaw' | translate}}</th>
+                        <th>{{'token.startsAtRaw' | translate}}</th>
+                        <th>{{'token.endsAtRaw' | translate}}</th>
+                        <th class="text-center">{{'token.poolRaw' | translate}}</th>
+                        <th class="text-center">{{'token.countRaw' | translate}}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let token of tokens.result"
+                        tooltipPlacement="bottom"
+                        [tooltip]="token.description"
+                        tooltipPopupDelay="1250"
+                        [ngClass]="{'success': token.isValid()}">
+                        <td class="text-center"><span class="clickable glyphicon glyphicon-copy"
+                                  fayaClipboard
+                                  (onCopy)="onCopyToClipboard($event, token.value)"
+                                  [textToCopy]="token.value"
+                                  tooltipPlacement="top"
+                                  tooltip="{{'misc.copyToClipboardRaw' | translate}}"
+                                  tooltipPopupDelay="1250">
+                        </span></td>
+                        <td>{{token.shortValue}}</td>
+                        <td class="text-center">
+                            <span *ngIf="token.active" class="glyphicon glyphicon-ok"></span>
+                            <span *ngIf="!token.active" class="glyphicon glyphicon-remove"></span>
+                        </td>
+                        <td>{{token.startsAt | date:'y/MM/dd, HH:mm'}}</td>
+                        <td>{{token.endsAt | date:'y/MM/dd, HH:mm'}}</td>
+                        <td class="text-center">{{token.pool}}</td>
+                        <td class="text-center"><span class="badge">{{token.count}}</span></td>
+                        <td>
+                            <faya-more-button class="pull-right">
+                                <faya-more-button-row (click)="onClickDelete(token)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
+                                <faya-more-button-row (click)="onClickDetails(token)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
+                            </faya-more-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </faya-loading>
         <faya-pagination [limit]="paginationParameter.limit"
                          [resultCount]="tokens.resultCount"
                          [totalCount]="tokens.totalCount"
