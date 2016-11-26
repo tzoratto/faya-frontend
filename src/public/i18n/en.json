@@ -74,6 +74,7 @@
     "countRaw": "Count",
     "createButton": "Create a token",
     "created": "The token '{{tokenValue}}' has been successfully created",
+    "createdAtLabel": "Created at :",
     "deleted": "The token '{{tokenValue}}' has been successfully deleted",
     "descriptionLabel": "Description :",
     "endsAtLabel": "To :",
@@ -86,6 +87,7 @@
     "startsAtRaw": "From",
     "tokenCountLabel": "Number of token(s) :",
     "updated": "The token '{{tokenValue}}' has been successfully updated",
+    "valueLabel": "Value :",
     "valueRaw": "Value"
   }
 }

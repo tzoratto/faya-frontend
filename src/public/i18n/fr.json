@@ -74,6 +74,7 @@
     "countRaw": "Compteur",
     "createButton": "Créer un token",
     "created": "Le token '{{tokenValue}}' a bien été créé",
+    "createdAtLabel": "Créé le :",
     "deleted": "Le token '{{tokenValue}}' a bien été supprimé",
     "descriptionLabel": "Description :",
     "endsAtLabel": "Au :",
@@ -86,6 +87,7 @@
     "startsAtRaw": "Du",
     "tokenCountLabel": "Nombre de token(s) :",
     "updated": "Le token '{{tokenValue}}' a bien été mis à jour",
+    "valueLabel": "Valeur :",
     "valueRaw": "Valeur"
   }
 }

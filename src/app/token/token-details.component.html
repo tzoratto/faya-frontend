@@ -1,6 +1,18 @@
 <form (ngSubmit)="onSubmit()" #tokenForm="ngForm">
     <div class="form-horizontal">
         <faya-toggle-button labelClasses="control-label col-md-2" inputClasses="col-md-2" [(ngModel)]="token.active" name="active">{{'token.activeLabel' | translate}}</faya-toggle-button>
+        <div *ngIf="token.id" class="form-group">
+            <label class="control-label col-md-2">{{'token.valueLabel' | translate}}</label>
+            <div class="col-md-10">
+                <p class="form-control-static">{{token.value}}</p>
+            </div>
+        </div>
+        <div *ngIf="token.id" class="form-group">
+            <label class="control-label col-md-2">{{'token.createdAtLabel' | translate}}</label>
+            <div class="col-md-4">
+                <p class="form-control-static">{{token.createdAt | date:'y/MM/dd, HH:mm'}}</p>
+            </div>
+        </div>
         <div class="form-group">
             <label class="control-label col-md-2">{{'token.startsAtLabel' | translate}}</label>
             <div class="col-md-4">
@@ -46,7 +58,7 @@
         <div class="form-group">
             <label for="pool" class="control-label col-md-2">{{'token.poolLabel' | translate}}</label>
             <div class="col-md-4">
-                <input type="number" [(ngModel)]="token.pool" class="form-control" id="pool" name="pool"/>
+                <input type="number" min="0" [(ngModel)]="token.pool" class="form-control" id="pool" name="pool"/>
             </div>
         </div>
     </div>
