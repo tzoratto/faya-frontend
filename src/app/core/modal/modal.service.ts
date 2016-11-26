@@ -23,7 +23,7 @@ export class ModalService {
             nextMessage = this.makeNextMessage(this.translateService.instant(message.key, message.variables), onValidation, onCancellation);
         }
 
-        this._message.next(nextMessage);
+        this._message.emit(nextMessage);
     }
 
     private makeNextMessage(message: string, onValidation?: Function, onCancellation?: Function): any {
