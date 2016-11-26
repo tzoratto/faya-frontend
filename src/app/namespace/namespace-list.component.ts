@@ -39,10 +39,7 @@ export class NamespaceListComponent implements OnInit {
         this.namespaceService.getNamespaces(this.paginationParameter)
             .subscribe(namespaces => {
                     this.namespaces = namespaces;
-                    if (!this._namespaceSelected) {
-                        this._namespaceSelected = this.namespaces.result[0];
-                        this.onClickNamespace(this._namespaceSelected);
-                    }
+                    this.selectFirstNamespace();
                     this.loading = false;
                 },
                 error => {
@@ -62,6 +59,7 @@ export class NamespaceListComponent implements OnInit {
             })
             .subscribe(namespaces => {
                     this.namespaces = namespaces;
+                    this.selectFirstNamespace();
                     this.loading = false;
                 },
                 error => {
@@ -71,6 +69,12 @@ export class NamespaceListComponent implements OnInit {
                     this.loading = false;
                 }
             );
+    }
+
+    private selectFirstNamespace(): void {
+        if (!this._namespaceSelected && this.namespaces.resultCount > 0) {
+            this.onClickNamespace(this.namespaces.result[0]);
+        }
     }
 
     onClickDelete(namespace: Namespace): void {
@@ -85,6 +89,9 @@ export class NamespaceListComponent implements OnInit {
                             key: 'namespace.deleted',
                             variables: {namespaceName: namespace.name}
                         });
+                        if (this._namespaceSelected && this._namespaceSelected.id === namespace.id) {
+                            this.onClickNamespace(null);
+                        }
                         this.fetchNamespaces();
                     })
                     .catch(error => {});
