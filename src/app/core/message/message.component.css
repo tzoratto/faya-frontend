@@ -1,0 +1,6 @@
+.faya-message {
+    position: fixed;
+    width: 550px;
+    bottom:0;
+    z-index: 10;
+}
