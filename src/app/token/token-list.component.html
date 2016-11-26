@@ -55,15 +55,12 @@
                 </tr>
             </tbody>
         </table>
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <faya-pagination [limit]="paginationParameter.limit"
-                                 [resultCount]="tokens.resultCount"
-                                 [totalCount]="tokens.totalCount"
-                                 [(ngModel)]="paginationParameter.page"
-                                 (pageChanged)="pageChanged($event)"></faya-pagination>
-            </div>
-        </div>
+        <faya-pagination [limit]="paginationParameter.limit"
+                         [resultCount]="tokens.resultCount"
+                         [totalCount]="tokens.totalCount"
+                         [(ngModel)]="paginationParameter.page"
+                         (pageChanged)="pageChanged($event)"
+                         class="pull-right text-right"></faya-pagination>
     </div>
     <faya-token-details *ngIf="displayTokenDetails" [namespace]="namespace" [token]="tokenToModify" (done)="onDetailsDone()"></faya-token-details>
 </div>

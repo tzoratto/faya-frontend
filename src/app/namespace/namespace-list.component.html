@@ -21,15 +21,12 @@
                 </faya-more-button>
             </button>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <faya-pagination [limit]="paginationParameter.limit"
-                                 [resultCount]="namespaces.resultCount"
-                                 [totalCount]="namespaces.totalCount"
-                                 [(ngModel)]="paginationParameter.page"
-                                 (pageChanged)="pageChanged($event)"></faya-pagination>
-            </div>
-        </div>
+        <faya-pagination [limit]="paginationParameter.limit"
+                         [resultCount]="namespaces.resultCount"
+                         [totalCount]="namespaces.totalCount"
+                         [(ngModel)]="paginationParameter.page"
+                         (pageChanged)="pageChanged($event)"
+                         class="pull-right text-right"></faya-pagination>
     </div>
     <faya-namespace-details *ngIf="displayNamespaceDetails" [namespace]="namespaceToModify" (done)="onDetailsDone()"></faya-namespace-details>
 </div>
