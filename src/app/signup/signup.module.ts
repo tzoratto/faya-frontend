@@ -3,11 +3,13 @@ import {SignupComponent} from './signup.component';
 import {SignupGuard} from './signup-guard.service';
 import {TranslateModule} from 'ng2-translate';
 import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [
         TranslateModule,
-        FormsModule
+        FormsModule,
+        RouterModule
     ],
     declarations: [
         SignupComponent

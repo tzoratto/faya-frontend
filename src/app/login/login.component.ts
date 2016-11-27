@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {AuthService} from '../core/auth/auth.service';
 import {Router} from '@angular/router';
 import {MessageService} from '../core/message/message.service';
+import {SettingService} from '../core/setting.service';
 
 @Component({
     selector: 'faya-login',
@@ -12,7 +13,8 @@ import {MessageService} from '../core/message/message.service';
 export class LoginComponent {
     constructor(private authService: AuthService,
                 private router: Router,
-                private messageService: MessageService) {
+                private messageService: MessageService,
+                private settingService: SettingService) {
 
     }
 
