@@ -1,6 +1,7 @@
 import {Injectable, EventEmitter} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {Message} from '../../utils/message';
+import {escapeHtml} from '../../utils/escape-html';
 
 @Injectable()
 export class ModalService {
@@ -17,6 +18,7 @@ export class ModalService {
     showModal(message: string | Message, onValidation?: Function, onCancellation?: Function) {
         let nextMessage: any;
 
+        message = escapeHtml(message);
         if (typeof message === 'string') {
             nextMessage = this.makeNextMessage(this.translateService.instant(message), onValidation, onCancellation);
         } else {
