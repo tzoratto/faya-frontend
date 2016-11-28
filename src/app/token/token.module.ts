@@ -4,6 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TokenListComponent} from './token-list.component';
 import {TokenDetailsComponent} from './token-details.component';
 import {SharedModule} from '../shared/shared.module';
+import {TokenHistoryComponent} from './token-history.component';
 
 @NgModule({
     imports: [
@@ -12,11 +13,13 @@ import {SharedModule} from '../shared/shared.module';
     ],
     declarations: [
         TokenListComponent,
-        TokenDetailsComponent
+        TokenDetailsComponent,
+        TokenHistoryComponent
     ],
     exports: [
         TokenListComponent,
-        TokenDetailsComponent
+        TokenDetailsComponent,
+        TokenHistoryComponent
     ],
     providers: [
         TokenService

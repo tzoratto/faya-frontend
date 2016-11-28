@@ -1,0 +1,29 @@
+<div *ngIf="token">
+    <faya-loading [loading]="loading">
+        <table class="table table-condensed margin-top-10 faya-tokenHit-list">
+            <thead>
+            <tr>
+                <th>{{'tokenHit.ipRaw' | translate}}</th>
+                <th>{{'tokenHit.dateRaw' | translate}}</th>
+                <th>{{'tokenHit.userAgentRaw' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="tokenHits.resultCount === 0">
+                    <td colspan="3" class="text-center text-muted">{{'tokenHit.noResults' | translate}}</td>
+                </tr>
+                <tr *ngFor="let tokenHit of tokenHits.result">
+                    <td>{{tokenHit.ip}}</td>
+                    <td>{{tokenHit.date | date:'y/MM/dd, HH:mm'}}</td>
+                    <td>{{tokenHit.userAgent}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </faya-loading>
+    <faya-pagination [limit]="paginationParameter.limit"
+                     [resultCount]="tokenHits.resultCount"
+                     [totalCount]="tokenHits.totalCount"
+                     [(ngModel)]="paginationParameter.page"
+                     (pageChanged)="pageChanged($event)"
+                     class="pull-right text-right"></faya-pagination>
+</div>

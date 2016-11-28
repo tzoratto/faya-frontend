@@ -87,16 +87,25 @@
     "descriptionLabel": "Description :",
     "endsAtLabel": "To :",
     "endsAtRaw": "To",
+    "historyRaw": "History",
     "managerLink": "Token Manager",
     "managerShortDescription": "Consult, activate, block...",
+    "newRaw": "New token",
     "noResults": "No tokens found",
     "poolLabel": "Pool :",
     "poolRaw": "Pool",
     "startsAtLabel": "From :",
     "startsAtRaw": "From",
     "tokenCountLabel": "Number of token(s) :",
+    "tokensRaw": "Tokens",
     "updated": "The token <b>'{{tokenValue}}'</b> has been successfully updated",
     "valueLabel": "Value :",
     "valueRaw": "Value"
+  },
+  "tokenHit": {
+    "dateRaw": "Date",
+    "ipRaw": "Ip",
+    "noResults": "No history entries found",
+    "userAgentRaw": "User agent"
   }
 }

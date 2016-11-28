@@ -10,6 +10,7 @@ import {Token} from './token';
 import {HandleErrorService} from '../core/handle-error.service';
 import {PaginationParameter} from '../utils/pagination-parameter';
 import {PaginatedResult} from '../utils/paginated-result';
+import {TokenHit} from './tokenHit';
 
 @Injectable()
 export class TokenService {
@@ -61,6 +62,15 @@ export class TokenService {
             .toPromise()
             .then(response => {
                 return new Token(this.responseService.getData(response));
+            })
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
+    }
+
+    getTokenHistory(token: Token, paginationParameter: PaginationParameter): Promise<PaginatedResult<TokenHit>> {
+        return this.authHttp.get(BACKEND_ROUTES.api.token.history(token.id) + paginationParameter.buildQueryString())
+            .toPromise()
+            .then(response => {
+                return new PaginatedResult<TokenHit>(this.responseService.getData(response), TokenHit);
             })
             .catch(error => this.handleErrorService.handleErrorHttp(error));
     }

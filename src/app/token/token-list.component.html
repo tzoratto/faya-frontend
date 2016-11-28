@@ -1,5 +1,21 @@
 <div *ngIf="namespace">
-    <div *ngIf="!displayTokenDetails">
+    <ol class="breadcrumb">
+        <li [ngClass]="{active: !tokenSelected}" class="clickable">
+            <a *ngIf="displayTokenDetails || displayTokenHistory" (click)="clearSelection()">{{'token.tokensRaw' | translate}}</a>
+            <span *ngIf="!displayTokenDetails && !displayTokenHistory">{{'token.tokensRaw' | translate}}</span>
+        </li>
+        <li [ngClass]="{active: !displayTokenHistory}" *ngIf="tokenSelected" class="clickable">
+            <a *ngIf="displayTokenHistory" (click)="onClickDetails(tokenSelected)">{{tokenSelected.shortValue}}</a>
+            <span *ngIf="!displayTokenHistory">{{tokenSelected.shortValue}}</span>
+        </li>
+        <li *ngIf="displayTokenDetails && !tokenSelected" class="clickable active">
+            <span (click)="onClickCreate()">{{'token.newRaw' | translate}}</span>
+        </li>
+        <li *ngIf="displayTokenHistory" class="clickable active">
+            <span (click)="onClickHistory(tokenSelected)">{{'token.historyRaw' | translate}}</span>
+        </li>
+    </ol>
+    <div *ngIf="!displayTokenDetails && !displayTokenHistory">
         <div class="row">
             <div class="col-md-12 text-right">
                 <button (click)="onClickCreate()" class="btn btn-primary">{{'token.createButton' | translate}}</button><br/>
@@ -52,8 +68,9 @@
                         <td class="text-center"><span class="badge">{{token.count}}</span></td>
                         <td>
                             <faya-more-button class="pull-right">
-                                <faya-more-button-row (click)="onClickDelete(token)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
                                 <faya-more-button-row (click)="onClickDetails(token)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
+                                <faya-more-button-row (click)="onClickHistory(token)"><span class="clickable glyphicon glyphicon-time margin-right-10"></span>{{'token.historyRaw' | translate}}</faya-more-button-row>
+                                <faya-more-button-row (click)="onClickDelete(token)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
                             </faya-more-button>
                         </td>
                     </tr>
@@ -67,7 +84,8 @@
                          (pageChanged)="pageChanged($event)"
                          class="pull-right text-right"></faya-pagination>
     </div>
-    <faya-token-details *ngIf="displayTokenDetails" [namespace]="namespace" [token]="tokenToModify" (done)="onDetailsDone()"></faya-token-details>
+    <faya-token-details *ngIf="displayTokenDetails" [namespace]="namespace" [token]="tokenSelected" (done)="onDetailsDone()"></faya-token-details>
+    <faya-token-history *ngIf="displayTokenHistory" [token]="tokenSelected" (done)="onHistoryDone()"></faya-token-history>
 </div>
 <div *ngIf="!namespace">
     <div class="jumbotron">

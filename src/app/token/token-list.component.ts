@@ -18,7 +18,8 @@ export class TokenListComponent implements OnInit, OnChanges {
     private paginationParameter: PaginationParameter = new PaginationParameter(20, 1, '-createdAt', '');
     private filter = new FormControl();
     private displayTokenDetails: boolean = false;
-    private tokenToModify: Token;
+    private displayTokenHistory: boolean = false;
+    private tokenSelected: Token;
     private loading: boolean = true;
     @Input()
     namespace: Namespace;
@@ -92,18 +93,31 @@ export class TokenListComponent implements OnInit, OnChanges {
     }
 
     onClickDetails(token: Token): void {
-        this.tokenToModify = token;
+        this.tokenSelected = token;
+        this.displayTokenHistory = false;
         this.displayTokenDetails = true;
     }
 
     onClickCreate(): void {
+        this.displayTokenHistory = false;
         this.displayTokenDetails = true;
     }
 
     onDetailsDone(): void {
         this.displayTokenDetails = false;
-        this.tokenToModify = null;
+        this.tokenSelected = null;
         this.fetchTokens();
+    }
+
+    onClickHistory(token: Token): void {
+        this.tokenSelected = token;
+        this.displayTokenDetails = false;
+        this.displayTokenHistory = true;
+    }
+
+    onHistoryDone(): void {
+        this.displayTokenHistory = false;
+        this.tokenSelected = null;
     }
 
     pageChanged($event): void {
@@ -122,5 +136,11 @@ export class TokenListComponent implements OnInit, OnChanges {
                 variables: {text: tokenValue}
             }, 'danger');
         }
+    }
+
+    clearSelection(): void {
+        this.tokenSelected = null;
+        this.displayTokenHistory = false;
+        this.displayTokenDetails = false;
     }
 }

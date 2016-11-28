@@ -87,16 +87,25 @@
     "descriptionLabel": "Description :",
     "endsAtLabel": "Au :",
     "endsAtRaw": "Au",
+    "historyRaw": "Historique",
     "managerLink": "Gérer mes tokens",
     "managerShortDescription": "Consulter, activer, bloquer...",
+    "newRaw": "Nouveau token",
     "noResults": "Aucun token trouvé",
     "poolLabel": "Pool :",
     "poolRaw": "Pool",
     "startsAtLabel": "Du :",
     "startsAtRaw": "Du",
     "tokenCountLabel": "Nombre de token(s) :",
+    "tokensRaw": "Tokens",
     "updated": "Le token <b>'{{tokenValue}}'</b> a bien été mis à jour",
     "valueLabel": "Valeur :",
     "valueRaw": "Valeur"
+  },
+  "tokenHit": {
+    "dateRaw": "Date",
+    "ipRaw": "Ip",
+    "noResults": "Aucune historique disponible",
+    "userAgentRaw": "User agent"
   }
 }

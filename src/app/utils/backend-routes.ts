@@ -36,4 +36,6 @@ export const BACKEND_ROUTES = new function () {
     this.api.token.startingDate = id => this.api.token.instance(id) + '/starting-date';
     this.api.token.endingDate = id => this.api.token.instance(id) + '/ending-date';
     this.api.token.pool = id => this.api.token.instance(id) + '/pool';
+
+    this.api.token.history = id => this.api.token.instance(id) + '/history';
 };
