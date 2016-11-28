@@ -4,6 +4,7 @@ export class TokenHit {
     ip: string;
     date: Date;
     userAgent: string;
+    response: boolean;
 
     constructor(tokenHit?: any) {
         if (tokenHit) {
@@ -12,6 +13,7 @@ export class TokenHit {
             this.ip = tokenHit.ip;
             this.date = tokenHit.date ? new Date(tokenHit.date) : null;
             this.userAgent = tokenHit.userAgent;
+            this.response = tokenHit.response;
         }
     }
 }

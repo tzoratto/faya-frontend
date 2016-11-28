@@ -12,7 +12,8 @@
                 <tr *ngIf="tokenHits.resultCount === 0">
                     <td colspan="3" class="text-center text-muted">{{'tokenHit.noResults' | translate}}</td>
                 </tr>
-                <tr *ngFor="let tokenHit of tokenHits.result">
+                <tr *ngFor="let tokenHit of tokenHits.result"
+                    [ngClass]="{'danger': !tokenHit.response}">
                     <td>{{tokenHit.ip}}</td>
                     <td>{{tokenHit.date | date:'y/MM/dd, HH:mm'}}</td>
                     <td>{{tokenHit.userAgent}}</td>
