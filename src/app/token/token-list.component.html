@@ -9,10 +9,10 @@
             <span *ngIf="!displayTokenHistory">{{tokenSelected.shortValue}}</span>
         </li>
         <li *ngIf="displayTokenDetails && !tokenSelected" class="clickable active">
-            <span (click)="onClickCreate()">{{'token.newRaw' | translate}}</span>
+            <span>{{'token.newRaw' | translate}}</span>
         </li>
         <li *ngIf="displayTokenHistory" class="clickable active">
-            <span (click)="onClickHistory(tokenSelected)">{{'token.historyRaw' | translate}}</span>
+            <span>{{'token.historyRaw' | translate}}</span>
         </li>
     </ol>
     <div *ngIf="!displayTokenDetails && !displayTokenHistory">
@@ -85,7 +85,7 @@
                          class="pull-right text-right"></faya-pagination>
     </div>
     <faya-token-details *ngIf="displayTokenDetails" [namespace]="namespace" [token]="tokenSelected" (done)="onDetailsDone()"></faya-token-details>
-    <faya-token-history *ngIf="displayTokenHistory" [token]="tokenSelected" (done)="onHistoryDone()"></faya-token-history>
+    <faya-token-history *ngIf="displayTokenHistory" [token]="tokenSelected"></faya-token-history>
 </div>
 <div *ngIf="!namespace">
     <div class="jumbotron">

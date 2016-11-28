@@ -35,7 +35,7 @@ export class TokenListComponent implements OnInit, OnChanges {
 
     ngOnChanges() {
         this.paginationParameter.page = 1;
-        this.fetchTokens();
+        this.clearSelection();
     }
 
     private fetchTokens() {
@@ -115,11 +115,6 @@ export class TokenListComponent implements OnInit, OnChanges {
         this.displayTokenHistory = true;
     }
 
-    onHistoryDone(): void {
-        this.displayTokenHistory = false;
-        this.tokenSelected = null;
-    }
-
     pageChanged($event): void {
         this.fetchTokens();
     }
@@ -139,6 +134,7 @@ export class TokenListComponent implements OnInit, OnChanges {
     }
 
     clearSelection(): void {
+        this.fetchTokens();
         this.tokenSelected = null;
         this.displayTokenHistory = false;
         this.displayTokenDetails = false;
