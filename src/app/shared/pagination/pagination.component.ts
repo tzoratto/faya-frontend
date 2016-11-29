@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, forwardRef} from '@angular/core';
+import {Component, Input, Output, EventEmitter, forwardRef, OnChanges} from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -15,7 +15,7 @@ const noop = () => {};
     styleUrls: ['pagination.component.css'],
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class PaginationComponent implements ControlValueAccessor {
+export class PaginationComponent implements ControlValueAccessor, OnChanges {
     @Input()
     limit: number;
     @Input()
@@ -35,6 +35,17 @@ export class PaginationComponent implements ControlValueAccessor {
 
     constructor() {
 
+    }
+
+    ngOnChanges(): void {
+        // FIXME This is a temporary workaround for ng2-bootstrap pagination.
+        // Fix ng2-bootstrap bug when requested page is after the last page
+        // see https://github.com/valor-software/ng2-bootstrap/issues/1167
+        // or https://github.com/valor-software/ng2-bootstrap/issues/899
+        let lastPage = Math.ceil(this.totalCount / this.limit);
+        if (lastPage < this.page) {
+            this.page = lastPage > 0 ? lastPage : 1;
+        }
     }
 
     writeValue(obj: any): void {

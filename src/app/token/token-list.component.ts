@@ -77,9 +77,6 @@ export class TokenListComponent implements OnInit, OnChanges {
     onClickDelete(token: Token): void {
         this.modalService.showModal({key: 'token.confirmDelete', variables: {tokenValue: token.value}},
             () => {
-                if (this.paginationParameter.page > 1 && this.tokens.resultCount === 1) {
-                    this.paginationParameter.page--;
-                }
                 this.tokenService.deleteToken(token)
                     .then(() => {
                         this.messageService.clearAlert().addAlertAndTranslate({

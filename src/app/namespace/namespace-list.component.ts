@@ -80,9 +80,6 @@ export class NamespaceListComponent implements OnInit {
     onClickDelete(namespace: Namespace): void {
         this.modalService.showModal({key: 'namespace.confirmDelete', variables: {namespaceName: namespace.name}},
             () => {
-                if (this.paginationParameter.page > 1 && this.namespaces.resultCount === 1) {
-                    this.paginationParameter.page--;
-                }
                 this.namespaceService.deleteNamespace(namespace)
                     .then(() => {
                         this.messageService.clearAlert().addAlertAndTranslate({

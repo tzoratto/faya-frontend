@@ -67,9 +67,6 @@ export class UserListComponent implements OnInit {
     onClickDelete(user: User): void {
         this.modalService.showModal({key: 'account.confirmDelete', variables: {userEmail: user.local.email}},
             () => {
-                if (this.paginationParameter.page > 1 && this.users.resultCount === 1) {
-                    this.paginationParameter.page--;
-                }
                 this.userService.deleteUser(user)
                     .then(() => {
                         this.messageService.clearAlert().addAlertAndTranslate({
