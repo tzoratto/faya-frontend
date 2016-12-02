@@ -38,4 +38,7 @@ export const BACKEND_ROUTES = new function () {
     this.api.token.pool = id => this.api.token.instance(id) + '/pool';
 
     this.api.token.history = id => this.api.token.instance(id) + '/history';
+    this.api.token.history.year = id => this.api.token.history(id) + '/year';
+    this.api.token.history.month = id => this.api.token.history(id) + '/month';
+    this.api.token.history.day = id => this.api.token.history(id) + '/day';
 };

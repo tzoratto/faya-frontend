@@ -11,12 +11,15 @@ import {HandleErrorService} from '../core/handle-error.service';
 import {PaginationParameter} from '../utils/pagination-parameter';
 import {PaginatedResult} from '../utils/paginated-result';
 import {TokenHit} from './tokenHit';
+import {ChartService} from '../shared/chart/chart.service';
+import {ChartParameter} from '../shared/chart/chart-parameter';
 
 @Injectable()
 export class TokenService {
     constructor(private authHttp: AuthHttp,
                 private responseService: ResponseService,
-                private handleErrorService: HandleErrorService) {
+                private handleErrorService: HandleErrorService,
+                private chartService: ChartService) {
 
     }
 
@@ -71,6 +74,33 @@ export class TokenService {
             .toPromise()
             .then(response => {
                 return new PaginatedResult<TokenHit>(this.responseService.getData(response), TokenHit);
+            })
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
+    }
+
+    getTokenYearHistory(token: Token): Promise<ChartParameter> {
+        return this.authHttp.get(BACKEND_ROUTES.api.token.history.year(token.id))
+            .toPromise()
+            .then(response => {
+                return this.chartService.yearHistoryChartData(this.responseService.getData(response));
+            })
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
+    }
+
+    getTokenMonthHistory(token: Token): Promise<ChartParameter> {
+        return this.authHttp.get(BACKEND_ROUTES.api.token.history.month(token.id))
+            .toPromise()
+            .then(response => {
+                return this.chartService.monthHistoryChartData(this.responseService.getData(response));
+            })
+            .catch(error => this.handleErrorService.handleErrorHttp(error));
+    }
+
+    getTokenDayHistory(token: Token): Promise<ChartParameter> {
+        return this.authHttp.get(BACKEND_ROUTES.api.token.history.day(token.id))
+            .toPromise()
+            .then(response => {
+                return this.chartService.dayHistoryChartData(this.responseService.getData(response));
             })
             .catch(error => this.handleErrorService.handleErrorHttp(error));
     }

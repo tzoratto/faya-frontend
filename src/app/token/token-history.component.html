@@ -1,4 +1,16 @@
 <div *ngIf="token">
+    <div *ngIf="!chartLoading" class="row">
+        <div class="col-md-3 col-md-offset-9">
+            <select (change)="chartScaleChange($event)" class="form-control">
+                <option value="day">{{'tokenHit.lastDay' | translate}}</option>
+                <option value="month">{{'tokenHit.lastMonth' | translate}}</option>
+                <option value="year">{{'tokenHit.lastYear' | translate}}</option>
+            </select>
+        </div>
+    </div>
+    <div *ngIf="chartParameter" fayaChart id="historyChart" [chartParameter]="chartParameter" (chartReady)="onChartReady()"></div>
+    <div class="text-right"><small><em>{{'misc.chartUTC' | translate}}</em></small></div>
+    <hr/>
     <faya-loading [loading]="loading">
         <table class="table table-condensed margin-top-10 faya-tokenHit-list">
             <thead>

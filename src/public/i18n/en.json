@@ -43,6 +43,7 @@
   "misc": {
     "adminShortDescription": "Faya administration",
     "cancelButton": "Cancel",
+    "chartUTC": "This chart displays data in UTC format",
     "confirmationRaw": "Confirmation",
     "confirmButton": "Confirm",
     "copyToClipboardError": "<b>'{{text}}'</b> can't be copied to clipboard",
@@ -104,7 +105,11 @@
   },
   "tokenHit": {
     "dateRaw": "Date",
+    "hitRaw": "Hit",
     "ipRaw": "Ip",
+    "lastDay": "Last day",
+    "lastMonth": "Last month",
+    "lastYear": "Last year",
     "noResults": "No history entries found",
     "userAgentRaw": "User agent"
   }

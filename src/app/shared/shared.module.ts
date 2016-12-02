@@ -2,7 +2,7 @@ import {NgModule}      from '@angular/core';
 import {ToggleButtonComponent} from './toggle-button/toggle-button.component';
 import {PaginationComponent} from './pagination/pagination.component';
 import {TranslateModule} from 'ng2-translate';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {
     TimepickerModule, DatepickerModule, DropdownModule, TooltipModule,
@@ -13,6 +13,8 @@ import {MoreButtonComponent} from './more-button/more-button.component';
 import {MoreButtonRowComponent} from './more-button/more-button-row.component';
 import {ClipboardDirective} from './clipboard/clipboard.directive';
 import {LoadingComponent} from './loading/loading.component';
+import {ChartDirective} from './chart/chart.directive';
+import {ChartService} from './chart/chart.service';
 
 @NgModule({
     imports: [
@@ -32,7 +34,8 @@ import {LoadingComponent} from './loading/loading.component';
         MoreButtonComponent,
         MoreButtonRowComponent,
         ClipboardDirective,
-        LoadingComponent
+        LoadingComponent,
+        ChartDirective
     ],
     exports: [
         ToggleButtonComponent,
@@ -42,10 +45,15 @@ import {LoadingComponent} from './loading/loading.component';
         MoreButtonRowComponent,
         ClipboardDirective,
         LoadingComponent,
+        ChartDirective,
         CommonModule,
         TranslateModule,
         FormsModule,
         TooltipModule
+    ],
+    providers: [
+        ChartService,
+        DatePipe
     ]
 })
 export class SharedModule {
