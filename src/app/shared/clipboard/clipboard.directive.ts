@@ -1,5 +1,6 @@
-import {Directive, ElementRef, Output, EventEmitter, Input, OnInit, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit, OnDestroy} from '@angular/core';
 import Clipboard = require('clipboard');
+import {MessageService} from '../../core/message/message.service';
 
 @Directive({
     selector: '[fayaClipboard]'
@@ -8,10 +9,9 @@ export class ClipboardDirective implements OnInit, OnDestroy {
     private clipboard: any;
     @Input()
     textToCopy: string;
-    @Output()
-    onCopy = new EventEmitter<boolean>();
 
-    constructor(private elmRef: ElementRef) {
+    constructor(private elmRef: ElementRef,
+                private messageService: MessageService) {
 
     }
 
@@ -21,8 +21,18 @@ export class ClipboardDirective implements OnInit, OnDestroy {
                 return this.textToCopy;
             }
         });
-        this.clipboard.on('success', () => this.onCopy.emit(true));
-        this.clipboard.on('error', () => this.onCopy.emit(false));
+        this.clipboard.on('success', () => {
+            this.messageService.addAlertAndTranslate({
+                key: 'misc.copyToClipboardSuccess',
+                variables: {text: this.textToCopy}
+            });
+        });
+        this.clipboard.on('error', () => {
+            this.messageService.addAlertAndTranslate({
+                key: 'misc.copyToClipboardError',
+                variables: {text: this.textToCopy}
+            }, 'danger');
+        });
     }
 
     ngOnDestroy(): void {

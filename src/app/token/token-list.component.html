@@ -51,7 +51,6 @@
                         [ngClass]="{'success': token.isValid()}">
                         <td class="text-center"><span class="clickable glyphicon glyphicon-copy"
                                   fayaClipboard
-                                  (onCopy)="onCopyToClipboard($event, token.value)"
                                   [textToCopy]="token.value"
                                   tooltipPlacement="top"
                                   tooltip="{{'misc.copyToClipboardRaw' | translate}}"

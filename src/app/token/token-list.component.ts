@@ -116,20 +116,6 @@ export class TokenListComponent implements OnInit, OnChanges {
         this.fetchTokens();
     }
 
-    onCopyToClipboard($event, tokenValue): void {
-        if ($event) {
-            this.messageService.addAlertAndTranslate({
-                key: 'misc.copyToClipboardSuccess',
-                variables: {text: tokenValue}
-            });
-        } else {
-            this.messageService.addAlertAndTranslate({
-                key: 'misc.copyToClipboardError',
-                variables: {text: tokenValue}
-            }, 'danger');
-        }
-    }
-
     clearSelection(): void {
         this.fetchTokens();
         this.tokenSelected = null;
