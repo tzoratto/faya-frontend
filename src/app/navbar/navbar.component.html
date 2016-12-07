@@ -11,14 +11,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed">
             <ul class="nav navbar-nav">
-                <li *ngIf="authService.isLoggedIn()" routerLinkActive="active"><a routerLink="dashboard">{{'misc.dashboardRaw' | translate}}</a></li>
-                <li *ngIf="authService.isLoggedIn()" routerLinkActive="active"><a routerLink="token-manager">{{'token.managerLink' | translate}}</a></li>
-                <li *ngIf="authService.isLoggedIn() && authService.getUser().isAdmin()" routerLinkActive="active"><a routerLink="admin">{{'account.adminRaw' | translate}}</a></li>
+                <li (click)="isCollapsed = true" *ngIf="authService.isLoggedIn()" routerLinkActive="active"><a routerLink="dashboard">{{'misc.dashboardRaw' | translate}}</a></li>
+                <li (click)="isCollapsed = true" *ngIf="authService.isLoggedIn()" routerLinkActive="active"><a routerLink="token-manager">{{'token.managerLink' | translate}}</a></li>
+                <li (click)="isCollapsed = true" *ngIf="authService.isLoggedIn() && authService.getUser().isAdmin()" routerLinkActive="active"><a routerLink="admin">{{'account.adminRaw' | translate}}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="!authService.isLoggedIn()" routerLinkActive="active"><a routerLink="login">{{'account.loginLink' | translate}}</a></li>
-                <li *ngIf="!authService.isLoggedIn() && settingService.getSubscriptionEnabled()" routerLinkActive="active"><a routerLink="signup">{{'account.signupLink' | translate}}</a></li>
-                <li *ngIf="authService.isLoggedIn()"><a (click)="logout()" href="#">{{'account.logoutLink' | translate}}</a></li>
+                <li (click)="isCollapsed = true" *ngIf="!authService.isLoggedIn()" routerLinkActive="active"><a routerLink="login">{{'account.loginLink' | translate}}</a></li>
+                <li (click)="isCollapsed = true" *ngIf="!authService.isLoggedIn() && settingService.getSubscriptionEnabled()" routerLinkActive="active"><a routerLink="signup">{{'account.signupLink' | translate}}</a></li>
+                <li (click)="isCollapsed = true" *ngIf="authService.isLoggedIn()"><a (click)="logout()" href="#">{{'account.logoutLink' | translate}}</a></li>
             </ul>
         </div>
     </div>

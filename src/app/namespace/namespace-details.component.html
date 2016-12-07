@@ -7,7 +7,7 @@
         <label for="description">{{'namespace.descriptionLabel' | translate}}</label>
         <textarea #description [(ngModel)]="namespace.description" class="form-control" id="description" name="description"></textarea>
     </div>
-    <div class="form-group">
+    <div class="form-group clearfix">
         <div class="pull-right">
             <button (click)="onCancel()" type="button" class="btn btn-default">{{'misc.cancelButton' | translate}}</button>
             <button type="submit" [disabled]="!namespaceForm.form.valid" class="btn btn-default">{{namespace.id ? ('misc.saveButton' | translate) : ('misc.createButton' | translate)}}</button>

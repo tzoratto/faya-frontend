@@ -15,15 +15,13 @@
         </div>
         <div class="form-group">
             <label class="control-label col-md-2">{{'token.startsAtLabel' | translate}}</label>
-            <div class="col-md-4">
+            <div class="col-md-5 col-lg-4">
                 <div class="input-group">
+                    <div (click)="onClickDisplayStartsAtPicker()" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
                     <div class="form-control">
-                        <span><!--
-                            -->{{token.startsAt | date:'y/MM/dd, HH:mm'}}<!--
-                            --><span *ngIf="token.startsAt" (click)="resetStartsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
-                        --></span>
+                        {{token.startsAt | date:'y/MM/dd, HH:mm'}}
                     </div>
-                    <div (click)="displayStartsAtPicker = !displayStartsAtPicker" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar pull-right"></span></div>
+                    <div *ngIf="token.startsAt" class="clickable input-group-addon" (click)="resetStartsAt()"><span class="clickable glyphicon glyphicon-remove"></span></div>
                     <div *ngIf="displayStartsAtPicker">
                         <faya-datetime-picker [(ngModel)]="token.startsAt"
                                               (close)="displayStartsAtPicker = false"
@@ -34,16 +32,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="form-group">
             <label class="control-label col-md-2">{{'token.endsAtLabel' | translate}}</label>
-            <div class="col-md-4">
+            <div class="col-md-5 col-lg-4">
                 <div class="input-group">
+                    <div (click)="onClickDisplayEndsAtPicker()" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
                     <div class="form-control">
-                        <span><!--
-                            -->{{token.endsAt | date:'y/MM/dd, HH:mm'}}<!--
-                            --><span *ngIf="token.endsAt" (click)="resetEndsAt()" class="clickable glyphicon glyphicon-remove margin-left-10"></span><!--
-                        --></span>
+                        {{token.endsAt | date:'y/MM/dd, HH:mm'}}
                     </div>
-                    <div (click)="displayEndsAtPicker = !displayEndsAtPicker" class="clickable input-group-addon"><span class="glyphicon glyphicon-calendar pull-right"></span></div>
+                    <div *ngIf="token.endsAt" class="clickable input-group-addon" (click)="resetEndsAt()"><span class="clickable glyphicon glyphicon-remove"></span></div>
                     <div *ngIf="displayEndsAtPicker">
                         <faya-datetime-picker [(ngModel)]="token.endsAt"
                                               (close)="displayEndsAtPicker = false"
@@ -57,7 +55,7 @@
         </div>
         <div class="form-group">
             <label for="pool" class="control-label col-md-2">{{'token.poolLabel' | translate}}</label>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <input type="number" min="0" [(ngModel)]="token.pool" class="form-control" id="pool" name="pool"/>
             </div>
         </div>
@@ -66,7 +64,7 @@
         <label for="description">{{'token.descriptionLabel' | translate}}</label>
         <textarea [(ngModel)]="token.description" class="form-control" id="description" name="description"></textarea>
     </div>
-    <div class="form-group">
+    <div class="form-group clearfix">
         <div class="pull-right">
             <button (click)="onCancel()" type="button" class="btn btn-default">{{'misc.cancelButton' | translate}}</button>
             <button type="submit" [disabled]="!tokenForm.form.valid" class="btn btn-default">{{token.id ? ('misc.saveButton' | translate) : ('misc.createButton' | translate)}}</button>

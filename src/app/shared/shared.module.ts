@@ -5,7 +5,7 @@ import {TranslateModule} from 'ng2-translate';
 import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {
-    TimepickerModule, DatepickerModule, DropdownModule, TooltipModule,
+    TimepickerModule, DatepickerModule, TooltipModule,
     PaginationModule
 } from 'ng2-bootstrap/ng2-bootstrap';
 import {DateTimePickerComponent} from './datetime-picker/datetime-picker.component';
@@ -23,7 +23,6 @@ import {ChartService} from './chart/chart.service';
         FormsModule,
         DatepickerModule,
         TimepickerModule,
-        DropdownModule,
         TooltipModule,
         PaginationModule
     ],

@@ -10,6 +10,7 @@
             <table class="table margin-top-20">
                 <thead>
                     <tr>
+                        <th class="text-center"></th>
                         <th>{{'account.apiKeyPairIdRaw' | translate}}</th>
                         <th>{{'account.apiKeyPairSecretRaw' | translate}}</th>
                         <th class="text-center">{{'misc.deleteRaw' | translate}}</th>
@@ -20,6 +21,13 @@
                         <td colspan="3" class="text-center text-muted">{{'account.apiKeyPairNoResults' | translate}}</td>
                     </tr>
                     <tr *ngFor="let apiKeyPair of apiKeyPairs">
+                        <td class="text-center"><span fayaClipboard
+                                [textToCopy]="apiKeyPair.keyId + ':' + apiKeyPair.keySecret"
+                                tooltipPlacement="top"
+                                tooltip="{{'misc.copyToClipboardRaw' | translate}}"
+                                tooltipPopupDelay="1250"
+                                class="clickable glyphicon glyphicon-copy">
+                        </span></td>
                         <td>{{apiKeyPair.keyId}}</td>
                         <td>{{apiKeyPair.keySecret}}</td>
                         <td (click)="onClickDelete(apiKeyPair)" class="clickable text-center"><span class="glyphicon glyphicon-trash"></span></td>

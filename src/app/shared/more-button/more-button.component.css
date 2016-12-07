@@ -1,0 +1,16 @@
+ul {
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    min-width: 160px;
+    padding: 5px 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+span {
+    font-size: 1.2em;
+    padding: 5px;
+}

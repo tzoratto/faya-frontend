@@ -1,15 +1,11 @@
-<div class="btn-group" dropdown [(isOpen)]="status.isopen">
-    <button id="single-button"
-            type="button"
-            tooltipPlacement="top"
-            tooltip="{{'misc.optionsRaw' | translate}}"
-            tooltipPopupDelay="1250"
-            class="btn btn-default btn-sm"
-            dropdownToggle
-            [disabled]="disabled">
-        <span class="clickable glyphicon glyphicon-option-horizontal"></span>
-    </button>
-    <ul dropdownMenu role="menu" aria-labelledby="single-button">
+<div>
+    <span tooltipPlacement="top"
+          tooltip="{{'misc.optionsRaw' | translate}}"
+          tooltipPopupDelay="1250"
+          class="clickable glyphicon glyphicon-option-horizontal"
+          (click)="open()">
+    </span>
+    <ul *ngIf="isOpen">
         <ng-content></ng-content>
     </ul>
 </div>

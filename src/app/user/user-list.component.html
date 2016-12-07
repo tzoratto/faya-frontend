@@ -1,33 +1,35 @@
 <div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
             <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/>
         </div>
     </div>
     <faya-loading [loading]="loading">
-        <table class="table margin-top-10">
-            <thead>
-                <tr>
-                    <th>{{'account.emailRaw' | translate}}</th>
-                    <th>{{'account.createdAtRaw' | translate}}</th>
-                    <th>{{'account.lastAccessRaw' | translate}}</th>
-                    <th class="text-center">{{'account.adminRaw' | translate}}</th>
-                    <th class="text-center">{{'misc.deleteRaw' | translate}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngIf="users.resultCount === 0">
-                    <td colspan="5" class="text-center text-muted">{{'account.noResults' | translate}}</td>
-                </tr>
-                <tr *ngFor="let user of users.result">
-                    <td>{{user.local.email}}</td>
-                    <td>{{user.createdAt | date}}</td>
-                    <td>{{user.lastAccess | date}}</td>
-                    <td class="text-center"><span *ngIf="user.admin" class="glyphicon glyphicon-ok-sign"></span></td>
-                    <td (click)="onClickDelete(user)" class="clickable text-center"><span class="glyphicon glyphicon-trash"></span></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive margin-top-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'account.emailRaw' | translate}}</th>
+                        <th>{{'account.createdAtRaw' | translate}}</th>
+                        <th>{{'account.lastAccessRaw' | translate}}</th>
+                        <th class="text-center">{{'account.adminRaw' | translate}}</th>
+                        <th class="text-center">{{'misc.deleteRaw' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="users.resultCount === 0">
+                        <td colspan="5" class="text-center text-muted">{{'account.noResults' | translate}}</td>
+                    </tr>
+                    <tr *ngFor="let user of users.result">
+                        <td>{{user.local.email}}</td>
+                        <td>{{user.createdAt | date}}</td>
+                        <td>{{user.lastAccess | date}}</td>
+                        <td class="text-center"><span *ngIf="user.admin" class="glyphicon glyphicon-ok-sign"></span></td>
+                        <td (click)="onClickDelete(user)" class="clickable text-center"><span class="glyphicon glyphicon-trash"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </faya-loading>
     <faya-pagination [limit]="paginationParameter.limit"
                      [resultCount]="users.resultCount"

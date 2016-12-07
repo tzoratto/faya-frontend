@@ -25,6 +25,10 @@ export class ChartService {
                 minValue: 0,
                 maxValue: 4,
                 format: '#,###'
+            },
+            chartArea: {
+                width: '100%',
+                left: 20
             }
         };
         let header: Array<any> = [
@@ -55,6 +59,10 @@ export class ChartService {
                 minValue: 0,
                 maxValue: 4,
                 format: '#,###'
+            },
+            chartArea: {
+                width: '100%',
+                left: 20
             }
         };
         let header: Array<any> = [
@@ -84,6 +92,10 @@ export class ChartService {
                 minValue: 0,
                 maxValue: 4,
                 format: '#,###'
+            },
+            chartArea: {
+                width: '100%',
+                left: 20
             }
         };
         let header: Array<any> = [

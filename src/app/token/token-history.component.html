@@ -1,6 +1,6 @@
 <div *ngIf="token">
     <div *ngIf="!chartLoading" class="row">
-        <div class="col-md-3 col-md-offset-9">
+        <div class="col-xs-6 col-xs-offset-6 col-sm-4 col-sm-offset-8 col-md-3 col-md-offset-9">
             <select (change)="chartScaleChange($event)" class="form-control">
                 <option value="day">{{'tokenHit.lastDay' | translate}}</option>
                 <option value="month">{{'tokenHit.lastMonth' | translate}}</option>
@@ -12,31 +12,35 @@
     <div class="text-right"><small><em>{{'misc.chartUTC' | translate}}</em></small></div>
     <hr/>
     <faya-loading [loading]="loading">
-        <table class="table table-condensed margin-top-10 faya-tokenHit-list">
-            <thead>
-            <tr>
-                <th>{{'tokenHit.ipRaw' | translate}}</th>
-                <th>{{'tokenHit.dateRaw' | translate}}</th>
-                <th>{{'tokenHit.userAgentRaw' | translate}}</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr *ngIf="tokenHits.resultCount === 0">
-                    <td colspan="3" class="text-center text-muted">{{'tokenHit.noResults' | translate}}</td>
+        <div class="table-responsive">
+            <table class="table table-condensed margin-top-10 faya-tokenHit-list">
+                <thead>
+                <tr>
+                    <th>{{'tokenHit.ipRaw' | translate}}</th>
+                    <th>{{'tokenHit.dateRaw' | translate}}</th>
+                    <th>{{'tokenHit.userAgentRaw' | translate}}</th>
                 </tr>
-                <tr *ngFor="let tokenHit of tokenHits.result"
-                    [ngClass]="{'danger': !tokenHit.response}">
-                    <td>{{tokenHit.ip}}</td>
-                    <td>{{tokenHit.date | date:'y/MM/dd, HH:mm'}}</td>
-                    <td>{{tokenHit.userAgent}}</td>
-                </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr *ngIf="tokenHits.resultCount === 0">
+                        <td colspan="3" class="text-center text-muted">{{'tokenHit.noResults' | translate}}</td>
+                    </tr>
+                    <tr *ngFor="let tokenHit of tokenHits.result"
+                        [ngClass]="{'danger': !tokenHit.response}">
+                        <td>{{tokenHit.ip}}</td>
+                        <td>{{tokenHit.date | date:'y/MM/dd, HH:mm'}}</td>
+                        <td>{{tokenHit.userAgent}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </faya-loading>
-    <faya-pagination [limit]="paginationParameter.limit"
-                     [resultCount]="tokenHits.resultCount"
-                     [totalCount]="tokenHits.totalCount"
-                     [(ngModel)]="paginationParameter.page"
-                     (pageChanged)="pageChanged($event)"
-                     class="pull-right text-right"></faya-pagination>
+    <div class="clearfix">
+        <faya-pagination [limit]="paginationParameter.limit"
+                         [resultCount]="tokenHits.resultCount"
+                         [totalCount]="tokenHits.totalCount"
+                         [(ngModel)]="paginationParameter.page"
+                         (pageChanged)="pageChanged($event)"
+                         class="pull-right text-right"></faya-pagination>
+    </div>
 </div>

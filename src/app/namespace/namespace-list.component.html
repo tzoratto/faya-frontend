@@ -5,33 +5,43 @@
                 <button (click)="onClickCreate()" class="btn btn-primary">{{'namespace.createButton' | translate}}</button><br/>
             </div>
         </div>
-        <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0">
+                <input type="text" class="form-control margin-top-20" [formControl]="filter" placeholder="{{'misc.filterRaw' | translate}}"/><br/>
+            </div>
+        </div>
         <faya-loading [loading]="loading">
-            <ul *ngIf="namespaces.resultCount > 0" class="list-group margin-top-10">
-                <li *ngFor="let namespace of namespaces.result"
-                        [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
-                        class="list-group-item clearfix clickable"
-                        (click)="onClickNamespace(namespace)"
-                        tooltipPlacement="bottom"
-                        [tooltip]="namespace.description"
-                        tooltipPopupDelay="1250">
-                        {{namespace.name}}
-                    <faya-more-button class="pull-right">
-                        <faya-more-button-row (click)="onClickDetails(namespace)"><span class="clickable glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
-                        <faya-more-button-row (click)="onClickDelete(namespace)"><span class="clickable glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
-                    </faya-more-button>
-                </li>
-            </ul>
-            <div *ngIf="namespaces.resultCount === 0" class="well well-sm text-muted">
-                {{'namespace.noResults' | translate}}
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0">
+                    <ul *ngIf="namespaces.resultCount > 0" class="list-group margin-top-10">
+                        <li *ngFor="let namespace of namespaces.result"
+                                [ngClass]="{active: _namespaceSelected && (namespace.id == _namespaceSelected.id)}"
+                                class="list-group-item clearfix clickable"
+                                (click)="onClickNamespace(namespace)"
+                                tooltipPlacement="bottom"
+                                [tooltip]="namespace.description"
+                                tooltipPopupDelay="1250">
+                                {{namespace.name}}
+                            <faya-more-button class="pull-right">
+                                <faya-more-button-row (click)="onClickDetails(namespace)"><span class="glyphicon glyphicon-edit margin-right-10"></span>{{'misc.editRaw' | translate}}</faya-more-button-row>
+                                <faya-more-button-row (click)="onClickDelete(namespace)"><span class="glyphicon glyphicon-trash margin-right-10"></span>{{'misc.deleteRaw' | translate}}</faya-more-button-row>
+                            </faya-more-button>
+                        </li>
+                    </ul>
+                    <div *ngIf="namespaces.resultCount === 0" class="well well-sm text-muted">
+                        {{'namespace.noResults' | translate}}
+                    </div>
+                </div>
             </div>
         </faya-loading>
-        <faya-pagination [limit]="paginationParameter.limit"
-                         [resultCount]="namespaces.resultCount"
-                         [totalCount]="namespaces.totalCount"
-                         [(ngModel)]="paginationParameter.page"
-                         (pageChanged)="pageChanged($event)"
-                         class="pull-right text-right"></faya-pagination>
+        <div class="clearfix">
+            <faya-pagination [limit]="paginationParameter.limit"
+                             [resultCount]="namespaces.resultCount"
+                             [totalCount]="namespaces.totalCount"
+                             [(ngModel)]="paginationParameter.page"
+                             (pageChanged)="pageChanged($event)"
+                             class="pull-right text-right"></faya-pagination>
+        </div>
     </div>
     <faya-namespace-details *ngIf="displayNamespaceDetails" [namespace]="namespaceToModify" (done)="onDetailsDone()"></faya-namespace-details>
 </div>

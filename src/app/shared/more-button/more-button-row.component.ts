@@ -8,8 +8,4 @@ import {Component} from '@angular/core';
 export class MoreButtonRowComponent {
     constructor() {
     }
-
-    onClick(event): boolean {
-        return false;
-    }
 }

@@ -65,4 +65,14 @@ export class TokenDetailsComponent implements OnInit {
         this.displayEndsAtPicker = false;
         this.token.endsAt = null;
     }
+
+    onClickDisplayStartsAtPicker(): void {
+        this.displayStartsAtPicker = !this.displayStartsAtPicker;
+        this.displayEndsAtPicker = false;
+    }
+
+    onClickDisplayEndsAtPicker(): void {
+        this.displayEndsAtPicker = !this.displayEndsAtPicker;
+        this.displayStartsAtPicker = false;
+    }
 }

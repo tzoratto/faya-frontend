@@ -10,14 +10,14 @@
                         <div class="panel-heading">{{'account.myContentRaw' | translate}}</div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-md-5 control-label">{{'token.tokenCountLabel' | translate}}</label>
-                                <div class="col-md-7">
+                                <label class="col-sm-6 col-md-5 control-label">{{'token.tokenCountLabel' | translate}}</label>
+                                <div class="col-sm-6 col-md-7">
                                     <p class="form-control-static">{{tokenCount}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-5 control-label">{{'namespace.namespaceCountLabel' | translate}}</label>
-                                <div class="col-md-7">
+                                <label class="col-sm-6 col-md-5 control-label">{{'namespace.namespaceCountLabel' | translate}}</label>
+                                <div class="col-sm-6 col-md-7">
                                     <p class="form-control-static">{{namespaceCount}}</p>
                                 </div>
                             </div>
@@ -31,20 +31,20 @@
                     <div class="panel-heading">{{'account.myAccountRaw' | translate}}</div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-md-5 control-label">{{'account.createdAtLabel' | translate}}</label>
-                            <div class="col-md-7">
+                            <label class="col-sm-6 col-md-5 control-label">{{'account.createdAtLabel' | translate}}</label>
+                            <div class="col-sm-6 col-md-7">
                                 <p class="form-control-static">{{user.createdAt | date}}</p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-5 control-label">{{'account.emailLabel' | translate}}</label>
-                            <div class="col-md-7">
+                            <label class="col-sm-6 col-md-5 control-label">{{'account.emailLabel' | translate}}</label>
+                            <div class="col-sm-6 col-md-7">
                                 <p class="form-control-static">{{user.local.email}}</p>
                             </div>
                         </div>
                         <div *ngIf="user.admin" class="form-group">
-                            <label class="col-md-5 control-label">{{'account.adminLabel' | translate}}</label>
-                            <div class="col-md-7">
+                            <label class="col-sm-6 col-md-5 control-label">{{'account.adminLabel' | translate}}</label>
+                            <div class="col-sm-6 col-md-7">
                                 <p class="form-control-static">{{'misc.yesRaw' | translate}}</p>
                             </div>
                         </div>
