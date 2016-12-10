@@ -28,7 +28,7 @@ export class ChartService {
             },
             chartArea: {
                 width: '100%',
-                left: 20
+                left: 70
             }
         };
         let header: Array<any> = [
@@ -62,7 +62,7 @@ export class ChartService {
             },
             chartArea: {
                 width: '100%',
-                left: 20
+                left: 70
             }
         };
         let header: Array<any> = [
@@ -95,7 +95,7 @@ export class ChartService {
             },
             chartArea: {
                 width: '100%',
-                left: 20
+                left: 70
             }
         };
         let header: Array<any> = [
