@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     <tr *ngIf="apiKeyPairs.length === 0">
-                        <td colspan="3" class="text-center text-muted">{{'account.apiKeyPairNoResults' | translate}}</td>
+                        <td colspan="4" class="text-center text-muted">{{'account.apiKeyPairNoResults' | translate}}</td>
                     </tr>
                     <tr *ngFor="let apiKeyPair of apiKeyPairs">
                         <td class="text-center"><span fayaClipboard
